@@ -8,13 +8,13 @@ public class ConnectedSpawner : MonoBehaviour
 
     public List<GameObject> spawningTerrains = new List<GameObject>(); // GameObjects to instantiate
 
-    public PossibleChunks generatedTerrain; // the terrain that was selected to generate for this spawner
+    [HideInInspector] public PossibleChunks generatedTerrain; // the terrain that was selected to generate for this spawner
 
-    public ConnectedSpawner prevXSpawner;
-    public ConnectedSpawner prevZSpawner;
+    [HideInInspector] public ConnectedSpawner prevXSpawner;
+    [HideInInspector] public ConnectedSpawner prevZSpawner;
 
-    public int currentAltitude;
-    public int currentChunkFromTrack;
+    [HideInInspector] public int currentAltitude;
+    [HideInInspector] public int currentChunkFromTrack;
     [HideInInspector] public bool spawningDirection;
 
     private ConnectedSpawner generatedConnectedSpawner;
@@ -50,12 +50,6 @@ public class ConnectedSpawner : MonoBehaviour
         currentChunkFromTrack = _currentChunkFromTrack;
         spawningDirection = rightDirection;
 
-        //Debug.Log("Connected -------------------- Spawner");
-        //Debug.Log("Current Altitude: " + currentAltitude);
-        //Debug.Log("Current Chunk From Track: " + currentChunkFromTrack);
-
-        //transform.position = new Vector3(transform.position.x, transform.position.y + currentAltitude * chunkSpawner.chunkYOffset, transform.position.z);
-
         possibleXItems.Clear();
         possibleZItems.Clear();
         possibleChunksToSpawn.Clear();
@@ -76,7 +70,6 @@ public class ConnectedSpawner : MonoBehaviour
             if (thisChunkGenerator.chunkIndex == 0) break; // break out of the loop since this is the first chunk
             // todo: fix later for backwards spawning
 
-            //Debug.Log("This is the second (or further) chunk");
             ConnectedSpawner backwardsChunk = chunkSpawner.GetChunk(thisChunkGenerator.chunkIndex - 1).connectedSpawners[i];
             if (backwardsChunk.currentChunkFromTrack == _currentChunkFromTrack && backwardsChunk.spawningDirection == spawningDirection)
             {
@@ -85,13 +78,7 @@ public class ConnectedSpawner : MonoBehaviour
             }
             
         }
-        if (prevZSpawner == null && thisChunkGenerator.chunkIndex != 0)
-        {
-            //Debug.LogError("Strange - the previous spawner was not found");
-        }
-
-        //Debug.Log("Spawning direction" + spawningDirection);
-        //Debug.Log(slopeType);
+        
         switch (slopeType)
         {
             case RailSpawner.StartingSlopeType.Straight:
@@ -133,7 +120,6 @@ public class ConnectedSpawner : MonoBehaviour
             case RailSpawner.StartingSlopeType.NA:
                 // get the previous X chunk since this is not the first chunk to spawn from the rails
                 prevXSpawner = GetThisChunkSpawner(currentChunkFromTrack - 1);
-                //Debug.Log("Previous terrain: " + prevXSpawner.generatedTerrain.name);
 
                 if (spawningDirection == true)
                 {
@@ -173,81 +159,17 @@ public class ConnectedSpawner : MonoBehaviour
                             break;
                     }
                 }
-                /*
-                foreach (var item in possibleXItems)
-                {
-                    Debug.LogWarning("PossibleXItems: " + item.name);
-                }
-
-                /*
-                // collect all the possible combinations in the horizontal direction
-                if (spawningDirection == false)
-                {
-                    foreach (var item in prevXSpawner.generatedTerrain.leftItems)
-                    {
-                        possibleXItems.Add(item);
-                    }
-                }
-                else
-                {
-                    foreach (var item in prevXSpawner.generatedTerrain.rightItems)
-                    {
-                        possibleXItems.Add(item);
-                    }
-                }*/
-
+                
                 if (prevZSpawner != null)
                 {
-                    /*if (spawningDirection == true)
-                    {
-                        switch (prevXSpawner.generatedTerrain.leftSlopeMatch)
-                        {
-                            case PossibleChunks.LeftStartingSlopeType.Straight:
-                                possibleXItems = leftStraightItems;
-                                break;
-                            case PossibleChunks.LeftStartingSlopeType.Up:
-                                possibleXItems = leftUpItems;
-                                break;
-                            case PossibleChunks.LeftStartingSlopeType.Down:
-                                possibleXItems = leftDownItems;
-                                break;
-                            case PossibleChunks.LeftStartingSlopeType.NA:
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        switch (prevXSpawner.generatedTerrain.rightSlopeMatch)
-                        {
-                            case PossibleChunks.RightStartingSlopeType.Straight:
-                                possibleXItems = rightStraightItems;
-                                break;
-                            case PossibleChunks.RightStartingSlopeType.Up:
-                                possibleXItems = rightUpItems;
-                                break;
-                            case PossibleChunks.RightStartingSlopeType.Down:
-                                possibleXItems = rightDownItems;
-                                break;
-                            case PossibleChunks.RightStartingSlopeType.NA:
-                                break;
-                            default:
-                                break;
-                        }
-                    }*/
-
-                    //Debug.Log("There is a previous Z spawner with item: " + prevZSpawner.generatedTerrain.name);
                     CollectAndComparePossibleTerrainsToSpawn();
                 }
                 else
                 {
-                    //Debug.Log("There was no previous Z spawner");
                     for (int i = 0; i < possibleXItems.Count - 1; i++)
                     {
                         possibleChunksToSpawn.Add(possibleXItems[i]);
                         possibleSelectedTerrainIndexes.Add(i);
-                        //Debug.Log("Possible terrains: " + possibleChunksToSpawn[i].name);
                     }
                 }
                 
@@ -259,8 +181,6 @@ public class ConnectedSpawner : MonoBehaviour
                 if (spawningDirection == false)
                 {
                     // get previous chunk and find it in the list of own possible chunks from that direction
-                    //if (prevXSpawner.generatedTerrain.rightItems.Length != 5) break;
-
                     for (int i = 0; i < prevXSpawner.generatedTerrain.rightItems.Length; i++)
                     {
                         if (generatedTerrain.name.Contains(prevXSpawner.generatedTerrain.rightItems[i].name))
@@ -272,8 +192,6 @@ public class ConnectedSpawner : MonoBehaviour
                 }
                 else
                 {
-                    //if (prevXSpawner.generatedTerrain.leftItems.Length != 5) break;
-
                     for (int i = 0; i < prevXSpawner.generatedTerrain.leftItems.Length; i++)
                     {
                         if (generatedTerrain.name.Contains(prevXSpawner.generatedTerrain.leftItems[i].name))
@@ -296,16 +214,10 @@ public class ConnectedSpawner : MonoBehaviour
             nextSpawnerExists = true;
         }
 
-        //Debug.Log("Random number: " + rand);
-        //Debug.Log("Generated terrain: " + generatedTerrain);
-        //Debug.Log("Number of indexes: " + possibleSelectedTerrainIndexes.Count);
-        //Debug.Log("Rand: " + rand);
-        //Debug.Log("Possible chunks to spawn: " + possibleChunksToSpawn.Count);
         if (currentChunkFromTrack < Game.maxChunksFromTrack)
         {
             if (spawningDirection == false)
             {
-                Debug.LogWarning("Left altitude step count: " + generatedTerrain.requiredLeftAltitudeSteps.Length + ", possible selected terrain indexes count: " + possibleSelectedTerrainIndexes.Count + ", possible chunks count: " + possibleChunksToSpawn.Count + ", rand: " + rand);
                 if (nextSpawnerExists == false)
                 {
                     thisChunkGenerator.connectedSpawners.Add(Instantiate(connectedSpawner, new Vector3(transform.position.x - chunkSpawner.chunkXOffset, transform.position.y, transform.position.z), Quaternion.identity, transform.parent).GetComponent<ConnectedSpawner>());
@@ -318,7 +230,6 @@ public class ConnectedSpawner : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("Right altitude step count: " + generatedTerrain.requiredRightAltitudeSteps.Length + ", possible selected terrain indexes count: " + possibleSelectedTerrainIndexes.Count + ", possible chunks count: " + possibleChunksToSpawn.Count + ", rand: " + rand + ", possible terrain index number: " + possibleSelectedTerrainIndexes[rand]);
                 if (nextSpawnerExists == false)
                 {
                     thisChunkGenerator.connectedSpawners.Add(Instantiate(connectedSpawner, new Vector3(transform.position.x + chunkSpawner.chunkXOffset, transform.position.y, transform.position.z), Quaternion.identity, transform.parent).GetComponent<ConnectedSpawner>());
@@ -335,7 +246,6 @@ public class ConnectedSpawner : MonoBehaviour
         {
             Invoke(nameof(GenerateNextBigChunk), 0.5f);
         }
-        
     }
 
     void CollectAndComparePossibleTerrainsToSpawn()
@@ -343,23 +253,18 @@ public class ConnectedSpawner : MonoBehaviour
         // collect all the possible combinations in the vertical direction
         foreach (var item in prevZSpawner.generatedTerrain.forewardItems)
         {
-            //Debug.LogWarning("Added a previous Z item: " + item.name);
             possibleZItems.Add(item);
         }
-        //Debug.Log("Possible X Items count: " + possibleXItems.Count);
-        //Debug.Log("Possible Z Items count: " + possibleZItems.Count);
         // put together a list of possible combinations from both sides
         foreach (var zItem in possibleZItems)
         {
             //Debug.Log("Z");
             for (int i = 0; i < possibleXItems.Count; i++)
             {
-                //Debug.Log("Looping through and finding a match between: " + zItem.name + " and " + possibleXItems[i].name);
                 if (possibleXItems[i].gameObject.name.Contains(zItem.gameObject.name))
                 {
                     possibleChunksToSpawn.Add(possibleXItems[i]);
                     possibleSelectedTerrainIndexes.Add(i);
-                    //Debug.Log("Possible final terrains: " + possibleChunksToSpawn[possibleChunksToSpawn.Count - 1].name);
                 }
             }
         }
@@ -385,7 +290,6 @@ public class ConnectedSpawner : MonoBehaviour
             for (int i = 0; i < slopeItems.Count; i++)
             {
                 possibleSelectedTerrainIndexes.Add(i);
-                //Debug.Log("Possible terrains: " + slopeItems[i].name);
             }
             generatedTerrain = slopeItems[rand].GetComponent<PossibleChunks>();
         }
@@ -399,7 +303,6 @@ public class ConnectedSpawner : MonoBehaviour
             {
                 if (generatedTerrain.rightItems[i].name == matchName)
                 {
-                    //Debug.Log("Found match on the right side");
                     return i;
                 }
             }
@@ -410,7 +313,6 @@ public class ConnectedSpawner : MonoBehaviour
             {
                 if (generatedTerrain.leftItems[i].name == matchName)
                 {
-                    //Debug.Log("Found match on the left side");
                     return i;
                 }
             }
@@ -475,6 +377,7 @@ public class ConnectedSpawner : MonoBehaviour
                 //Debug.Log("Possible terrains: " + possibleChunksToSpawn[i].name);
             }
             rand = Random.Range(0, possibleChunksToSpawn.Count);
+            Debug.LogError("There is a missing terrain here - need to create a new fit");
         }
 
         foreach (var item in leftStraightItems)
@@ -505,11 +408,8 @@ public class ConnectedSpawner : MonoBehaviour
 
     bool CheckItem(GameObject item)
     {
-        //Debug.LogWarning("Possible chunk count: " + possibleChunksToSpawn.Count);
-        //Debug.LogWarning("Possible X itmes count: " + possibleXItems.Count);
         if (possibleChunksToSpawn[rand].name == item.name)
         {
-            //Debug.Log("Selected Item");
             item.SetActive(true);
             generatedTerrain = item.GetComponent<PossibleChunks>();
             return true;
@@ -583,21 +483,6 @@ public class ConnectedSpawner : MonoBehaviour
                 default:
                     break;
             }
-
-            if (spawningDirection == false)
-            {
-                
-            }
-            else
-            {
-                
-            }
         }
-        //Debug.Log("Straight left items: " + leftStraightItems.Count);
-        //Debug.Log("Up left items: " + leftUpItems.Count);
-        //Debug.Log("Down left items: " + leftDownItems.Count);
-        //Debug.Log("Straight right items: " + rightStraightItems.Count);
-        //Debug.Log("Up right items: " + rightUpItems.Count);
-        //Debug.Log("Down right items: " + rightDownItems.Count);
     }
 }
