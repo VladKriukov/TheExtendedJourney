@@ -116,6 +116,7 @@ MonoBehaviour:
   - {fileID: 1342696323144794, guid: e06a8432f43644ba09c5d9f2abd9d17e, type: 3}
   - {fileID: 4244306351941778132, guid: eb6185ecf1c60fc47975c54a850f6865, type: 3}
   - {fileID: 986292725987131777, guid: eb3d8d3346a2fca4f83a8d266ead9431, type: 3}
+  - {fileID: 6747957151380797173, guid: 27fe635f6642deb4e921292a46eacd53, type: 3}
   rightItems:
   - {fileID: 1389758202622836, guid: 7bf018d5282704654afa7490ada8a796, type: 3}
   - {fileID: 1670497527772090, guid: 717e77442e9fc4956bb05fa999e7d759, type: 3}
@@ -124,6 +125,8 @@ MonoBehaviour:
   - {fileID: 1745272292781738, guid: e129311c8d59b48bcad72f3f213f25d7, type: 3}
   - {fileID: 986292725987131777, guid: eb3d8d3346a2fca4f83a8d266ead9431, type: 3}
   - {fileID: 8163274071443914810, guid: 129c48388484a8e469fc9b79d7cff129, type: 3}
+  - {fileID: 6747957151380797173, guid: 27fe635f6642deb4e921292a46eacd53, type: 3}
+  - {fileID: 2800949210638842352, guid: c2d17bb4c46e5184bb04ab6a87471c6c, type: 3}
   forewardItems:
   - {fileID: 1342696323144794, guid: e06a8432f43644ba09c5d9f2abd9d17e, type: 3}
   - {fileID: 1276682521725222, guid: f6cda126f120f430f91234c74e2cf2d0, type: 3}
@@ -135,10 +138,11 @@ MonoBehaviour:
   - {fileID: 1771254519081410, guid: b08486c4c7e864be79238142865f17ec, type: 3}
   - {fileID: 2398513361569706449, guid: a9b15c1bcbaa2a246a7bea76a1d14fd0, type: 3}
   - {fileID: 4244306351941778132, guid: eb6185ecf1c60fc47975c54a850f6865, type: 3}
-  requiredLeftAltitudeSteps: 00000000000000000000000000000000
-  requiredRightAltitudeSteps: 000000000000000000000000ffffffff000000000100000001000000
+  - {fileID: 2800949210638842352, guid: c2d17bb4c46e5184bb04ab6a87471c6c, type: 3}
+  requiredLeftAltitudeSteps: 0000000000000000000000000000000001000000
+  requiredRightAltitudeSteps: 000000000000000000000000ffffffff000000000100000001000000ffffffffffffffff
   requiredForewardAltitudeSteps: ffffffff00000000000000000000000000000000
-  requiredBackwardAltitudeSteps: ffffffff000000000100000000000000
+  requiredBackwardAltitudeSteps: ffffffff00000000010000000000000000000000
   leftStartingStep: 0
   rightStartingStep: 0
   leftSlopeMatch: 2

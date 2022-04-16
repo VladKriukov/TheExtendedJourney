@@ -62,6 +62,10 @@ MonoBehaviour:
   - {fileID: 2398513361569706449, guid: a9b15c1bcbaa2a246a7bea76a1d14fd0, type: 3}
   - {fileID: 986292725987131777, guid: eb3d8d3346a2fca4f83a8d266ead9431, type: 3}
   - {fileID: 8163274071443914810, guid: 129c48388484a8e469fc9b79d7cff129, type: 3}
+  - {fileID: 7020849755616245633, guid: f2b69ffb52896bb4296078b74557acea, type: 3}
+  - {fileID: 6747957151380797173, guid: 27fe635f6642deb4e921292a46eacd53, type: 3}
+  - {fileID: 2800949210638842352, guid: c2d17bb4c46e5184bb04ab6a87471c6c, type: 3}
+  - {fileID: 4371832118297696943, guid: 63c0e895bc03e6d4fbc2eba65fa54e55, type: 3}
   generatedTerrain: {fileID: 0}
   prevXSpawner: {fileID: 0}
   prevZSpawner: {fileID: 0}

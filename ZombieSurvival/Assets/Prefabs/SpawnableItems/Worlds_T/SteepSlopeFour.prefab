@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8163274071443914810}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -119,21 +119,25 @@ MonoBehaviour:
   - {fileID: 1771254519081410, guid: b08486c4c7e864be79238142865f17ec, type: 3}
   - {fileID: 8467429672132294409, guid: 17fe3e29f38e5cf47bf85f4ae8d58f0e, type: 3}
   - {fileID: 2398513361569706449, guid: a9b15c1bcbaa2a246a7bea76a1d14fd0, type: 3}
+  - {fileID: 7020849755616245633, guid: f2b69ffb52896bb4296078b74557acea, type: 3}
+  - {fileID: 4371832118297696943, guid: 63c0e895bc03e6d4fbc2eba65fa54e55, type: 3}
   rightItems:
   - {fileID: 1653040032361890, guid: baa360e9e8cf64ba2abc30967dfe945a, type: 3}
   - {fileID: 1771254519081410, guid: b08486c4c7e864be79238142865f17ec, type: 3}
   - {fileID: 8467429672132294409, guid: 17fe3e29f38e5cf47bf85f4ae8d58f0e, type: 3}
   - {fileID: 4244306351941778132, guid: eb6185ecf1c60fc47975c54a850f6865, type: 3}
+  - {fileID: 8163274071443914810}
   forewardItems:
   - {fileID: 986292725987131777, guid: eb3d8d3346a2fca4f83a8d266ead9431, type: 3}
+  - {fileID: 4371832118297696943, guid: 63c0e895bc03e6d4fbc2eba65fa54e55, type: 3}
   backwardItems:
   - {fileID: 1670497527772090, guid: 717e77442e9fc4956bb05fa999e7d759, type: 3}
   - {fileID: 1745272292781738, guid: e129311c8d59b48bcad72f3f213f25d7, type: 3}
   - {fileID: 388925512692137004, guid: ef570c3d8d8a193418ecb01f09859815, type: 3}
   - {fileID: 986292725987131777, guid: eb3d8d3346a2fca4f83a8d266ead9431, type: 3}
-  requiredLeftAltitudeSteps: fffffffffeffffffffffffffffffffffffffffff0000000000000000
-  requiredRightAltitudeSteps: 00000000000000000000000000000000
-  requiredForewardAltitudeSteps: 00000000
+  requiredLeftAltitudeSteps: fffffffffeffffffffffffffffffffffffffffff0000000000000000fefffffffeffffff
+  requiredRightAltitudeSteps: 0000000000000000000000000000000001000000
+  requiredForewardAltitudeSteps: 0000000000000000
   requiredBackwardAltitudeSteps: ffffffffffffffffffffffff00000000
   leftStartingStep: 1
   rightStartingStep: 0

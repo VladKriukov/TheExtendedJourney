@@ -119,25 +119,29 @@ MonoBehaviour:
   - {fileID: 1771254519081410, guid: b08486c4c7e864be79238142865f17ec, type: 3}
   - {fileID: 8467429672132294409, guid: 17fe3e29f38e5cf47bf85f4ae8d58f0e, type: 3}
   - {fileID: 2398513361569706449, guid: a9b15c1bcbaa2a246a7bea76a1d14fd0, type: 3}
+  - {fileID: 7020849755616245633, guid: f2b69ffb52896bb4296078b74557acea, type: 3}
+  - {fileID: 4371832118297696943, guid: 63c0e895bc03e6d4fbc2eba65fa54e55, type: 3}
   rightItems:
   - {fileID: 1653040032361890, guid: baa360e9e8cf64ba2abc30967dfe945a, type: 3}
   - {fileID: 1771254519081410, guid: b08486c4c7e864be79238142865f17ec, type: 3}
   - {fileID: 4244306351941778132, guid: eb6185ecf1c60fc47975c54a850f6865, type: 3}
   - {fileID: 8467429672132294409, guid: 17fe3e29f38e5cf47bf85f4ae8d58f0e, type: 3}
+  - {fileID: 4371832118297696943, guid: 63c0e895bc03e6d4fbc2eba65fa54e55, type: 3}
   forewardItems:
   - {fileID: 1389758202622836, guid: 7bf018d5282704654afa7490ada8a796, type: 3}
   - {fileID: 1670497527772090, guid: 717e77442e9fc4956bb05fa999e7d759, type: 3}
   - {fileID: 4244306351941778132, guid: eb6185ecf1c60fc47975c54a850f6865, type: 3}
   - {fileID: 986292725987131777, guid: eb3d8d3346a2fca4f83a8d266ead9431, type: 3}
+  - {fileID: 7020849755616245633, guid: f2b69ffb52896bb4296078b74557acea, type: 3}
   backwardItems:
   - {fileID: 1389758202622836, guid: 7bf018d5282704654afa7490ada8a796, type: 3}
   - {fileID: 1342696323144794, guid: e06a8432f43644ba09c5d9f2abd9d17e, type: 3}
   - {fileID: 1353795629888972, guid: b829c412628fe4c1fad5bbdf43bcf106, type: 3}
   - {fileID: 1276682521725222, guid: f6cda126f120f430f91234c74e2cf2d0, type: 3}
   - {fileID: 1653040032361890, guid: baa360e9e8cf64ba2abc30967dfe945a, type: 3}
-  requiredLeftAltitudeSteps: 00000000ffffffff0000000000000000000000000100000001000000
-  requiredRightAltitudeSteps: 00000000000000000000000000000000
-  requiredForewardAltitudeSteps: 00000000000000000000000000000000
+  requiredLeftAltitudeSteps: 00000000ffffffff0000000000000000000000000100000001000000ffffffffffffffff
+  requiredRightAltitudeSteps: 0000000000000000000000000000000001000000
+  requiredForewardAltitudeSteps: 0000000000000000000000000000000000000000
   requiredBackwardAltitudeSteps: 00000000000000000000000000000000ffffffff
   leftStartingStep: 0
   rightStartingStep: 0
