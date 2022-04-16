@@ -377,7 +377,7 @@ public class ConnectedSpawner : MonoBehaviour
                 //Debug.Log("Possible terrains: " + possibleChunksToSpawn[i].name);
             }
             rand = Random.Range(0, possibleChunksToSpawn.Count);
-            Debug.LogError("There is a missing terrain here - need to create a new fit");
+            //Debug.LogError("There is a missing terrain here - need to create a new fit");
         }
 
         foreach (var item in leftStraightItems)

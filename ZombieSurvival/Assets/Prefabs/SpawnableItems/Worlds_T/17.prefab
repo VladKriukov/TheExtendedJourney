@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8163274071443914810
+--- !u!1 &986292725987131777
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8791613787831671424}
-  - component: {fileID: 5597356126680978725}
-  - component: {fileID: 7658717462413566447}
-  - component: {fileID: 7143274085769124786}
-  - component: {fileID: 6430104421398653276}
+  - component: {fileID: 503229629917797179}
+  - component: {fileID: 3554482755833992350}
+  - component: {fileID: 1635079833508405332}
+  - component: {fileID: 400220095434451742}
+  - component: {fileID: 4932868608804112359}
   m_Layer: 0
-  m_Name: SteepSlopeFour
+  m_Name: 17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8791613787831671424
+--- !u!4 &503229629917797179
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8163274071443914810}
+  m_GameObject: {fileID: 986292725987131777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -35,21 +35,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5597356126680978725
+--- !u!33 &3554482755833992350
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8163274071443914810}
-  m_Mesh: {fileID: -7725985140688212139, guid: 541cc3739de4d7f4b9ec1443e085d30d, type: 3}
---- !u!23 &7658717462413566447
+  m_GameObject: {fileID: 986292725987131777}
+  m_Mesh: {fileID: -9001920445362096296, guid: 7db27f20637cb8f438c4a6a3c3fad5c6, type: 3}
+--- !u!23 &1635079833508405332
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8163274071443914810}
+  m_GameObject: {fileID: 986292725987131777}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -85,27 +85,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7143274085769124786
+--- !u!64 &400220095434451742
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8163274071443914810}
+  m_GameObject: {fileID: 986292725987131777}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: -7725985140688212139, guid: 541cc3739de4d7f4b9ec1443e085d30d, type: 3}
---- !u!114 &6430104421398653276
+  m_Mesh: {fileID: -9001920445362096296, guid: 7db27f20637cb8f438c4a6a3c3fad5c6, type: 3}
+--- !u!114 &4932868608804112359
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8163274071443914810}
+  m_GameObject: {fileID: 986292725987131777}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1283f8255d07c384ca434dd456dfa9ff, type: 3}
@@ -122,24 +122,24 @@ MonoBehaviour:
   - {fileID: 7020849755616245633, guid: f2b69ffb52896bb4296078b74557acea, type: 3}
   - {fileID: 4371832118297696943, guid: 63c0e895bc03e6d4fbc2eba65fa54e55, type: 3}
   rightItems:
-  - {fileID: 1653040032361890, guid: baa360e9e8cf64ba2abc30967dfe945a, type: 3}
-  - {fileID: 1771254519081410, guid: b08486c4c7e864be79238142865f17ec, type: 3}
-  - {fileID: 8467429672132294409, guid: 17fe3e29f38e5cf47bf85f4ae8d58f0e, type: 3}
-  - {fileID: 4244306351941778132, guid: eb6185ecf1c60fc47975c54a850f6865, type: 3}
-  - {fileID: 8163274071443914810}
-  forewardItems:
-  - {fileID: 986292725987131777, guid: eb3d8d3346a2fca4f83a8d266ead9431, type: 3}
-  - {fileID: 4371832118297696943, guid: 63c0e895bc03e6d4fbc2eba65fa54e55, type: 3}
-  backwardItems:
-  - {fileID: 1670497527772090, guid: 717e77442e9fc4956bb05fa999e7d759, type: 3}
-  - {fileID: 1745272292781738, guid: e129311c8d59b48bcad72f3f213f25d7, type: 3}
+  - {fileID: 1342696323144794, guid: e06a8432f43644ba09c5d9f2abd9d17e, type: 3}
+  - {fileID: 1353795629888972, guid: b829c412628fe4c1fad5bbdf43bcf106, type: 3}
   - {fileID: 388925512692137004, guid: ef570c3d8d8a193418ecb01f09859815, type: 3}
-  - {fileID: 986292725987131777, guid: eb3d8d3346a2fca4f83a8d266ead9431, type: 3}
+  - {fileID: 2398513361569706449, guid: a9b15c1bcbaa2a246a7bea76a1d14fd0, type: 3}
+  - {fileID: 7020849755616245633, guid: f2b69ffb52896bb4296078b74557acea, type: 3}
+  forewardItems:
+  - {fileID: 1389758202622836, guid: 7bf018d5282704654afa7490ada8a796, type: 3}
+  - {fileID: 1670497527772090, guid: 717e77442e9fc4956bb05fa999e7d759, type: 3}
+  - {fileID: 4244306351941778132, guid: eb6185ecf1c60fc47975c54a850f6865, type: 3}
+  - {fileID: 8163274071443914810, guid: 129c48388484a8e469fc9b79d7cff129, type: 3}
+  backwardItems:
+  - {fileID: 8163274071443914810, guid: 129c48388484a8e469fc9b79d7cff129, type: 3}
+  - {fileID: 7020849755616245633, guid: f2b69ffb52896bb4296078b74557acea, type: 3}
   requiredLeftAltitudeSteps: fffffffffeffffffffffffffffffffffffffffff0000000000000000fefffffffeffffff
   requiredRightAltitudeSteps: 0000000000000000000000000000000001000000
-  requiredForewardAltitudeSteps: 0000000000000000
-  requiredBackwardAltitudeSteps: ffffffffffffffffffffffff00000000
+  requiredForewardAltitudeSteps: ffffffffffffffffffffffff00000000
+  requiredBackwardAltitudeSteps: 0000000000000000
   leftStartingStep: 1
   rightStartingStep: 0
   leftSlopeMatch: 0
-  rightSlopeMatch: 1
+  rightSlopeMatch: 2
