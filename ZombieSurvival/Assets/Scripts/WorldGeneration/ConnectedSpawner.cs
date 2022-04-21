@@ -238,6 +238,7 @@ public class ConnectedSpawner : MonoBehaviour
 
                 if (generatedConnectedSpawner != null)
                 {
+                    Debug.Log("required steps length: " + generatedTerrain.requiredRightAltitudeSteps.Length + ", possible indexes length: " + possibleSelectedTerrainIndexes.Count + ", rand: " + rand + ", randth index: " + possibleSelectedTerrainIndexes[rand] + ", generated terrain: " + generatedTerrain.name + ", possibleXItems length: " + possibleXItems.Count);
                     generatedConnectedSpawner.GenerateTerrain(generatedTerrain.requiredRightAltitudeSteps[possibleSelectedTerrainIndexes[rand]], currentChunkFromTrack + 1, spawningDirection);
                 }
             }
@@ -369,6 +370,7 @@ public class ConnectedSpawner : MonoBehaviour
                 Debug.LogError("The chunk differences have gone out of hand");
             }
 
+            possibleSelectedTerrainIndexes.Clear();
             //todo: possibly refactor as this is repeated twice
             for (int i = 0; i < possibleXItems.Count; i++)
             {
@@ -410,6 +412,10 @@ public class ConnectedSpawner : MonoBehaviour
     {
         if (possibleChunksToSpawn[rand].name == item.name)
         {
+            if (item.name.Contains("12"))
+            {
+                Debug.LogError("12.. and I don't know why");
+            }
             item.SetActive(true);
             generatedTerrain = item.GetComponent<PossibleChunks>();
             return true;
