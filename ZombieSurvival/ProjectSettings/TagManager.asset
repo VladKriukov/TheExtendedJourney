@@ -7,6 +7,7 @@ TagManager:
   - Shootable
   - Apple
   - ChunkForward
+  - PickUpAble
   layers:
   - Default
   - TransparentFX

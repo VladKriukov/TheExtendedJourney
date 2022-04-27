@@ -13,12 +13,12 @@ public class SpawnableItem : MonoBehaviour
     {
         if (spawned == false && !collision.gameObject.name.Contains("Grass"))
         {
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
     }
 
     void SetKinematic()
     {
-        GetComponent<Rigidbody>().isKinematic = true;
+        //GetComponent<Rigidbody>().isKinematic = true;
     }
 }

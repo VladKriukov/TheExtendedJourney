@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 64000011611027482}
   - component: {fileID: -5522107351774510067}
   - component: {fileID: -8758180432850930194}
+  - component: {fileID: 3746641086083880377}
   m_Layer: 0
   m_Name: stone-pointy_white
   m_TagString: Untagged
@@ -124,7 +125,25 @@ Rigidbody:
   m_Drag: 1e+10
   m_AngularDrag: 1e+10
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3746641086083880377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000014045022776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6035169e3746224cae20bd2dc512f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectiveItem: 1
+  damagable: 1
+  health: 50
+  drops:
+  - {fileID: 1000010245899088, guid: 3ee6164a9d9cf974ca3e2e31c3e866a0, type: 3}
+  numberOfDrops: 3
