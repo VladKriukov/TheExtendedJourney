@@ -1,5 +1,64 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &561812088
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 561812089}
+  - component: {fileID: 561812090}
+  - component: {fileID: 561812091}
+  m_Layer: 0
+  m_Name: PhysicsStopper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &561812089
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561812088}
+  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2168926411208558534}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+--- !u!65 &561812090
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561812088}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 0.2, z: 12.5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &561812091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561812088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7efc4e272ba33a740a8ca56d25f5c319, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockWaitTime: 1
 --- !u!1 &2168926411208465376
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,6 +265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2168926411208558532}
   - component: {fileID: 26314506}
+  - component: {fileID: 26314508}
   m_Layer: 0
   m_Name: train-wagon-cargo
   m_TagString: Untagged
@@ -251,6 +311,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 98
   m_CollisionDetection: 0
+--- !u!145 &26314508
+SpringJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2168926411208465380}
+  m_ConnectedBody: {fileID: 0}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0.55, z: 7}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Spring: 99999
+  m_Damper: 1500
+  m_MinDistance: 0
+  m_MaxDistance: 0
+  m_Tolerance: 1.00000005e-20
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
 --- !u!1 &2168926411208465382
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,6 +347,7 @@ GameObject:
   - component: {fileID: 2168926411211458532}
   - component: {fileID: 2168926411210458404}
   - component: {fileID: 2168926411208432981}
+  - component: {fileID: 414599908}
   m_Layer: 0
   m_Name: train-wagon-cargo-base
   m_TagString: Untagged
@@ -281,7 +366,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 0.3, z: 0}
   m_LocalScale: {x: -1, y: -1, z: -1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 561812089}
   m_Father: {fileID: 2168926411208558532}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -344,11 +430,24 @@ MeshCollider:
   m_GameObject: {fileID: 2168926411208465382}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: ebbd6c569c0b3e24fbb9ca63bff23b4b, type: 3}
+--- !u!65 &414599908
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2168926411208465382}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.3414183, y: 0.8, z: 12.85}
+  m_Center: {x: 0, y: 0.4, z: 0.0000038146973}
 --- !u!1 &2168926411208465384
 GameObject:
   m_ObjectHideFlags: 0

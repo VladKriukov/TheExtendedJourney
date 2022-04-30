@@ -58,7 +58,6 @@ public class CameraInterractor : MonoBehaviour
                         pickUpObject.transform.parent = toolLocation;
                         pickUpObject.transform.position = toolLocation.position;
                         pickUpObject.transform.rotation = toolLocation.rotation;
-                        pickUpObject.GetComponent<Collider>().enabled = false;
                         pickUpObject.GetComponent<Tool>().heldInHands = true;
                         holdingTool = true;
                     }
@@ -68,8 +67,13 @@ public class CameraInterractor : MonoBehaviour
                         pickUpObject.transform.position = holdingLocation.position;
                         pickUpObject.transform.rotation = holdingLocation.rotation;
                     }
+                    if (pickUpObject.transform.parent.GetComponent<PhysicsStopper>() != null)
+                    {
+                        pickUpObject.transform.parent.GetComponent<PhysicsStopper>().RemoveItem(pickUpObject);
+                    }
                     pickUpObject.GetComponent<Rigidbody>().useGravity = false;
                     pickUpObject.GetComponent<Rigidbody>().isKinematic = true;
+                    pickUpObject.GetComponent<Collider>().enabled = false;
                     pickUpObject.layer = 9;
                     holdingItem = true;
                     
