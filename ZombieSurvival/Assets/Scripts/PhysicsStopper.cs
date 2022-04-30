@@ -39,7 +39,9 @@ public class PhysicsStopper : MonoBehaviour
             if (item.transform.parent == null)
             {
                 waitingItems.Remove(item);
-                item.GetComponent<Rigidbody>().isKinematic = true;
+                Destroy(item.GetComponent<Rigidbody>());
+                //item.GetComponent<Rigidbody>().drag = 9999;
+                //item.GetComponent<Rigidbody>().angularDrag = 9999;
                 item.transform.parent = transform;
                 itemsStored.Add(item);
             }
@@ -51,9 +53,11 @@ public class PhysicsStopper : MonoBehaviour
     {
         if (itemsStored.Contains(itemToRemove))
         {
-            itemsStored.Remove(itemToRemove);
-            itemToRemove.GetComponent<Rigidbody>().isKinematic = false;
+            itemToRemove.AddComponent<Rigidbody>();
+            itemToRemove.GetComponent<Rigidbody>().drag = 0;
+            itemToRemove.GetComponent<Rigidbody>().angularDrag = 0;
             itemToRemove.transform.parent = null;
+            itemsStored.Remove(itemToRemove);
         }
     }
 }
