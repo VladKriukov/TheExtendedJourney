@@ -2029,10 +2029,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 817876819, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
-      propertyPath: rayDistance
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4459864850019384738, guid: 6bacecc4f3df9584198879c73a6b6c36,
         type: 3}
       propertyPath: m_RootOrder
@@ -2088,30 +2084,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4459864850019384740, guid: 6bacecc4f3df9584198879c73a6b6c36,
-        type: 3}
-      propertyPath: zoomKey
-      value: 99
-      objectReference: {fileID: 0}
-    - target: {fileID: 4459864850019384740, guid: 6bacecc4f3df9584198879c73a6b6c36,
-        type: 3}
-      propertyPath: maxLookAngle
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 4459864850019384740, guid: 6bacecc4f3df9584198879c73a6b6c36,
-        type: 3}
-      propertyPath: zoomStepTime
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4459864850019384750, guid: 6bacecc4f3df9584198879c73a6b6c36,
         type: 3}
       propertyPath: m_Name
       value: FirstPersonController
-      objectReference: {fileID: 0}
-    - target: {fileID: 4459864850019384750, guid: 6bacecc4f3df9584198879c73a6b6c36,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
@@ -2776,6 +2752,7 @@ MonoBehaviour:
   numberOfDrops: 1
   spawnRange: {x: 0, y: 0, z: 0}
   spawnOffset: {x: 0, y: 1, z: 0}
+  rotation: {x: 1, y: 0, z: 0, w: 1}
 --- !u!64 &1318026986
 MeshCollider:
   m_ObjectHideFlags: 0

@@ -11,12 +11,13 @@ public class Resource : MonoBehaviour
         Enemies
     }
     public EffectiveItem effectiveItem;
-    public bool damagable;
-    public float health;
-    public List<GameObject> drops = new List<GameObject>();
-    public int numberOfDrops;
-    public Vector3 spawnRange;
-    public Vector3 spawnOffset;
+    [SerializeField] bool damagable;
+    [SerializeField] float health;
+    [SerializeField] List<GameObject> drops = new List<GameObject>();
+    [SerializeField] int numberOfDrops;
+    [SerializeField] Vector3 spawnRange;
+    [SerializeField] Vector3 spawnOffset;
+    [SerializeField] Quaternion rotation;
 
     public void Damage(float amount)
     {
@@ -27,7 +28,7 @@ public class Resource : MonoBehaviour
         {
             for (int i = 0; i < numberOfDrops; i++)
             {
-                Instantiate(drops[Random.Range(0, drops.Count)], transform.position + new Vector3(Random.Range(-spawnRange.x, spawnRange.x) + spawnOffset.x, Random.Range(-spawnRange.y, spawnRange.y) + spawnOffset.y, Random.Range(-spawnRange.z, spawnRange.z) + spawnOffset.z), new Quaternion(0, Random.Range(-180, 180), 0, 1));
+                Instantiate(drops[Random.Range(0, drops.Count)], transform.position + new Vector3(Random.Range(-spawnRange.x, spawnRange.x) + spawnOffset.x, Random.Range(-spawnRange.y, spawnRange.y) + spawnOffset.y, Random.Range(-spawnRange.z, spawnRange.z) + spawnOffset.z), rotation);
             }
             gameObject.SetActive(false);
         }

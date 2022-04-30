@@ -118,4 +118,5 @@ MonoBehaviour:
   - {fileID: 1000014092007092, guid: 0f5f1c7c842e94b6390d5af21130f476, type: 3}
   numberOfDrops: 3
   spawnRange: {x: 0, y: 1.5, z: 0}
-  spawnOffset: {x: 0, y: 0, z: 0}
+  spawnOffset: {x: 0, y: 1.5, z: 0}
+  rotation: {x: 1, y: 0, z: 0, w: 1}
