@@ -48,9 +48,9 @@ public class CameraInterractor : MonoBehaviour
 
         if (hitting == true)
         {
-            if (hit.collider.CompareTag("PickUpAble"))
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                if (hit.collider.CompareTag("PickUpAble"))
                 {
                     pickUpObject = hit.collider.gameObject;
                     if (pickUpObject.GetComponent<Tool>() != null)
@@ -76,7 +76,10 @@ public class CameraInterractor : MonoBehaviour
                     pickUpObject.GetComponent<Collider>().enabled = false;
                     pickUpObject.layer = 9;
                     holdingItem = true;
-                    
+                }
+                if (hit.collider.GetComponent<Seat>() != null)
+                {
+                    hit.collider.GetComponent<Seat>().Sit(transform.parent.parent.gameObject);
                 }
             }
             if (Input.GetMouseButtonDown(0)) // left click
