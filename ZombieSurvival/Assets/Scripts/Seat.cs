@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Seat : MonoBehaviour
 {
-    //[SerializeField] Train controlledTrain;
+    [SerializeField] Train controlledTrain;
     [SerializeField] Vector3 offset;
     GameObject player;
     public void Sit(GameObject _player)
@@ -13,7 +13,7 @@ public class Seat : MonoBehaviour
         player.GetComponent<FirstPersonController>().enableHeadBob = false;
         player.GetComponent<Rigidbody>().isKinematic = true;
         player.GetComponent<Collider>().enabled = false;
-        //controlledTrain.enabled = true;
+        controlledTrain.enabled = true;
     }
 
     private void Update()
@@ -31,6 +31,6 @@ public class Seat : MonoBehaviour
         player.GetComponent<Rigidbody>().isKinematic = false;
         player.GetComponent<Collider>().enabled = true;
         player = null;
-        //controlledTrain.enabled = false;
+        controlledTrain.enabled = false;
     }
 }

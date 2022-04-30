@@ -322,7 +322,7 @@ SpringJoint:
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0.55, z: 7}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: 0, y: 0.54999995, z: -7}
   serializedVersion: 2
   m_Spring: 99999
   m_Damper: 1500
@@ -446,8 +446,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.3414183, y: 0.8, z: 12.85}
-  m_Center: {x: 0, y: 0.4, z: 0.0000038146973}
+  m_Size: {x: 3.3414183, y: 0.5, z: 12.85}
+  m_Center: {x: 0, y: 0.55, z: 0.0000038146973}
 --- !u!1 &2168926411208465384
 GameObject:
   m_ObjectHideFlags: 0
