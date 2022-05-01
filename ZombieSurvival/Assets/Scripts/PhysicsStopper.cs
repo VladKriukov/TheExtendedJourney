@@ -32,18 +32,29 @@ public class PhysicsStopper : MonoBehaviour
         yield return new WaitForSeconds(lockWaitTime);
         if (waitingItems.Contains(item))
         {
-            while (item.GetComponent<Rigidbody>().velocity.magnitude > 0.25f)
+            while (item != null)
             {
-                yield return new WaitForSeconds(0.5f);
+                if (item.GetComponent<Rigidbody>().velocity.magnitude > 0.25f)
+                {
+                    yield return new WaitForSeconds(0.5f);
+                }
+                else
+                {
+                    break;
+                }
             }
-            if (item.transform.parent == null)
+
+            if (item != null)
             {
-                waitingItems.Remove(item);
-                Destroy(item.GetComponent<Rigidbody>());
-                //item.GetComponent<Rigidbody>().drag = 9999;
-                //item.GetComponent<Rigidbody>().angularDrag = 9999;
-                item.transform.parent = transform;
-                itemsStored.Add(item);
+                if (item.transform.parent == null)
+                {
+                    waitingItems.Remove(item);
+                    Destroy(item.GetComponent<Rigidbody>());
+                    //item.GetComponent<Rigidbody>().drag = 9999;
+                    //item.GetComponent<Rigidbody>().angularDrag = 9999;
+                    item.transform.parent = transform;
+                    itemsStored.Add(item);
+                }
             }
         }
         yield return null;
@@ -54,8 +65,8 @@ public class PhysicsStopper : MonoBehaviour
         if (itemsStored.Contains(itemToRemove))
         {
             itemToRemove.AddComponent<Rigidbody>();
-            itemToRemove.GetComponent<Rigidbody>().drag = 0;
-            itemToRemove.GetComponent<Rigidbody>().angularDrag = 0;
+            //itemToRemove.GetComponent<Rigidbody>().drag = 0;
+            //itemToRemove.GetComponent<Rigidbody>().angularDrag = 0;
             itemToRemove.transform.parent = null;
             itemsStored.Remove(itemToRemove);
         }

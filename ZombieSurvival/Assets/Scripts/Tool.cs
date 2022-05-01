@@ -32,7 +32,7 @@ public class Tool : MonoBehaviour
 
         hitting = Physics.Raycast(transform.parent.parent.position, transform.parent.parent.TransformDirection(Vector3.forward), out hit, transform.parent.parent.GetComponent<CameraInterractor>().rayDistance, transform.parent.parent.GetComponent<CameraInterractor>().layerMask);
 
-        if (hitting == true) Debug.Log(hit.collider.gameObject.name);
+        //if (hitting == true) Debug.Log(hit.collider.gameObject.name);
 
         if (Input.GetMouseButton(0) && heldInHands)
         {

@@ -5,6 +5,8 @@ public class Seat : MonoBehaviour
     [SerializeField] Train controlledTrain;
     [SerializeField] Vector3 offset;
     GameObject player;
+    float cooldown = 0.5f;
+
     public void Sit(GameObject _player)
     {
         player = _player;
@@ -14,11 +16,13 @@ public class Seat : MonoBehaviour
         player.GetComponent<Rigidbody>().isKinematic = true;
         player.GetComponent<Collider>().enabled = false;
         controlledTrain.enabled = true;
+        cooldown = 0.5f;
     }
 
     private void Update()
     {
-        if (player != null && Input.GetKeyDown(KeyCode.E))
+        cooldown -= Time.deltaTime;
+        if (player != null && Input.GetKeyDown(KeyCode.E) && cooldown <= 0)
         {
             Exit();
         }
