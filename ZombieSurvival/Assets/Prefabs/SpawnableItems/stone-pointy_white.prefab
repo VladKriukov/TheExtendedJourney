@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 23000013051289248}
   - component: {fileID: 64000011611027482}
   - component: {fileID: -5522107351774510067}
-  - component: {fileID: -8758180432850930194}
   - component: {fileID: 3746641086083880377}
   m_Layer: 0
   m_Name: stone-pointy_white
@@ -113,22 +112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1eba02551d38f478e0b7004eb9ee16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &-8758180432850930194
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000014045022776}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 1e+10
-  m_AngularDrag: 1e+10
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &3746641086083880377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,3 +130,6 @@ MonoBehaviour:
   drops:
   - {fileID: 1000010245899088, guid: 3ee6164a9d9cf974ca3e2e31c3e866a0, type: 3}
   numberOfDrops: 3
+  spawnRange: {x: 1, y: 0, z: 1}
+  spawnOffset: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}

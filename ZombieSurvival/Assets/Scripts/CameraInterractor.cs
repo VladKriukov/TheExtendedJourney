@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class CameraInterractor : MonoBehaviour
 {
@@ -8,12 +9,17 @@ public class CameraInterractor : MonoBehaviour
     [SerializeField] private Transform holdingLocation;
     [SerializeField] private Transform toolLocation;
     [SerializeField] private float holdingLerpSpeed = 50;
-
+    [SerializeField] Animator itemNameDisplay;
     private bool hitting;
     public bool holdingItem;
     public bool holdingTool;
     private GameObject pickUpObject;
-    
+    Player player;
+
+    private void Awake()
+    {
+        player = transform.parent.parent.GetComponent<Player>();        
+    }
 
     private void Update()
     {
@@ -27,7 +33,7 @@ public class CameraInterractor : MonoBehaviour
         if (holdingItem == true)
         {
             //LerpToHoldingLocation();
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.Q))
             {
                 if (pickUpObject.GetComponent<Tool>() != null) pickUpObject.GetComponent<Tool>().heldInHands = false;
                 if (pickUpObject.GetComponent<Animator>() != null) pickUpObject.GetComponent<Animator>().enabled = false;
@@ -40,11 +46,21 @@ public class CameraInterractor : MonoBehaviour
                 pickUpObject = null;
                 holdingItem = false;
                 holdingTool = false;
+                itemNameDisplay.ResetTrigger("ShowItemName");
                 return;
             }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (pickUpObject.GetComponent<ItemProperties>() != null && pickUpObject.GetComponent<ItemProperties>().consumable)
+                {
+                    player.AddFood(pickUpObject.GetComponent<ItemProperties>().foodValue);
+                    Destroy(pickUpObject);
+                    pickUpObject = null;
+                    holdingItem = false;
+                }
+            }
+            return;
         }
-
-        if (holdingItem == true) return;
 
         if (hitting == true)
         {
@@ -62,23 +78,25 @@ public class CameraInterractor : MonoBehaviour
                     }
                     if (pickUpObject.GetComponent<Tool>() != null)
                     {
-                        pickUpObject.transform.parent = toolLocation;
-                        pickUpObject.transform.position = toolLocation.position;
-                        pickUpObject.transform.rotation = toolLocation.rotation;
+                        ClosePickup();
                         pickUpObject.GetComponent<Tool>().heldInHands = true;
                         holdingTool = true;
                     }
+                    else if (pickUpObject.GetComponent<ItemProperties>() != null && pickUpObject.GetComponent<ItemProperties>().consumable)
+                    {
+                        ClosePickup();
+                    }
                     else
                     {
-                        pickUpObject.transform.parent = holdingLocation;
-                        pickUpObject.transform.position = holdingLocation.position;
-                        pickUpObject.transform.rotation = holdingLocation.rotation;
+                        FarPickup();
                     }
                     pickUpObject.GetComponent<Rigidbody>().useGravity = false;
                     pickUpObject.GetComponent<Rigidbody>().isKinematic = true;
                     pickUpObject.GetComponent<Collider>().enabled = false;
                     pickUpObject.layer = 9;
                     holdingItem = true;
+                    itemNameDisplay.GetComponent<TMP_Text>().text = pickUpObject.name;
+                    itemNameDisplay.SetTrigger("ShowItemName");
                 }
                 if (hit.collider.GetComponent<Seat>() != null)
                 {
@@ -128,6 +146,36 @@ public class CameraInterractor : MonoBehaviour
         else
         {
             //placingObject.SetActive(false);
+        }
+    }
+
+    void ClosePickup()
+    {
+        pickUpObject.transform.parent = toolLocation;
+        if (pickUpObject.GetComponent<ItemProperties>() != null)
+        {
+            pickUpObject.transform.localPosition = pickUpObject.GetComponent<ItemProperties>().pickupLocationOffset;
+        }
+        else
+        {
+            pickUpObject.transform.position = toolLocation.position;
+            pickUpObject.transform.rotation = toolLocation.rotation;
+        }
+        
+    }
+
+    void FarPickup()
+    {
+        pickUpObject.transform.parent = holdingLocation;
+        if (pickUpObject.GetComponent<ItemProperties>() != null)
+        {
+            
+            pickUpObject.transform.localPosition = pickUpObject.GetComponent<ItemProperties>().pickupLocationOffset;
+        }
+        else
+        {
+            pickUpObject.transform.position = holdingLocation.position;
+            pickUpObject.transform.rotation = holdingLocation.rotation;
         }
     }
 

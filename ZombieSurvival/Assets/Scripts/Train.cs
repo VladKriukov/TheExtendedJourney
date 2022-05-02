@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Train : MonoBehaviour
 {
-    public float forwardForce;
-    public float reverseForce;
+    [SerializeField] float forwardForce;
+    [SerializeField] float reverseForce;
     [SerializeField] float fuelUsage;
     [SerializeField] float dragMultiplier;
     [SerializeField] FuelTank fuelTank;

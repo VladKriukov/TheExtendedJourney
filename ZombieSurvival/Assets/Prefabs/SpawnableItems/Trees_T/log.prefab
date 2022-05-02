@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22cb2bc6fcff43a4b92e69c157471f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemDisplayName: Log
   fuelConsumable: 1
   fuelValue: 15
   consumable: 0

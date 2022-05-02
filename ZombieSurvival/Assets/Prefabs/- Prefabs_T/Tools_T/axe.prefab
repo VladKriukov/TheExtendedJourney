@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 2598902590978279235}
   - component: {fileID: 2011892193}
   - component: {fileID: 8175697319683626601}
+  - component: {fileID: 6148775504050733852}
   m_Layer: 0
   m_Name: axe
-  m_TagString: PickUpAble
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,3 +156,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6148775504050733852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000010500439178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22cb2bc6fcff43a4b92e69c157471f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDisplayName: Axe
+  fuelConsumable: 0
+  fuelValue: 0
+  consumable: 0
+  foodValue: 0

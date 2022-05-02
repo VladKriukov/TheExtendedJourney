@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 23000013727884610}
   - component: {fileID: 64000010646874708}
   - component: {fileID: 2890025937181802690}
+  - component: {fileID: 3810571718698010308}
   m_Layer: 0
   m_Name: stone-small_white
   m_TagString: PickUpAble
@@ -115,3 +116,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3810571718698010308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000010245899088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22cb2bc6fcff43a4b92e69c157471f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDisplayName: Stone
+  fuelConsumable: 0
+  fuelValue: 0
+  consumable: 0
+  foodValue: 0
