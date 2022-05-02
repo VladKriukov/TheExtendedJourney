@@ -17,15 +17,18 @@ public class Train : MonoBehaviour
     private void Update()
     {
         rb.drag = Mathf.Abs(rb.velocity.z * dragMultiplier);
-        if (Input.GetKey(KeyCode.W))
+        if (fuelTank.fuel > 0)
         {
-            rb.AddForce(new Vector3(0, 0, forwardForce));
-            fuelTank.fuel -= fuelUsage * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            rb.AddForce(new Vector3(0, 0, reverseForce));
-            fuelTank.fuel -= fuelUsage * Time.deltaTime;
+            if (Input.GetKey(KeyCode.W))
+            {
+                rb.AddForce(new Vector3(0, 0, forwardForce));
+                fuelTank.fuel -= fuelUsage * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                rb.AddForce(new Vector3(0, 0, reverseForce));
+                fuelTank.fuel -= fuelUsage * Time.deltaTime;
+            }
         }
     }
 }
