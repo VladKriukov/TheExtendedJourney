@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 4459864850019384741}
   - component: {fileID: 4459864850019384740}
   - component: {fileID: 1542048581}
+  - component: {fileID: 1645170416}
   m_Layer: 0
   m_Name: FirstPersonController
   m_TagString: Player
@@ -195,7 +196,7 @@ MonoBehaviour:
   sprintBarHeightPercent: 0.02
   enableJump: 1
   jumpKey: 32
-  jumpPower: 5
+  jumpPower: 6.5
   enableCrouch: 1
   holdToCrouch: 1
   crouchKey: 306
@@ -204,7 +205,7 @@ MonoBehaviour:
   enableHeadBob: 1
   joint: {fileID: 4459864851508666808}
   bobSpeed: 10
-  bobAmount: {x: 0, y: 0.1, z: 0}
+  bobAmount: {x: 0, y: 0.05, z: 0}
 --- !u!143 &1542048581
 CharacterController:
   m_ObjectHideFlags: 0
@@ -223,6 +224,25 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1645170416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4459864850019384750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3798947e2faeb1542a066e3850a3a079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  maxHunger: 100
+  hungerDecreaseRate: 0.5
+  hungerDamageRate: 2
+  hungerDamageAmount: 3
+  healthDisplay: {fileID: 0}
+  hungerDisplay: {fileID: 0}
 --- !u!1 &4459864850190357393
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,6 +553,7 @@ MonoBehaviour:
   holdingLocation: {fileID: 1792805289}
   toolLocation: {fileID: 7546763910714594162}
   holdingLerpSpeed: 50
+  itemNameDisplay: {fileID: 0}
   holdingItem: 0
   holdingTool: 0
 --- !u!1 &4459864851397454630

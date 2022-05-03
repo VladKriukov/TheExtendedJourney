@@ -141,5 +141,5 @@ MonoBehaviour:
   requiredBackwardAltitudeSteps: 0000000000000000000000000000000001000000
   leftStartingStep: -1
   rightStartingStep: 1
-  leftSlopeMatch: 2
-  rightSlopeMatch: 0
+  leftSlopeMatch: 0
+  rightSlopeMatch: 2

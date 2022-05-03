@@ -414,7 +414,7 @@ public class ConnectedSpawner : MonoBehaviour
         {
             if (item.name.Contains("12"))
             {
-                Debug.LogError("12.. and I don't know why");
+                //Debug.LogError("12.. and I don't know why");
             }
             item.SetActive(true);
             generatedTerrain = item.GetComponent<PossibleChunks>();
