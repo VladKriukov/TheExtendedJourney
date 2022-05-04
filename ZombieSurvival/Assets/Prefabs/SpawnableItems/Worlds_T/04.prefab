@@ -144,7 +144,7 @@ MonoBehaviour:
   - {fileID: 1276682521725222}
   - {fileID: 1653040032361890, guid: baa360e9e8cf64ba2abc30967dfe945a, type: 3}
   requiredLeftAltitudeSteps: 00000000ffffffff0000000000000000000000000100000001000000ffffffffffffffff
-  requiredRightAltitudeSteps: 00000000ffffffff00000000ffffffff000000000100000001000000ffffffffffffffff
+  requiredRightAltitudeSteps: 000000000000000000000000ffffffff000000000100000001000000ffffffffffffffff
   requiredForewardAltitudeSteps: 00000000000000000000000000000000ffffffff
   requiredBackwardAltitudeSteps: ffffffff00000000000000000000000000000000
   leftStartingStep: 0

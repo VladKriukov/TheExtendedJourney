@@ -63,7 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedSpawner: {fileID: 4334786835559783382, guid: 6264c10aaa4a268449feefc0fb32ec2c,
     type: 3}
-  slopeChance: 1
+  slopeChance: 5
   railStraight: {fileID: 1229436274973794, guid: bc104868401de4486a279e20c6b863ac,
     type: 3}
   railSlope: {fileID: 1496875689521022, guid: 390f14aa1f922498c975eb6c04907f99, type: 3}

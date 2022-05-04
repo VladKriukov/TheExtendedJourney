@@ -27,4 +27,16 @@ public class PossibleChunks : MonoBehaviour
         Straight, Up, Down, NA
     }
     public RightStartingSlopeType rightSlopeMatch;
+
+    public enum LeftSloping
+    {
+        Straight, Up, Down
+    }
+    public LeftSloping leftSloping;
+
+    public enum RightSloping
+    {
+        Straight, Up, Down
+    }
+    public RightSloping rightSloping;
 }

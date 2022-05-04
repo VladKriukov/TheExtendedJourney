@@ -28,6 +28,8 @@ public class ConnectedSpawner : MonoBehaviour
 
     private List<GameObject> possibleZItems = new List<GameObject>();
     private List<GameObject> possibleXItems = new List<GameObject>();
+    private List<GameObject> possibleXItemsBeforeChange = new List<GameObject>();
+    private List<GameObject> possibleXSlopes = new List<GameObject>();
     private List<GameObject> possibleChunksToSpawn = new List<GameObject>();
 
     private int rand;
@@ -166,11 +168,7 @@ public class ConnectedSpawner : MonoBehaviour
                 }
                 else
                 {
-                    for (int i = 0; i < possibleXItems.Count - 1; i++)
-                    {
-                        possibleChunksToSpawn.Add(possibleXItems[i]);
-                        possibleSelectedTerrainIndexes.Add(i);
-                    }
+                    SelectXItems();
                 }
                 
                 rand = Random.Range(0, possibleChunksToSpawn.Count);
@@ -354,33 +352,12 @@ public class ConnectedSpawner : MonoBehaviour
                 Debug.LogWarning("There is no previous X spawner since this is a first tile from the track and also there is no possible connection to fit both X and Z. The rail slope is " + transform.parent.GetComponent<RailSpawner>().startingSlopeType + " and the previous Z spawner is " + prevZSpawner.generatedTerrain.gameObject.name);
             }
 
-            if (prevZSpawner.currentAltitude > currentAltitude)
-            {
-                // force spawn a chunk going up
-                Debug.LogWarning("The current chunk is getting out of hand, need to go upwards");
-            }
-            else if (prevZSpawner.currentAltitude < currentAltitude)
-            {
-                // force spawn a chunk going down
-                Debug.LogWarning("The current chunk is getting out of hand, need to go downwards");
-            }
-
-            if ((Mathf.Abs(prevZSpawner.currentAltitude) - Mathf.Abs(currentAltitude)) > 1)
-            {
-                Debug.LogError("The chunk differences have gone out of hand");
-            }
-
-            possibleSelectedTerrainIndexes.Clear();
-            //todo: possibly refactor as this is repeated twice
-            for (int i = 0; i < possibleXItems.Count; i++)
-            {
-                possibleChunksToSpawn.Add(possibleXItems[i]);
-                possibleSelectedTerrainIndexes.Add(i);
-                //Debug.Log("Possible terrains: " + possibleChunksToSpawn[i].name);
-            }
-            rand = Random.Range(0, possibleChunksToSpawn.Count);
-            //Debug.LogError("There is a missing terrain here - need to create a new fit");
+            SelectXItems();
         }
+
+        // must check, even if there are possible chunks to spawn from both sides
+        // note: this is a temporary solution for the lack of matching terrain chunks which is countered by finding the next possible chunk that aligns with the previous Z terrain
+        CheckForSlopeNeed();
 
         foreach (var item in leftStraightItems)
         {
@@ -421,6 +398,115 @@ public class ConnectedSpawner : MonoBehaviour
             return true;
         }
         return false;        
+    }
+
+    void CheckForSlopeNeed()
+    {
+        // a technically more accurate temporary solution for this would be to separate the chunk slope types into even further slope types being stronger up or down slopes (those that change height by 2 chunk height units rather than 1, aka y 12 rather than y 6 which is the normal height change). Here we are generalising both the simple 1 height unit and 2 height units as just up or down slopings
+
+        if (prevZSpawner == null) return;
+
+        if (prevZSpawner.transform.position.y > transform.position.y)
+        {
+            // force spawn a chunk going up
+            Debug.LogWarning("The current chunk is getting out of hand, need to go upwards");
+
+            if (spawningDirection == true)
+            {
+                foreach (Transform item in transform)
+                {
+                    if (item.GetComponent<PossibleChunks>().leftSloping == PossibleChunks.LeftSloping.Up)
+                    {
+                        if (possibleChunksToSpawn.Contains(item.gameObject))
+                        {
+                            possibleXSlopes.Add(item.gameObject);
+                            Debug.LogWarning("left up");
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (Transform item in transform)
+                {
+                    if (item.GetComponent<PossibleChunks>().rightSloping == PossibleChunks.RightSloping.Up)
+                    {
+                        if (possibleChunksToSpawn.Contains(item.gameObject))
+                        {
+                            possibleXSlopes.Add(item.gameObject);
+                            Debug.LogWarning("right up");
+                        }
+                    }
+                }
+            }
+            Debug.LogWarning("x slope count: " + possibleXSlopes.Count);
+            if (possibleXSlopes.Count > 0)
+            {
+                possibleChunksToSpawn.Clear();
+                possibleXItemsBeforeChange = possibleXItems;
+                possibleXItems = possibleXSlopes;
+                SelectXItems();
+            }
+        }
+        else if (prevZSpawner.transform.position.y < transform.position.y)
+        {
+            // force spawn a chunk going down
+            Debug.LogWarning("The current chunk is getting out of hand, need to go downwards");
+
+            if (spawningDirection == true)
+            {
+                foreach (Transform item in transform)
+                {
+                    if (item.GetComponent<PossibleChunks>().leftSloping == PossibleChunks.LeftSloping.Down)
+                    {
+                        if (possibleXItems.Contains(item.gameObject))
+                        {
+                            possibleXSlopes.Add(item.gameObject);
+                            Debug.LogWarning("left down");
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (Transform item in transform)
+                {
+                    if (item.GetComponent<PossibleChunks>().rightSloping == PossibleChunks.RightSloping.Down)
+                    {
+                        if (possibleXItems.Contains(item.gameObject))
+                        {
+                            possibleXSlopes.Add(item.gameObject);
+                            Debug.LogWarning("right down");
+                        }
+                    }
+                }
+            }
+            Debug.LogWarning("x slope count: " + possibleXSlopes.Count);
+            if (possibleXSlopes.Count > 0)
+            {
+                possibleChunksToSpawn.Clear();
+                possibleXItemsBeforeChange = possibleXItems;
+                possibleXItems = possibleXSlopes;
+                SelectXItems();
+            }
+        }
+
+        if ((Mathf.Abs(prevZSpawner.currentAltitude) - Mathf.Abs(currentAltitude)) > 1)
+        {
+            Debug.LogError("The chunk differences have gone out of hand");
+        }
+    }
+
+    void SelectXItems()
+    {
+        possibleSelectedTerrainIndexes.Clear();
+        for (int i = 0; i < possibleXItems.Count; i++)
+        {
+            possibleChunksToSpawn.Add(possibleXItems[i]);
+            possibleSelectedTerrainIndexes.Add(i);
+        }
+        rand = Random.Range(0, possibleChunksToSpawn.Count);
+        //Debug.LogError("There is a missing terrain here - need to create a new fit");
     }
 
     void PoolTerrains()

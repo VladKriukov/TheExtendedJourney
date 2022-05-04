@@ -126,6 +126,7 @@ MonoBehaviour:
   - {fileID: 1353795629888972, guid: b829c412628fe4c1fad5bbdf43bcf106, type: 3}
   - {fileID: 388925512692137004, guid: ef570c3d8d8a193418ecb01f09859815, type: 3}
   - {fileID: 7020849755616245633, guid: f2b69ffb52896bb4296078b74557acea, type: 3}
+  - {fileID: 2398513361569706449, guid: a9b15c1bcbaa2a246a7bea76a1d14fd0, type: 3}
   forewardItems:
   - {fileID: 2800949210638842352, guid: c2d17bb4c46e5184bb04ab6a87471c6c, type: 3}
   - {fileID: 2398513361569706449, guid: a9b15c1bcbaa2a246a7bea76a1d14fd0, type: 3}
@@ -136,10 +137,12 @@ MonoBehaviour:
   - {fileID: 2800949210638842352, guid: c2d17bb4c46e5184bb04ab6a87471c6c, type: 3}
   - {fileID: 2398513361569706449, guid: a9b15c1bcbaa2a246a7bea76a1d14fd0, type: 3}
   requiredLeftAltitudeSteps: 010000000000000001000000010000000100000000000000000000000200000002000000
-  requiredRightAltitudeSteps: ffffffffffffffffffffffff00000000
+  requiredRightAltitudeSteps: ffffffffffffffffffffffff00000000ffffffff
   requiredForewardAltitudeSteps: 0000000000000000
   requiredBackwardAltitudeSteps: 0000000000000000000000000000000001000000
   leftStartingStep: -1
   rightStartingStep: 1
   leftSlopeMatch: 0
   rightSlopeMatch: 2
+  leftSloping: 1
+  rightSloping: 2

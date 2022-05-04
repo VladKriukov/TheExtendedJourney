@@ -127,7 +127,7 @@ MonoBehaviour:
   - {fileID: 1276682521725222, guid: f6cda126f120f430f91234c74e2cf2d0, type: 3}
   - {fileID: 1596987614180086}
   - {fileID: 1745272292781738, guid: e129311c8d59b48bcad72f3f213f25d7, type: 3}
-  - {fileID: 2398513361569706449, guid: a9b15c1bcbaa2a246a7bea76a1d14fd0, type: 3}
+  - {fileID: 986292725987131777, guid: eb3d8d3346a2fca4f83a8d266ead9431, type: 3}
   - {fileID: 8163274071443914810, guid: 129c48388484a8e469fc9b79d7cff129, type: 3}
   - {fileID: 6747957151380797173, guid: 27fe635f6642deb4e921292a46eacd53, type: 3}
   - {fileID: 2800949210638842352, guid: c2d17bb4c46e5184bb04ab6a87471c6c, type: 3}
@@ -151,3 +151,5 @@ MonoBehaviour:
   rightStartingStep: 0
   leftSlopeMatch: 0
   rightSlopeMatch: 0
+  leftSloping: 1
+  rightSloping: 2

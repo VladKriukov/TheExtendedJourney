@@ -126,7 +126,7 @@ MonoBehaviour:
   - {fileID: 1771254519081410, guid: b08486c4c7e864be79238142865f17ec, type: 3}
   - {fileID: 8467429672132294409, guid: 17fe3e29f38e5cf47bf85f4ae8d58f0e, type: 3}
   - {fileID: 4244306351941778132, guid: eb6185ecf1c60fc47975c54a850f6865, type: 3}
-  - {fileID: 8163274071443914810}
+  - {fileID: 4371832118297696943, guid: 63c0e895bc03e6d4fbc2eba65fa54e55, type: 3}
   forewardItems:
   - {fileID: 986292725987131777, guid: eb3d8d3346a2fca4f83a8d266ead9431, type: 3}
   - {fileID: 4371832118297696943, guid: 63c0e895bc03e6d4fbc2eba65fa54e55, type: 3}
@@ -143,3 +143,5 @@ MonoBehaviour:
   rightStartingStep: 0
   leftSlopeMatch: 0
   rightSlopeMatch: 1
+  leftSloping: 2
+  rightSloping: 1

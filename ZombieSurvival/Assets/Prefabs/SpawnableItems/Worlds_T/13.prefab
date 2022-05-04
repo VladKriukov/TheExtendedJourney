@@ -143,3 +143,5 @@ MonoBehaviour:
   rightStartingStep: 1
   leftSlopeMatch: 0
   rightSlopeMatch: 1
+  leftSloping: 1
+  rightSloping: 2
