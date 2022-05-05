@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedSpawner: {fileID: 4334786835559783382}
   connectedSpawnerOffset: 30
-  nextChunkSpawnDelay: 0.5
+  nextChunkSpawnDelay: 0.1
   spawningTerrains:
   - {fileID: 1389758202622836, guid: 7bf018d5282704654afa7490ada8a796, type: 3}
   - {fileID: 1342696323144794, guid: e06a8432f43644ba09c5d9f2abd9d17e, type: 3}

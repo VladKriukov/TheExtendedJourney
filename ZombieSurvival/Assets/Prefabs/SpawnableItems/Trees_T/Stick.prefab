@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1000010245899088
+--- !u!1 &1000014092007092
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4000012136973678}
-  - component: {fileID: 33000012186728142}
-  - component: {fileID: 23000013727884610}
-  - component: {fileID: 64000010646874708}
-  - component: {fileID: 2890025937181802690}
-  - component: {fileID: 3810571718698010308}
+  - component: {fileID: 4000012007306346}
+  - component: {fileID: 33000012260097224}
+  - component: {fileID: 23000013222568010}
+  - component: {fileID: 64000011361443546}
+  - component: {fileID: 1107085221556715864}
+  - component: {fileID: -4322897960852585965}
   m_Layer: 0
-  m_Name: stone-small_white
+  m_Name: Stick
   m_TagString: PickUpAble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4000012136973678
+--- !u!4 &4000012007306346
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000010245899088}
+  m_GameObject: {fileID: 1000014092007092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &33000012186728142
+--- !u!33 &33000012260097224
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000010245899088}
-  m_Mesh: {fileID: 4300002, guid: 11acffdc05a444ddeb50098d5d254467, type: 3}
---- !u!23 &23000013727884610
+  m_GameObject: {fileID: 1000014092007092}
+  m_Mesh: {fileID: 4300000, guid: 31d9b8c551198435d92d06305c67b82c, type: 3}
+--- !u!23 &23000013222568010
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000010245899088}
+  m_GameObject: {fileID: 1000014092007092}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -86,27 +86,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64000010646874708
+--- !u!64 &64000011361443546
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000010245899088}
+  m_GameObject: {fileID: 1000014092007092}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 4300002, guid: 11acffdc05a444ddeb50098d5d254467, type: 3}
---- !u!54 &2890025937181802690
+  m_Mesh: {fileID: 4300000, guid: 31d9b8c551198435d92d06305c67b82c, type: 3}
+--- !u!54 &1107085221556715864
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000010245899088}
+  m_GameObject: {fileID: 1000014092007092}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -116,23 +116,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3810571718698010308
+--- !u!114 &-4322897960852585965
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000010245899088}
+  m_GameObject: {fileID: 1000014092007092}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22cb2bc6fcff43a4b92e69c157471f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDisplayName: Small Stone
-  fuelConsumable: 0
-  fuelValue: 0
+  itemDisplayName: Stick
+  fuelConsumable: 1
+  fuelValue: 3
   consumable: 0
-  foodValue: 0
   closePickup: 1
+  foodValue: 0
   pickupLocationOffset: {x: 0, y: 0, z: 0}
   picupRotationOffset: {x: 0, y: 0, z: 0, w: 0}

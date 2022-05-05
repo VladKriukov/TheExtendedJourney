@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -5205399165709170698}
   - component: {fileID: 2430069972049033238}
   - component: {fileID: 4609093256260333758}
+  - component: {fileID: 9091002754288343183}
   m_Layer: 9
   m_Name: 17
   m_TagString: Untagged
@@ -167,6 +168,8 @@ MonoBehaviour:
   - {fileID: 1000011078951186, guid: 2559aa2d368562248aea8c62e35ac2fd, type: 3}
   - {fileID: 1000011913286906, guid: 90e80017d9ec13d41994176c5753e38d, type: 3}
   - {fileID: 1000013497436514, guid: ddf7f5e45e33643f29f98935b0a24dd3, type: 3}
+  - {fileID: 1000011791129056, guid: ecffebeddb5514952927bb855076b838, type: 3}
+  - {fileID: 1000011788818366, guid: bac0554aef76116419238af986418dc6, type: 3}
   minAmount: 1
   maxAmount: 6
   randomiseSpawningChance: 1
@@ -189,8 +192,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemVariants:
-  - {fileID: 1000014045022776, guid: f3195d7eecbb61a42a70359a920a09c4, type: 3}
   - {fileID: 2119687541962724407, guid: 7d75bf6cf00808c49a890bb31215091c, type: 3}
+  - {fileID: 1000011032761792, guid: 2658a717abb234446829f8a02100617e, type: 3}
+  - {fileID: 1000010418045386, guid: b3a2d7a4838ad404eacfdc0ccaf763e6, type: 3}
+  - {fileID: 1000011501164198, guid: e2a184eee3066c849bee3b0b9035c911, type: 3}
   minAmount: 1
   maxAmount: 3
   randomiseSpawningChance: 1
@@ -213,12 +218,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemVariants:
-  - {fileID: 1000010087296110, guid: 91424e11cad2ab848ae341169d1d9fab, type: 3}
-  - {fileID: 1000010245899088, guid: 3ee6164a9d9cf974ca3e2e31c3e866a0, type: 3}
+  - {fileID: 1000011210138126, guid: f9c68666ec758cb48afb06107c00dfcd, type: 3}
+  - {fileID: 1000010740007340, guid: 54baad8be8f0849b2b20fd1da61be15f, type: 3}
+  - {fileID: 1000013070978894, guid: 16c6ecb322f65d1498b1b8b303ba2b90, type: 3}
+  - {fileID: 1000013466349968, guid: f91bd5ad6daecb6499fa5fcadcc2888c, type: 3}
+  - {fileID: 1000013039910218, guid: e23f1f429b8014fe3a8b083d568be8d6, type: 3}
+  - {fileID: 1000010604084324, guid: 6387db88c4179b14eba08bb62d247de7, type: 3}
   minAmount: 2
   maxAmount: 5
   randomiseSpawningChance: 1
   spawningChance: 10
+  spawningRange: {x: 14, y: 14}
+  spawningOffset: {x: 0, y: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
+--- !u!114 &9091002754288343183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986292725987131777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6712f74caaa79db4288c90004ca02061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemVariants:
+  - {fileID: 1000014092007092, guid: 5a8a1573ed9c5dd4cb5b6ef56898b3ba, type: 3}
+  minAmount: 2
+  maxAmount: 6
+  randomiseSpawningChance: 1
+  spawningChance: 3
   spawningRange: {x: 14, y: 14}
   spawningOffset: {x: 0, y: 0}
   layerMask:

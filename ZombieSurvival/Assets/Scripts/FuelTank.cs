@@ -7,7 +7,9 @@ public class FuelTank : MonoBehaviour
     public float fuel;
     public float maxFuelCapacity;
     public float startingFuelAmount;
-    [SerializeField] Image guage;
+
+    [Header("Gauge")]
+    [SerializeField] Image gauge;
     [SerializeField] Gradient gradient;
 
     ItemProperties item;
@@ -55,7 +57,7 @@ public class FuelTank : MonoBehaviour
 
     private void Update()
     {
-        guage.fillAmount = fuel / maxFuelCapacity;
-        guage.color = gradient.Evaluate(1 / (maxFuelCapacity / fuel));
+        gauge.fillAmount = fuel / maxFuelCapacity;
+        gauge.color = gradient.Evaluate(1 / (maxFuelCapacity / fuel));
     }
 }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 610855505}
   - component: {fileID: 610855504}
   - component: {fileID: 6977599262853187048}
+  - component: {fileID: 8228280204699124094}
   m_Layer: 0
   m_Name: apple
   m_TagString: PickUpAble
@@ -117,6 +118,7 @@ MonoBehaviour:
   fuelValue: 0
   consumable: 1
   foodValue: 15
+  closePickup: 1
   pickupLocationOffset: {x: -0.52, y: 0.09, z: 0.6}
   picupRotationOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!54 &6977599262853187048
@@ -135,3 +137,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8228280204699124094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297172181180802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45463550a01260c478b6aa0389383d26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minStartingScale: 0.1
+  maxStartingScale: 1.8
+  targetScale: 2
+  growthSpeed: 0.03

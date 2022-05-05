@@ -82,7 +82,7 @@ public class CameraInterractor : MonoBehaviour
                         pickUpObject.GetComponent<Tool>().heldInHands = true;
                         holdingTool = true;
                     }
-                    else if (pickUpObject.GetComponent<ItemProperties>() != null && pickUpObject.GetComponent<ItemProperties>().consumable)
+                    else if (pickUpObject.GetComponent<ItemProperties>() != null && pickUpObject.GetComponent<ItemProperties>().closePickup)
                     {
                         ClosePickup();
                     }
