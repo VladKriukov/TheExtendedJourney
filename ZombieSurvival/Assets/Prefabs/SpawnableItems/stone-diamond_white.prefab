@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 64000012362250040}
   - component: {fileID: 8546874294899908021}
   - component: {fileID: 7381200928572675000}
+  - component: {fileID: 7952261589751645635}
   m_Layer: 0
   m_Name: stone-diamond_white
   m_TagString: Untagged
@@ -128,3 +129,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7952261589751645635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011336735742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6035169e3746224cae20bd2dc512f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectiveItem: 1
+  damagable: 1
+  health: 30
+  drops:
+  - {fileID: 1000010245899088, guid: 3ee6164a9d9cf974ca3e2e31c3e866a0, type: 3}
+  numberOfDrops: 2
+  spawnRange: {x: 0.75, y: 0, z: 0.75}
+  spawnOffset: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}

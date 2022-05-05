@@ -19,7 +19,6 @@ public class PhysicsStopper : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("On trigger exit");
         if (other.CompareTag("Player") != true)
         {
             waitingItems.Remove(other.gameObject);

@@ -128,8 +128,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22cb2bc6fcff43a4b92e69c157471f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDisplayName: Stone
+  itemDisplayName: Small Stone
   fuelConsumable: 0
   fuelValue: 0
   consumable: 0
   foodValue: 0
+  pickupLocationOffset: {x: 0, y: 0, z: 0}
+  picupRotationOffset: {x: 0, y: 0, z: 0, w: 0}

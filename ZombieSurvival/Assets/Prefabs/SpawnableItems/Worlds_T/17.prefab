@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 1635079833508405332}
   - component: {fileID: 400220095434451742}
   - component: {fileID: 4932868608804112359}
+  - component: {fileID: -5205399165709170698}
+  - component: {fileID: 2430069972049033238}
+  - component: {fileID: 4609093256260333758}
   m_Layer: 9
   m_Name: 17
   m_TagString: Untagged
@@ -145,3 +148,79 @@ MonoBehaviour:
   rightSlopeMatch: 2
   leftSloping: 2
   rightSloping: 1
+--- !u!114 &-5205399165709170698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986292725987131777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6712f74caaa79db4288c90004ca02061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemVariants:
+  - {fileID: 1000010757296548, guid: 82bd0e3eef3cc854eae31c6f4cd718bf, type: 3}
+  - {fileID: 1000012548533322, guid: 3678017521dcb4e1bacbd3270c78a089, type: 3}
+  - {fileID: 1000014286827952, guid: 818821d8635b7754b97b69789a4a2d0f, type: 3}
+  - {fileID: 1000011078951186, guid: 2559aa2d368562248aea8c62e35ac2fd, type: 3}
+  - {fileID: 1000011913286906, guid: 90e80017d9ec13d41994176c5753e38d, type: 3}
+  - {fileID: 1000013497436514, guid: ddf7f5e45e33643f29f98935b0a24dd3, type: 3}
+  minAmount: 1
+  maxAmount: 6
+  randomiseSpawningChance: 1
+  spawningChance: 4
+  spawningRange: {x: 14, y: 14}
+  spawningOffset: {x: 0, y: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
+--- !u!114 &2430069972049033238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986292725987131777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6712f74caaa79db4288c90004ca02061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemVariants:
+  - {fileID: 1000014045022776, guid: f3195d7eecbb61a42a70359a920a09c4, type: 3}
+  - {fileID: 2119687541962724407, guid: 7d75bf6cf00808c49a890bb31215091c, type: 3}
+  minAmount: 1
+  maxAmount: 3
+  randomiseSpawningChance: 1
+  spawningChance: 6
+  spawningRange: {x: 14, y: 14}
+  spawningOffset: {x: 0, y: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
+--- !u!114 &4609093256260333758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986292725987131777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6712f74caaa79db4288c90004ca02061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemVariants:
+  - {fileID: 1000010087296110, guid: 91424e11cad2ab848ae341169d1d9fab, type: 3}
+  - {fileID: 1000010245899088, guid: 3ee6164a9d9cf974ca3e2e31c3e866a0, type: 3}
+  minAmount: 2
+  maxAmount: 5
+  randomiseSpawningChance: 1
+  spawningChance: 10
+  spawningRange: {x: 14, y: 14}
+  spawningOffset: {x: 0, y: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512

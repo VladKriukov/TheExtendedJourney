@@ -22,7 +22,6 @@ public class Resource : MonoBehaviour
     public void Damage(float amount)
     {
         if (damagable == false) return;
-        Debug.Log("Removing " + amount + " health");
         health -= amount;
         if (health <= 0)
         {

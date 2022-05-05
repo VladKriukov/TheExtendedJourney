@@ -7,6 +7,6 @@ public class FollowPlayerChunk : MonoBehaviour
 
     private void Update()
     {
-        transform.position = new Vector3(0, -10, playerTrain.position.z - zOffset);
+        transform.position = new Vector3(0, -25, playerTrain.position.z - zOffset);
     }
 }

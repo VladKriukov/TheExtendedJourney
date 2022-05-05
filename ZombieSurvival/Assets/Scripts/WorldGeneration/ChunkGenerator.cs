@@ -25,10 +25,9 @@ public class ChunkGenerator : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Triggered something");
         if (other.CompareTag("ChunkForward"))
         {
-            chunkSpawner.GenerateNextChunk(chunkSpawner.GetChunk(chunkIndex - 1).GetComponent<RailSpawner>().nextChunkAltitudeChange, transform);
+            chunkSpawner.GenerateNextChunk(chunkSpawner.GetChunk(chunkIndex).GetComponent<RailSpawner>().nextChunkAltitudeChange, transform);
         }
     }
 }

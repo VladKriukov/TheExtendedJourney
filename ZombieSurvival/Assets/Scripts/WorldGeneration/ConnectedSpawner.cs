@@ -5,6 +5,7 @@ public class ConnectedSpawner : MonoBehaviour
 {
     [SerializeField] GameObject connectedSpawner;
     [SerializeField] float connectedSpawnerOffset;
+    [SerializeField] float nextChunkSpawnDelay = 0.5f;
 
     public List<GameObject> spawningTerrains = new List<GameObject>(); // GameObjects to instantiate
 
@@ -183,7 +184,7 @@ public class ConnectedSpawner : MonoBehaviour
                     {
                         if (generatedTerrain.name.Contains(prevXSpawner.generatedTerrain.rightItems[i].name))
                         {
-                            Debug.Log("For terrain " + generatedTerrain.name + ", terrain altitude index of the previous terrain (" + prevXSpawner.generatedTerrain.rightItems[i].name + ") is " + i);
+                            //Debug.Log("For terrain " + generatedTerrain.name + ", terrain altitude index of the previous terrain (" + prevXSpawner.generatedTerrain.rightItems[i].name + ") is " + i);
                             transform.position = new Vector3(transform.position.x, transform.position.y + prevXSpawner.generatedTerrain.requiredRightAltitudeSteps[i] * chunkSpawner.chunkYOffset, transform.position.z);
                         }
                     }
@@ -194,7 +195,7 @@ public class ConnectedSpawner : MonoBehaviour
                     {
                         if (generatedTerrain.name.Contains(prevXSpawner.generatedTerrain.leftItems[i].name))
                         {
-                            Debug.Log("For terrain " + generatedTerrain.name + ", terrain altitude index of the previous terrain (" + prevXSpawner.generatedTerrain.leftItems[i].name + ") is " + i);
+                            //Debug.Log("For terrain " + generatedTerrain.name + ", terrain altitude index of the previous terrain (" + prevXSpawner.generatedTerrain.leftItems[i].name + ") is " + i);
                             transform.position = new Vector3(transform.position.x, transform.position.y + prevXSpawner.generatedTerrain.requiredLeftAltitudeSteps[i] * chunkSpawner.chunkYOffset, transform.position.z);
                         }
                     }
@@ -236,15 +237,25 @@ public class ConnectedSpawner : MonoBehaviour
 
                 if (generatedConnectedSpawner != null)
                 {
-                    Debug.Log("required steps length: " + generatedTerrain.requiredRightAltitudeSteps.Length + ", possible indexes length: " + possibleSelectedTerrainIndexes.Count + ", rand: " + rand + ", randth index: " + possibleSelectedTerrainIndexes[rand] + ", generated terrain: " + generatedTerrain.name + ", possibleXItems length: " + possibleXItems.Count);
+                    //Debug.Log("required steps length: " + generatedTerrain.requiredRightAltitudeSteps.Length + ", possible indexes length: " + possibleSelectedTerrainIndexes.Count + ", rand: " + rand + ", randth index: " + possibleSelectedTerrainIndexes[rand] + ", generated terrain: " + generatedTerrain.name + ", possibleXItems length: " + possibleXItems.Count);
                     generatedConnectedSpawner.GenerateTerrain(generatedTerrain.requiredRightAltitudeSteps[possibleSelectedTerrainIndexes[rand]], currentChunkFromTrack + 1, spawningDirection);
                 }
             }
         }
         else
         {
-            Invoke(nameof(GenerateNextBigChunk), 0.5f);
+            Invoke(nameof(GenerateNextBigChunk), nextChunkSpawnDelay);
         }
+    }
+
+    void GenerateNextLeftTerrain()
+    {
+
+    }
+
+    void GenerateNextRightTerrain()
+    {
+
     }
 
     void CollectAndComparePossibleTerrainsToSpawn()
@@ -420,7 +431,6 @@ public class ConnectedSpawner : MonoBehaviour
                         if (possibleChunksToSpawn.Contains(item.gameObject))
                         {
                             possibleXSlopes.Add(item.gameObject);
-                            Debug.LogWarning("left up");
                         }
                     }
                 }
@@ -434,12 +444,10 @@ public class ConnectedSpawner : MonoBehaviour
                         if (possibleChunksToSpawn.Contains(item.gameObject))
                         {
                             possibleXSlopes.Add(item.gameObject);
-                            Debug.LogWarning("right up");
                         }
                     }
                 }
             }
-            Debug.LogWarning("x slope count: " + possibleXSlopes.Count);
             if (possibleXSlopes.Count > 0)
             {
                 possibleChunksToSpawn.Clear();
@@ -462,7 +470,6 @@ public class ConnectedSpawner : MonoBehaviour
                         if (possibleXItems.Contains(item.gameObject))
                         {
                             possibleXSlopes.Add(item.gameObject);
-                            Debug.LogWarning("left down");
                         }
                     }
                 }
@@ -476,12 +483,10 @@ public class ConnectedSpawner : MonoBehaviour
                         if (possibleXItems.Contains(item.gameObject))
                         {
                             possibleXSlopes.Add(item.gameObject);
-                            Debug.LogWarning("right down");
                         }
                     }
                 }
             }
-            Debug.LogWarning("x slope count: " + possibleXSlopes.Count);
             if (possibleXSlopes.Count > 0)
             {
                 possibleChunksToSpawn.Clear();

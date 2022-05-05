@@ -49,10 +49,10 @@ public class ChunkSpawner : MonoBehaviour
     {
         chunkOfInterest = chunkToMove.GetComponent<ChunkGenerator>();
 
-        Debug.Log("=====================================");
-        Debug.Log("Next chunk altitude: " + nextChunkAltitude);
-        Debug.Log("Previous chunk count: " + (chunkGenerators.Count - 2));
-        Debug.Log("Previous chunk index: " + chunkGenerators[chunkGenerators.Count - 2].chunkIndex);
+        //Debug.Log("=====================================");
+        //Debug.Log("Next chunk altitude: " + nextChunkAltitude);
+        //Debug.Log("Previous chunk count: " + (chunkGenerators.Count - 2));
+        //Debug.Log("Previous chunk index: " + chunkGenerators[chunkGenerators.Count - 2].chunkIndex);
 
         Invoke(nameof(Spawn), 0.5f);
         //Spawn();

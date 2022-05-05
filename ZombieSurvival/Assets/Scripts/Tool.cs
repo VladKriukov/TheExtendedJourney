@@ -52,7 +52,6 @@ public class Tool : MonoBehaviour
         {
             if (hit.collider.gameObject.GetComponent<Resource>() != true) return;
 
-            Debug.Log("Hit resource");
             switch (hit.collider.gameObject.GetComponent<Resource>().effectiveItem)
             {
                 case Resource.EffectiveItem.NA:
