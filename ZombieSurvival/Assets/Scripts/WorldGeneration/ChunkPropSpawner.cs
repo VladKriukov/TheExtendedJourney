@@ -65,13 +65,5 @@ public class ChunkPropSpawner : MonoBehaviour
                 item.SetActive(false);
             }
         }
-
-        foreach (Transform item in transform)
-        {
-            if (item.gameObject.activeInHierarchy == false)
-            {
-                Destroy(item.gameObject);
-            }
-        }
     }
 }
