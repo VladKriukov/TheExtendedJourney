@@ -54,6 +54,7 @@ public class CameraInterractor : MonoBehaviour
                 if (pickUpObject.GetComponent<ItemProperties>() != null && pickUpObject.GetComponent<ItemProperties>().consumable)
                 {
                     player.AddFood(pickUpObject.GetComponent<ItemProperties>().foodValue);
+                    player.ChangeHealth(pickUpObject.GetComponent<ItemProperties>().healthValue);
                     Destroy(pickUpObject);
                     pickUpObject = null;
                     holdingItem = false;

@@ -11,6 +11,7 @@ public class ItemProperties : MonoBehaviour
     [Header("Food")]
     public bool consumable;
     public float foodValue;
+    public float healthValue;
 
     [Header("Pickup")]
     public bool closePickup;

@@ -10,6 +10,8 @@ public class ChunkSpawner : MonoBehaviour
     public float chunkXOffset; // the chunk size in width (possibly same as Z offset since it is square)
     public float chunkZOffset; // the chunk size in length
 
+    [SerializeField] GameObject startingPlatform;
+
     [HideInInspector] public int chunkAltitude;
 
     List<ChunkGenerator> chunkGenerators = new List<ChunkGenerator>();
@@ -128,6 +130,13 @@ public class ChunkSpawner : MonoBehaviour
                     break;
                 default:
                     break;
+            }
+        }
+        else
+        {
+            if (railSpawner.startingSlopeType == RailSpawner.StartingSlopeType.Down)
+            {
+                startingPlatform.transform.position = new Vector3(startingPlatform.transform.position.x, 6, startingPlatform.transform.position.z);
             }
         }
         

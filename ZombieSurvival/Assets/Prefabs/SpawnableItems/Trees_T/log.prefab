@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 64000011361443546}
   - component: {fileID: 1107085221556715864}
   - component: {fileID: -4322897960852585965}
+  - component: {fileID: -7694518987567802286}
   m_Layer: 0
   m_Name: log
   m_TagString: PickUpAble
@@ -133,3 +134,28 @@ MonoBehaviour:
   fuelValue: 15
   consumable: 0
   foodValue: 0
+  healthValue: 0
+  closePickup: 0
+  pickupLocationOffset: {x: 0, y: 0, z: 0}
+  picupRotationOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &-7694518987567802286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000014092007092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6035169e3746224cae20bd2dc512f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectiveItem: 2
+  damagable: 1
+  health: 20
+  drops:
+  - {fileID: 1000014092007092, guid: 5a8a1573ed9c5dd4cb5b6ef56898b3ba, type: 3}
+  numberOfDrops: 2
+  spawnRange: {x: 0.5, y: 0, z: 0.5}
+  spawnOffset: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}

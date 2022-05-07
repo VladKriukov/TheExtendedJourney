@@ -25,6 +25,10 @@ public class Player : MonoBehaviour
         if (playerHunger > 0)
         {
             playerHunger -= hungerDecreaseRate * Time.deltaTime;
+            if (playerHunger > 0.5f * maxHunger)
+            {
+                ChangeHealth(Time.deltaTime * 0.5f);
+            }
         }
         else
         {
