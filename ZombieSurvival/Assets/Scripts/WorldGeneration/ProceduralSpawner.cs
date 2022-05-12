@@ -34,8 +34,7 @@ public class ProceduralSpawner : MonoBehaviour
 
     public void Spawn()
     {
-        rand = Random.Range(0, spawningChance);
-        //Debug.Log(rand);
+        rand = Random.Range(0, spawningChance); // will it even spawn
         if (rand > 1) return;
 
         rand = Random.Range(minNumberToSpawn, maxNumberToSpawn);

@@ -135,7 +135,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!95 &8175697319683626601
 Animator:
   serializedVersion: 4
@@ -173,6 +173,8 @@ MonoBehaviour:
   fuelValue: 0
   consumable: 0
   foodValue: 0
+  healthValue: 0
   closePickup: 1
   pickupLocationOffset: {x: 0, y: 0, z: 0}
   picupRotationOffset: {x: 0, y: 0, z: 0, w: 0}
+  holdingRayOffset: -0.15

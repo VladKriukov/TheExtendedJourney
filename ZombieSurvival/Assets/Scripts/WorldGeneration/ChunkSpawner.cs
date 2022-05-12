@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Collections;
 
 public class ChunkSpawner : MonoBehaviour
 {
@@ -27,12 +26,11 @@ public class ChunkSpawner : MonoBehaviour
 
     public void GenerateNextChunk(int nextChunkAltitude, Transform chunkToMove = null)
     {
-        if (chunkGenerators.Count >= numberOfChunksToSpawn)
+        if (chunkGenerators.Count >= numberOfChunksToSpawn) // if the chunks are being moved from behind
         {
             if (chunkToMove != null)
             {
                 MoveChunk(chunkToMove, nextChunkAltitude);
-                //StartCoroutine(nameof(MoveChunk), 0f);
             }
             else
             {
@@ -43,7 +41,6 @@ public class ChunkSpawner : MonoBehaviour
         {
             chunkGenerators.Add(Instantiate(chunk, transform).GetComponent<ChunkGenerator>());
             MoveChunk(chunkGenerators[chunkGenerators.Count-1].transform, nextChunkAltitude);
-            //StartCoroutine(nameof(MoveChunk), 0f);
         }
     }
 
@@ -51,20 +48,10 @@ public class ChunkSpawner : MonoBehaviour
     {
         chunkOfInterest = chunkToMove.GetComponent<ChunkGenerator>();
 
-        //Debug.Log("=====================================");
-        //Debug.Log("Next chunk altitude: " + nextChunkAltitude);
-        //Debug.Log("Previous chunk count: " + (chunkGenerators.Count - 2));
-        //Debug.Log("Previous chunk index: " + chunkGenerators[chunkGenerators.Count - 2].chunkIndex);
-
         Invoke(nameof(Spawn), 0.5f);
-        //Spawn();
-
-        //Invoke(nameof(Move), 1f);
-        //chunkToMove.position = new Vector3(0, chunkAltitude * chunkYOffset, chunkZOffset * (chunkDistanceCounter + 1));
 
         chunkDistanceCounter++;
         chunkOfInterest.chunkIndex = chunkDistanceCounter;
-        Debug.Log("Chunk number: " + chunkDistanceCounter);
     }
 
     public void SpawnedRails()

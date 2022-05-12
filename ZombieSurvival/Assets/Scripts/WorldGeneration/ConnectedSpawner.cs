@@ -248,16 +248,6 @@ public class ConnectedSpawner : MonoBehaviour
         }
     }
 
-    void GenerateNextLeftTerrain()
-    {
-
-    }
-
-    void GenerateNextRightTerrain()
-    {
-
-    }
-
     void CollectAndComparePossibleTerrainsToSpawn()
     {
         // collect all the possible combinations in the vertical direction

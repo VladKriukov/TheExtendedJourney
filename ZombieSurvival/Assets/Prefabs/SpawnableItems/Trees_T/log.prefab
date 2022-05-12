@@ -138,6 +138,7 @@ MonoBehaviour:
   closePickup: 0
   pickupLocationOffset: {x: 0, y: 0, z: 0}
   picupRotationOffset: {x: 0, y: 0, z: 0, w: 0}
+  holdingRayOffset: -0.3
 --- !u!114 &-7694518987567802286
 MonoBehaviour:
   m_ObjectHideFlags: 0

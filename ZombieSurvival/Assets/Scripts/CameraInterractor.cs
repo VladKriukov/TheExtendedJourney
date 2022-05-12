@@ -8,17 +8,20 @@ public class CameraInterractor : MonoBehaviour
     //[SerializeField] private GameObject placingObject;
     [SerializeField] private Transform holdingLocation;
     [SerializeField] private Transform toolLocation;
+    [SerializeField] private Transform droppingLocation;
     [SerializeField] private float holdingLerpSpeed = 50;
     [SerializeField] Animator itemNameDisplay;
-    private bool hitting;
     public bool holdingItem;
     public bool holdingTool;
+    private bool hitting;
     private GameObject pickUpObject;
+    private Vector3 defaultDroppingPosition;
     Player player;
 
     private void Awake()
     {
-        player = transform.parent.parent.GetComponent<Player>();        
+        player = transform.parent.parent.GetComponent<Player>();
+        defaultDroppingPosition = droppingLocation.localPosition;
     }
 
     private void Update()
@@ -32,17 +35,33 @@ public class CameraInterractor : MonoBehaviour
 
         if (holdingItem == true)
         {
+            hitting = Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 3, layerMask);
+            if (hitting == true)
+            {
+                droppingLocation.position = hit.point;
+                droppingLocation.GetChild(0).localPosition = new Vector3(droppingLocation.localPosition.x, droppingLocation.localPosition.y, droppingLocation.localPosition.z * pickUpObject.GetComponent<ItemProperties>().holdingRayOffset);
+            }
+            else
+            {
+                droppingLocation.localPosition = defaultDroppingPosition;
+                droppingLocation.GetChild(0).localPosition = Vector3.zero;
+            }
             //LerpToHoldingLocation();
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 if (pickUpObject.GetComponent<Tool>() != null) pickUpObject.GetComponent<Tool>().heldInHands = false;
                 if (pickUpObject.GetComponent<Animator>() != null) pickUpObject.GetComponent<Animator>().enabled = false;
+                
                 pickUpObject.GetComponent<Rigidbody>().useGravity = true;
                 pickUpObject.GetComponent<Rigidbody>().isKinematic = false;
                 pickUpObject.GetComponent<Collider>().enabled = true;
                 pickUpObject.layer = 0;
                 pickUpObject.transform.parent = null;
-                pickUpObject.transform.position = holdingLocation.position;
+                if (pickUpObject.GetComponent<ItemProperties>() != null)
+                {
+                    
+                }
+                pickUpObject.transform.position = droppingLocation.GetChild(0).position;
                 pickUpObject = null;
                 holdingItem = false;
                 holdingTool = false;
@@ -170,7 +189,6 @@ public class CameraInterractor : MonoBehaviour
         pickUpObject.transform.parent = holdingLocation;
         if (pickUpObject.GetComponent<ItemProperties>() != null)
         {
-            
             pickUpObject.transform.localPosition = pickUpObject.GetComponent<ItemProperties>().pickupLocationOffset;
         }
         else
@@ -182,7 +200,7 @@ public class CameraInterractor : MonoBehaviour
 
     void LerpToHoldingLocation()
     {
-        pickUpObject.GetComponent<Rigidbody>().MovePosition(Vector3.Lerp(pickUpObject.transform.position, holdingLocation.position, Time.deltaTime * holdingLerpSpeed));
-        pickUpObject.GetComponent<Rigidbody>().MoveRotation(Quaternion.Lerp(pickUpObject.transform.rotation, holdingLocation.rotation, Time.deltaTime * holdingLerpSpeed));
+        pickUpObject.GetComponent<Rigidbody>().MovePosition(Vector3.Lerp(pickUpObject.transform.position, droppingLocation.position, Time.deltaTime * holdingLerpSpeed));
+        pickUpObject.GetComponent<Rigidbody>().MoveRotation(Quaternion.Lerp(pickUpObject.transform.rotation, droppingLocation.rotation, Time.deltaTime * holdingLerpSpeed));
     }
 }

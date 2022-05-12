@@ -17,6 +17,7 @@ public class ItemProperties : MonoBehaviour
     public bool closePickup;
     public Vector3 pickupLocationOffset;
     public Quaternion picupRotationOffset;
+    public float holdingRayOffset;
 
     private void Awake()
     {
