@@ -20,6 +20,7 @@ public class ChunkSpawner : MonoBehaviour
 
     private void Awake()
     {
+        Game.totalProgressParts = numberOfChunksToSpawn * Game.maxChunksFromTrack * 2;
         chunkGenerators.Add(Instantiate(chunk, transform).GetComponent<ChunkGenerator>());
         chunkOfInterest = chunkGenerators[0];
     }

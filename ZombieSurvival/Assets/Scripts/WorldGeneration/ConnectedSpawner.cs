@@ -213,6 +213,12 @@ public class ConnectedSpawner : MonoBehaviour
             nextSpawnerExists = true;
         }
 
+        Invoke(nameof(SpawnNextChunk), nextChunkSpawnDelay / 2);
+        Game.progress++;
+    }
+
+    void SpawnNextChunk()
+    {
         if (currentChunkFromTrack < Game.maxChunksFromTrack)
         {
             if (spawningDirection == false)
