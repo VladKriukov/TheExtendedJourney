@@ -8,6 +8,7 @@ public class ConnectedSpawner : MonoBehaviour
     [SerializeField] float nextChunkSpawnDelay = 0.5f;
 
     public List<GameObject> spawningTerrains = new List<GameObject>(); // GameObjects to instantiate
+    [SerializeField] GameObject invisibleWall;
 
     [HideInInspector] public PossibleChunks generatedTerrain; // the terrain that was selected to generate for this spawner
 
@@ -250,6 +251,7 @@ public class ConnectedSpawner : MonoBehaviour
         }
         else
         {
+            Instantiate(invisibleWall, transform);
             Invoke(nameof(GenerateNextBigChunk), nextChunkSpawnDelay);
         }
     }

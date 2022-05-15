@@ -1357,7 +1357,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4230188055111398868}
   - component: {fileID: 2642828531186201882}
-  - component: {fileID: 2642828531186201884}
   - component: {fileID: 4230188055111398869}
   m_Layer: 0
   m_Name: Train
@@ -1406,30 +1405,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 98
   m_CollisionDetection: 0
---- !u!145 &2642828531186201884
-SpringJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4230188055111428596}
-  m_ConnectedBody: {fileID: 0}
-  m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 0.55, z: -7}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0.54999995, z: 7}
-  serializedVersion: 2
-  m_Spring: 99999
-  m_Damper: 1500
-  m_MinDistance: 0
-  m_MaxDistance: 0
-  m_Tolerance: 1.00000005e-20
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!114 &4230188055111398869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1444,7 +1419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardForce: 1500
   reverseForce: -1300
-  fuelUsage: 0.5
+  fuelUsage: 0.02
   dragMultiplier: 0.05
   fuelTank: {fileID: 2642828530459172990}
 --- !u!1 &4230188055111428598
