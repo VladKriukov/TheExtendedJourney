@@ -19,6 +19,9 @@ public class ItemProperties : MonoBehaviour
     public Quaternion picupRotationOffset;
     public float holdingRayOffset;
 
+    [Header("SpawningOffset")]
+    public Vector3 spawningOffset;
+
     private void Awake()
     {
         name = itemDisplayName;

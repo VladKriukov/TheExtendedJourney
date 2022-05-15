@@ -387,9 +387,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   maxHunger: 100
-  hungerDecreaseRate: 0.5
-  hungerDamageRate: 2
-  hungerDamageAmount: 3
+  hungerDecreaseRate: 0.01
+  hungerDamageRate: 1
+  hungerDamageAmount: 0.05
   healthDisplay: {fileID: 0}
   hungerDisplay: {fileID: 0}
 --- !u!82 &4653848081519353927

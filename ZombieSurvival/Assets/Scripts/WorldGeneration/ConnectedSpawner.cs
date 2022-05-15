@@ -213,7 +213,7 @@ public class ConnectedSpawner : MonoBehaviour
             nextSpawnerExists = true;
         }
 
-        Invoke(nameof(SpawnNextChunk), nextChunkSpawnDelay / 2);
+        Invoke(nameof(SpawnNextChunk), nextChunkSpawnDelay * Game.chunkPropMultiplier);
         Game.progress++;
     }
 

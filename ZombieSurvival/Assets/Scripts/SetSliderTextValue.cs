@@ -13,6 +13,13 @@ public class SetSliderTextValue : MonoBehaviour
 
     public void SetTextValue(float value)
     {
-        text.text = "" + value;
+        if (value.ToString().Length > 3)
+        {
+            text.text = value.ToString().Substring(0, 3);
+        }
+        else
+        {
+            text.text = value.ToString();
+        }
     }
 }

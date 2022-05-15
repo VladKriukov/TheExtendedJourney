@@ -4,10 +4,10 @@ using System.Collections.Generic;
 public class ChunkPropSpawner : MonoBehaviour
 {
     [SerializeField] List<GameObject> itemVariants = new List<GameObject>();
-    [SerializeField] float minAmount;
-    [SerializeField] float maxAmount;
+    [SerializeField] int minAmount;
+    [SerializeField] int maxAmount;
     [Tooltip("False = 100% chance of spawning")][SerializeField] bool randomiseSpawningChance;
-    [SerializeField] int spawningChance;
+    [SerializeField] float spawningChance;
     [SerializeField] Vector2 spawningRange;
     [SerializeField] Vector2 spawningOffset;
     [SerializeField] LayerMask layerMask;
@@ -20,6 +20,9 @@ public class ChunkPropSpawner : MonoBehaviour
 
     private void Awake()
     {
+        minAmount = Mathf.Clamp(minAmount * Game.chunkPropMultiplier, 0, 15);
+        maxAmount = Mathf.Clamp(maxAmount * Game.chunkPropMultiplier, 0, 25);
+        spawningChance *= 1 / Game.chunkPropDensity;
         PoolItems();
         CheckSpawning();
     }
@@ -58,7 +61,16 @@ public class ChunkPropSpawner : MonoBehaviour
             hitting = Physics.Raycast(item.transform.position, Vector3.down, out hit, 50, layerMask);
             if (hitting == true)
             {
-                item.transform.position = new Vector3(item.transform.position.x, hit.point.y, item.transform.position.z);
+                if (item.GetComponent<ItemProperties>() != null)
+                {
+                    ItemProperties properties = item.GetComponent<ItemProperties>();
+                    item.transform.position = new Vector3(item.transform.position.x + properties.spawningOffset.x, hit.point.y + properties.spawningOffset.y, item.transform.position.z + properties.spawningOffset.z);
+                }
+                else
+                {
+                    item.transform.position = new Vector3(item.transform.position.x, hit.point.y, item.transform.position.z);
+                }
+                
             }
             else
             {
