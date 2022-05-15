@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4000013518929708}
   - component: {fileID: 33000013136486980}
   - component: {fileID: 23000012967211776}
-  - component: {fileID: 136000013519526178}
   - component: {fileID: 396445475}
+  - component: {fileID: 8563466727996093350}
   m_Layer: 0
   m_Name: tree-lime
   m_TagString: Untagged
@@ -85,20 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &136000013519526178
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000011078951186}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.1880281
-  m_Height: 6.493396
-  m_Direction: 1
-  m_Center: {x: -0.04, y: 2.91, z: -0.17}
 --- !u!114 &396445475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,3 +106,17 @@ MonoBehaviour:
   spawnRange: {x: 0, y: 1.5, z: 0}
   spawnOffset: {x: 0, y: 1, z: 0}
   rotation: {x: 1, y: 0, z: 0, w: 1}
+--- !u!64 &8563466727996093350
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011078951186}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 1a6d3fcb400ba40649494f95dba66165, type: 3}

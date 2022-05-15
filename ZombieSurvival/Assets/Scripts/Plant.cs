@@ -8,6 +8,7 @@ public class Plant : MonoBehaviour
     [SerializeField] float growthSpeed;
     Rigidbody rb;
     float scale;
+    bool growing = true;
 
     private void Awake()
     {
@@ -19,14 +20,18 @@ public class Plant : MonoBehaviour
 
     private void Update()
     {
-        if (transform.localScale.x < targetScale)
+        if (growing == true)
         {
-            scale += growthSpeed * Time.deltaTime;
-            transform.localScale = new Vector3(scale, scale, scale);
-        }
-        else
-        {
-            rb.isKinematic = false;
+            if (transform.localScale.x < targetScale)
+            {
+                scale += growthSpeed * Time.deltaTime;
+                transform.localScale = new Vector3(scale, scale, scale);
+            }
+            else
+            {
+                rb.isKinematic = false;
+                growing = false;
+            }
         }
     }
 }

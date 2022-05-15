@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5998641848402001239}
   m_Layer: 0
   m_Name: stone-oval_orange
-  m_TagString: Untagged
+  m_TagString: PickUpAble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

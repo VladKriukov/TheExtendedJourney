@@ -29,6 +29,7 @@ public class RailSpawner : MonoBehaviour
     {
         thisChunkGenerator = GetComponent<ChunkGenerator>();
         chunkSpawner = transform.parent.GetComponent<ChunkSpawner>();
+        slopeChance = Game.railFlatness;
     }
 
     public void GenerateRailTerrain(int altitude)
@@ -45,9 +46,14 @@ public class RailSpawner : MonoBehaviour
             instantiatedSpawner = Instantiate(connectedSpawner, new Vector3(transform.position.x - chunkSpawner.chunkXOffset, transform.position.y, transform.position.z), Quaternion.identity, transform);
             thisChunkGenerator.connectedSpawners.Add(instantiatedSpawner.GetComponent<ConnectedSpawner>());
         }
+        Invoke(nameof(SpawnSpawners), 0.1f);
+        return;
+    }
+
+    void SpawnSpawners()
+    {
         thisChunkGenerator.connectedSpawners[0].GenerateTerrain(chunkSpawner.chunkAltitude, 1, true, startingSlopeType);
         thisChunkGenerator.connectedSpawners[1].GenerateTerrain(chunkSpawner.chunkAltitude, 1, false, startingSlopeType);
-        return;
     }
 
     public void GenerateNextChunk()

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4000011987028392}
   - component: {fileID: 33000013595128030}
   - component: {fileID: 23000011764355772}
-  - component: {fileID: 136000014201345768}
   - component: {fileID: 212767505}
+  - component: {fileID: 2144492067836386420}
   m_Layer: 0
   m_Name: tree-birch
   m_TagString: Untagged
@@ -85,20 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &136000014201345768
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000012548533322}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.28
-  m_Height: 7.24
-  m_Direction: 1
-  m_Center: {x: -0.03, y: 3.3863158, z: -0.07399011}
 --- !u!114 &212767505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,3 +106,17 @@ MonoBehaviour:
   spawnRange: {x: 0, y: 1.5, z: 0}
   spawnOffset: {x: 0, y: 1, z: 0}
   rotation: {x: 1, y: 0, z: 0, w: 1}
+--- !u!64 &2144492067836386420
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000012548533322}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300002, guid: 08c7aa7afdf5848f0be1543a55d5f6c9, type: 3}

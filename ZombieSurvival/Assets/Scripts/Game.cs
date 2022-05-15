@@ -8,6 +8,8 @@ public class Game : MonoBehaviour
     public static int minAltitudeSteps = -7;
     public static int maxAltitudeSteps = 7;
     public static int maxChunksFromTrack = 5;
+    public static int railFlatness = 5;
+    public static int numberOfChunksToSpawn = 10;
 
     public static int chunkPropMultiplier = 1;
     public static int chunkPropDensity = 1;
@@ -46,6 +48,16 @@ public class Game : MonoBehaviour
         maxChunksFromTrack = (int)value;
     }
 
+    public void SetRailFlatness(float value)
+    {
+        railFlatness = (int)value;
+    }
+
+    public void SetTerrainDistance(float value)
+    {
+        numberOfChunksToSpawn = (int)value;
+    }
+
     public void SetChunkPropMultiplier(float value)
     {
         chunkPropMultiplier = (int)value;
@@ -80,6 +92,15 @@ public class Game : MonoBehaviour
         }
         player.GetComponent<FirstPersonController>().enabled = !gamePaused;
         */
+    }
+
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 
     private void Update()

@@ -25,7 +25,7 @@ public class FuelTank : MonoBehaviour
         {
             item = other.GetComponent<ItemProperties>();
             if (item.fuelConsumable == false) return;
-
+            if (fuel >= maxFuelCapacity) return;
             StartCoroutine(nameof(ConsumeFuel));
         }
     }

@@ -40,7 +40,7 @@ public class ChunkPropSpawner : MonoBehaviour
     {
         if (randomiseSpawningChance == true)
         {
-            if (Random.Range(0, spawningChance) == 0)
+            if (Random.Range(0, spawningChance) <= 1)
             {
                 SpawnItems();
             }
@@ -74,6 +74,7 @@ public class ChunkPropSpawner : MonoBehaviour
             }
             else
             {
+                Debug.LogError("Failed to spawn");
                 item.SetActive(false);
             }
         }
