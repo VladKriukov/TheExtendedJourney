@@ -13374,7 +13374,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Terrain Distance*:'
+  m_text: 'Terrain Travel Distance*:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -20999,26 +20999,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 961428823}
     m_Modifications:
-    - target: {fileID: 159452618, guid: 64fcca765fd25fa4bafb7083efea457a, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: a2cc111e13a75534a8bd35e2d9d39fea,
-        type: 2}
-    - target: {fileID: 201536004, guid: 64fcca765fd25fa4bafb7083efea457a, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: a2cc111e13a75534a8bd35e2d9d39fea,
-        type: 2}
-    - target: {fileID: 879820142, guid: 64fcca765fd25fa4bafb7083efea457a, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: a2cc111e13a75534a8bd35e2d9d39fea,
-        type: 2}
-    - target: {fileID: 1620264281, guid: 64fcca765fd25fa4bafb7083efea457a, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: a2cc111e13a75534a8bd35e2d9d39fea,
-        type: 2}
     - target: {fileID: 4230188055111398868, guid: 64fcca765fd25fa4bafb7083efea457a,
         type: 3}
       propertyPath: m_RootOrder

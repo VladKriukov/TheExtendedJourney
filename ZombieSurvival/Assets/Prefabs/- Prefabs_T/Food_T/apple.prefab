@@ -117,10 +117,13 @@ MonoBehaviour:
   fuelConsumable: 0
   fuelValue: 0
   consumable: 1
-  foodValue: 15
+  foodValue: 5
+  healthValue: 0
   closePickup: 1
   pickupLocationOffset: {x: -0.52, y: 0.09, z: 0.6}
   picupRotationOffset: {x: 0, y: 0, z: 0, w: 0}
+  holdingRayOffset: 0
+  spawningOffset: {x: 0, y: 0, z: 0}
 --- !u!54 &6977599262853187048
 Rigidbody:
   m_ObjectHideFlags: 0
