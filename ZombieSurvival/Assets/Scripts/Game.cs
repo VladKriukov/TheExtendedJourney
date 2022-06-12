@@ -76,22 +76,26 @@ public class Game : MonoBehaviour
     public void PauseMenu()
     { 
         // the pause menu isn't working as the mouse gets re-captured by the fps controller
-        /*
+        
         if (!inGame) return;
 
         gamePaused = !gamePaused;
-        animator.SetBool("Pause", gamePaused);
+        animator.SetBool("Paused", gamePaused);
 
         if (gamePaused == true)
         {
             Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
         else
         {
             Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
-        player.GetComponent<FirstPersonController>().enabled = !gamePaused;
-        */
+        player.SetActive(!gamePaused);
+        menuCamera.SetActive(gamePaused);
     }
 
     public void QuitGame()
@@ -121,6 +125,11 @@ public class Game : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PauseMenu();
+        }
+        if (Input.GetMouseButtonDown(0) && gamePaused == true)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 }
