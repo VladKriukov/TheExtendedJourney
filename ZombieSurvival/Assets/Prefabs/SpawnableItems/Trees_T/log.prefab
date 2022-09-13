@@ -139,6 +139,7 @@ MonoBehaviour:
   pickupLocationOffset: {x: 0, y: 0, z: 0}
   picupRotationOffset: {x: 0, y: 0, z: 0, w: 0}
   holdingRayOffset: -0.3
+  spawningOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &-7694518987567802286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,3 +161,5 @@ MonoBehaviour:
   spawnRange: {x: 0.5, y: 0, z: 0.5}
   spawnOffset: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 0}
+  healthPopupGO: {fileID: 7693951919032916010, guid: f357864c422c33b4787f375220093b74,
+    type: 3}

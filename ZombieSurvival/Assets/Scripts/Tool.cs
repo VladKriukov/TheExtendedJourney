@@ -47,7 +47,6 @@ public class Tool : MonoBehaviour
     // called from the animator
     void SendDamage()
     {
-        
         if (hitting == true)
         {
             if (hit.collider.gameObject.GetComponent<Resource>() != true) return;
@@ -55,36 +54,36 @@ public class Tool : MonoBehaviour
             switch (hit.collider.gameObject.GetComponent<Resource>().effectiveItem)
             {
                 case Resource.EffectiveItem.NA:
-                    hit.collider.GetComponent<Resource>().Damage(ineffectiveDamage);
+                    hit.collider.GetComponent<Resource>().Damage(ineffectiveDamage, hit.point, hit.normal);
                     break;
                 case Resource.EffectiveItem.Rocks:
                     if (effectiveAgainst.HasFlag(EffectiveAgainst.Rocks))
                     {
-                        hit.collider.gameObject.GetComponent<Resource>().Damage(effectiveDamage);
+                        hit.collider.gameObject.GetComponent<Resource>().Damage(effectiveDamage, hit.point, hit.normal);
                     }
                     else
                     {
-                        hit.collider.gameObject.GetComponent<Resource>().Damage(ineffectiveDamage);
+                        hit.collider.gameObject.GetComponent<Resource>().Damage(ineffectiveDamage, hit.point, hit.normal);
                     }
                     break;
                 case Resource.EffectiveItem.Trees:
                     if (effectiveAgainst.HasFlag(EffectiveAgainst.Trees))
                     {
-                        hit.collider.gameObject.GetComponent<Resource>().Damage(effectiveDamage);
+                        hit.collider.gameObject.GetComponent<Resource>().Damage(effectiveDamage, hit.point, hit.normal);
                     }
                     else
                     {
-                        hit.collider.gameObject.GetComponent<Resource>().Damage(ineffectiveDamage);
+                        hit.collider.gameObject.GetComponent<Resource>().Damage(ineffectiveDamage, hit.point, hit.normal);
                     }
                     break;
                 case Resource.EffectiveItem.Enemies:
                     if (effectiveAgainst.HasFlag(EffectiveAgainst.Enemies))
                     {
-                        hit.collider.gameObject.GetComponent<Resource>().Damage(effectiveDamage);
+                        hit.collider.gameObject.GetComponent<Resource>().Damage(effectiveDamage, hit.point, hit.normal);
                     }
                     else
                     {
-                        hit.collider.gameObject.GetComponent<Resource>().Damage(ineffectiveDamage);
+                        hit.collider.gameObject.GetComponent<Resource>().Damage(ineffectiveDamage, hit.point, hit.normal);
                     }
                     break;
                 default:

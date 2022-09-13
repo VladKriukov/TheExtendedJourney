@@ -12,7 +12,7 @@ public class Game : MonoBehaviour
     public static int numberOfChunksToSpawn = 10;
 
     public static int chunkPropMultiplier = 1;
-    public static int chunkPropDensity = 1;
+    public static float chunkPropDensity = 1;
 
     public static float totalProgressParts;
     public static float progress;
@@ -65,7 +65,7 @@ public class Game : MonoBehaviour
 
     public void SetChunkDensityMultiplier(float value)
     {
-        chunkPropDensity = (int)value;
+        chunkPropDensity = value;
     }
 
     public void StartLoading()

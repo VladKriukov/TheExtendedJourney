@@ -120,3 +120,5 @@ MonoBehaviour:
   spawnRange: {x: 0, y: 2, z: 0}
   spawnOffset: {x: 0, y: 1, z: 0}
   rotation: {x: 1, y: 0, z: 0, w: 1}
+  healthPopupGO: {fileID: 7693951919032916010, guid: f357864c422c33b4787f375220093b74,
+    type: 3}
