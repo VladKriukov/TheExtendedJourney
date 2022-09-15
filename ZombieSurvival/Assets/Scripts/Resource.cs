@@ -32,14 +32,15 @@ public class Resource : MonoBehaviour
         healthPopup.transform.position = hitPoint;
         healthPopup.transform.LookAt(FindObjectOfType<Player>().transform.position);
         healthPopup.ShowHealth(health + amount, health);
-        if (health <= 0)
+    }
+
+    public void DropLoot()
+    {
+        for (int i = 0; i < numberOfDrops; i++)
         {
-            for (int i = 0; i < numberOfDrops; i++)
-            {
-                Instantiate(drops[Random.Range(0, drops.Count)], transform.position + new Vector3(Random.Range(-spawnRange.x, spawnRange.x) + spawnOffset.x, Random.Range(-spawnRange.y, spawnRange.y) + spawnOffset.y, Random.Range(-spawnRange.z, spawnRange.z) + spawnOffset.z), rotation);
-            }
-            healthPopup.transform.parent = null;
-            gameObject.SetActive(false);
+            Instantiate(drops[Random.Range(0, drops.Count)], transform.position + new Vector3(Random.Range(-spawnRange.x, spawnRange.x) + spawnOffset.x, Random.Range(-spawnRange.y, spawnRange.y) + spawnOffset.y, Random.Range(-spawnRange.z, spawnRange.z) + spawnOffset.z), rotation);
         }
+        //healthPopup.transform.parent = null;
+        gameObject.SetActive(false);
     }
 }

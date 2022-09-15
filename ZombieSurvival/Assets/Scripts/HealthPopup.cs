@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class HealthPopup : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class HealthPopup : MonoBehaviour
     Image health;
     Animator animator;
     float targetHealth;
+    bool noHP;
 
     private void Awake()
     {
@@ -18,7 +20,14 @@ public class HealthPopup : MonoBehaviour
 
     private void Update()
     {
+        if (noHP == true) return;
+
         health.fillAmount -= (health.fillAmount - targetHealth) * Time.deltaTime * lerpTime;
+        if (health.fillAmount <= 0)
+        {
+            transform.parent.GetComponent<Resource>().DropLoot();
+            noHP = true;
+        }
     }
 
     public void ShowHealth(float _currentHealth, float _targetHealth)
@@ -27,7 +36,15 @@ public class HealthPopup : MonoBehaviour
         animator.SetTrigger("Show");
         animator.ResetTrigger("Hide");
         targetHealth = _targetHealth / _currentHealth;
-        Invoke(nameof(HideHealth), displayTime);
+        StartCoroutine(nameof(HidingHealth));
+        //Invoke(nameof(HideHealth), displayTime);
+        //todo: make manual invoke timer
+    }
+
+    IEnumerator HidingHealth()
+    {
+        yield return new WaitForSeconds(displayTime);
+        HideHealth();
     }
 
     void HideHealth()
