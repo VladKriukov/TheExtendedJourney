@@ -5,10 +5,11 @@ public class ConnectedSpawner : MonoBehaviour
 {
     [SerializeField] GameObject connectedSpawner;
     [SerializeField] float connectedSpawnerOffset;
-    [SerializeField] float nextChunkSpawnDelay = 0.5f;
+    [SerializeField] float nextChunkSpawnDelay = 2f;
 
     public List<GameObject> spawningTerrains = new List<GameObject>(); // GameObjects to instantiate
     [SerializeField] GameObject invisibleWall;
+    [SerializeField] GameObject water;
 
     [HideInInspector] public PossibleChunks generatedTerrain; // the terrain that was selected to generate for this spawner
 
@@ -228,6 +229,7 @@ public class ConnectedSpawner : MonoBehaviour
                 {
                     thisChunkGenerator.connectedSpawners.Add(Instantiate(connectedSpawner, new Vector3(transform.position.x - chunkSpawner.chunkXOffset, transform.position.y, transform.position.z), Quaternion.identity, transform.parent).GetComponent<ConnectedSpawner>());
                     generatedConnectedSpawner = thisChunkGenerator.connectedSpawners[thisChunkGenerator.connectedSpawners.Count - 1];
+                    Instantiate(water, new Vector3(transform.position.x - chunkSpawner.chunkXOffset, (-Game.waterLevel - 1) * chunkSpawner.chunkYOffset, transform.position.z), Quaternion.identity);
                 }
                 if (generatedConnectedSpawner != null)
                 {
@@ -240,6 +242,7 @@ public class ConnectedSpawner : MonoBehaviour
                 {
                     thisChunkGenerator.connectedSpawners.Add(Instantiate(connectedSpawner, new Vector3(transform.position.x + chunkSpawner.chunkXOffset, transform.position.y, transform.position.z), Quaternion.identity, transform.parent).GetComponent<ConnectedSpawner>());
                     generatedConnectedSpawner = thisChunkGenerator.connectedSpawners[thisChunkGenerator.connectedSpawners.Count - 1];
+                    Instantiate(water, new Vector3(transform.position.x + chunkSpawner.chunkXOffset, (-Game.waterLevel - 1) * chunkSpawner.chunkYOffset, transform.position.z), Quaternion.identity);
                 }
 
                 if (generatedConnectedSpawner != null)

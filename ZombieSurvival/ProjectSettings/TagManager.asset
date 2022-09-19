@@ -8,6 +8,7 @@ TagManager:
   - Apple
   - ChunkForward
   - PickUpAble
+  - Water
   layers:
   - Default
   - TransparentFX

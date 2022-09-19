@@ -10,6 +10,7 @@ public class Game : MonoBehaviour
     public static int maxChunksFromTrack = 5;
     public static int railFlatness = 5;
     public static int numberOfChunksToSpawn = 10;
+    public static int waterLevel = 2;
 
     public static int chunkPropMultiplier = 1;
     public static float chunkPropDensity = 1;
@@ -66,6 +67,11 @@ public class Game : MonoBehaviour
     public void SetChunkDensityMultiplier(float value)
     {
         chunkPropDensity = value;
+    }
+
+    public void SetWaterLevel(float value)
+    {
+        waterLevel = (int)value - 1;
     }
 
     public void StartLoading()

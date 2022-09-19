@@ -69,6 +69,7 @@ MonoBehaviour:
   - {fileID: 8163274071443914810, guid: 129c48388484a8e469fc9b79d7cff129, type: 3}
   invisibleWall: {fileID: 8817726284614061520, guid: 730d2a66d6db786439090c9eccf76ea4,
     type: 3}
+  water: {fileID: 1645691696024510, guid: bbf1ae7dc3b764534ba7bd04f1d903c7, type: 3}
   generatedTerrain: {fileID: 0}
   prevXSpawner: {fileID: 0}
   prevZSpawner: {fileID: 0}
