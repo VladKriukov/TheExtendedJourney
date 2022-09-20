@@ -26,34 +26,42 @@ public class ChunkSpawner : MonoBehaviour
         chunkOfInterest = chunkGenerators[0];
     }
 
-    public void GenerateNextChunk(int nextChunkAltitude, Transform chunkToMove = null)
+    public void GenerateNextChunk(Transform chunkToMove = null)
     {
         if (chunkGenerators.Count >= numberOfChunksToSpawn) // if the chunks are being moved from behind
         {
             if (chunkToMove != null)
             {
-                MoveChunk(chunkToMove, nextChunkAltitude);
+                Debug.Log("Attempting to move chunk from behind");
+                SpawnChunk(chunkToMove);
+                MoveChunk();
             }
             else
             {
                 Debug.Log("Stopped Spawning");
+                CancelInvoke();
             }
         }
         else
         {
             chunkGenerators.Add(Instantiate(chunk, transform).GetComponent<ChunkGenerator>());
-            MoveChunk(chunkGenerators[chunkGenerators.Count-1].transform, nextChunkAltitude);
+            SpawnChunk(chunkGenerators[chunkGenerators.Count-1].transform);
         }
     }
 
-    void MoveChunk(Transform chunkToMove, int nextChunkAltitude)
+    void SpawnChunk(Transform chunkToMove)
     {
         chunkOfInterest = chunkToMove.GetComponent<ChunkGenerator>();
 
-        Invoke(nameof(Spawn), 0.5f);
-
         chunkDistanceCounter++;
         chunkOfInterest.chunkIndex = chunkDistanceCounter;
+    }
+
+    void MoveChunk()
+    {
+        chunkOfInterest.transform.parent.GetComponent<ChunkSpawner>().chunkAltitude = chunkAltitude; // TODO IT IS SPAWNING AT THE SAME ALTITUDE WHEN CONTINUING
+
+        chunkOfInterest.SpawnChunk();
     }
 
     public void SpawnedRails()
@@ -130,14 +138,6 @@ public class ChunkSpawner : MonoBehaviour
         }
         
         chunkOfInterest.transform.position = new Vector3(0, chunkAltitude * chunkYOffset, chunkZOffset * chunkDistanceCounter);
-    }
-
-    void Spawn()
-    {
-        if (chunkGenerators.Count >= numberOfChunksToSpawn)
-        {
-            chunkOfInterest.SpawnChunk();
-        }
     }
 
     public ChunkGenerator GetChunk(int number)

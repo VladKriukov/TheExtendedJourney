@@ -27,7 +27,7 @@ public class ChunkGenerator : MonoBehaviour
     {
         if (other.CompareTag("ChunkForward"))
         {
-            chunkSpawner.GenerateNextChunk(chunkSpawner.GetChunk(chunkIndex).GetComponent<RailSpawner>().nextChunkAltitudeChange, transform);
+            chunkSpawner.GenerateNextChunk(transform);
         }
     }
 }

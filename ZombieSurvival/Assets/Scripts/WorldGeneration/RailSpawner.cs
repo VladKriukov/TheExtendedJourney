@@ -61,7 +61,8 @@ public class RailSpawner : MonoBehaviour
         finishedChunkCount++;
         if (finishedChunkCount == 2)
         {
-            chunkSpawner.GenerateNextChunk(nextChunkAltitudeChange);
+            Debug.Log("Next chunk");
+            chunkSpawner.GenerateNextChunk();
             finishedChunkCount = 0;
         }
     }
@@ -85,7 +86,7 @@ public class RailSpawner : MonoBehaviour
             {
                 startingSlopeType = StartingSlopeType.Down;
 
-                if (previousAltitude > Game.minAltitudeSteps)
+                if (previousAltitude > (Game.minAltitudeSteps + Game.waterLevel - 1))
                 {
                     rand = Random.Range(1, 3);
                     startingSlopeType = (StartingSlopeType)rand;
