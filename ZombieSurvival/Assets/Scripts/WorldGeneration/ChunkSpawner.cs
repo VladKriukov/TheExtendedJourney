@@ -41,7 +41,7 @@ public class ChunkSpawner : MonoBehaviour
             {
                 Debug.Log("Stopped Spawning");
                 CancelInvoke();
-                GetComponent<NavMeshSurface>().BuildNavMesh();
+                //GetComponent<NavMeshSurface>().BuildNavMesh();
             }
         }
         else
