@@ -1,4 +1,5 @@
 using UnityEngine;
+using Unity.AI.Navigation;
 
 public class RailSpawner : MonoBehaviour
 {
@@ -121,6 +122,7 @@ public class RailSpawner : MonoBehaviour
             default:
                 break;
         }
+        transform.GetChild(1).GetComponent<NavMeshSurface>().BuildNavMesh();
         chunkSpawner.SpawnedRails();
     }
 

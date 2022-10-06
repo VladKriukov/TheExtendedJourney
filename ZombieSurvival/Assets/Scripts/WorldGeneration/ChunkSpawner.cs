@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 
 public class ChunkSpawner : MonoBehaviour
 {
@@ -40,6 +41,7 @@ public class ChunkSpawner : MonoBehaviour
             {
                 Debug.Log("Stopped Spawning");
                 CancelInvoke();
+                GetComponent<NavMeshSurface>().BuildNavMesh();
             }
         }
         else
@@ -59,7 +61,7 @@ public class ChunkSpawner : MonoBehaviour
 
     void MoveChunk()
     {
-        chunkOfInterest.transform.parent.GetComponent<ChunkSpawner>().chunkAltitude = chunkAltitude; // TODO IT IS SPAWNING AT THE SAME ALTITUDE WHEN CONTINUING
+        chunkOfInterest.transform.parent.GetComponent<ChunkSpawner>().chunkAltitude = chunkAltitude;
 
         chunkOfInterest.SpawnChunk();
     }
@@ -70,7 +72,7 @@ public class ChunkSpawner : MonoBehaviour
 
         if (chunkGenerators.Count > 1)
         {
-            RailSpawner previousRailSpawner = chunkGenerators[chunkGenerators.Count - 2].GetComponent<RailSpawner>();
+            RailSpawner previousRailSpawner = GetChunk(chunkOfInterest.chunkIndex - 1).GetComponent<RailSpawner>();
 
             // this used to be in the rail spawner but it works here because of the order of execution
             switch (railSpawner.startingSlopeType)

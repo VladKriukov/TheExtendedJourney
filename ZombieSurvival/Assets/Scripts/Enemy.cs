@@ -58,14 +58,14 @@ public class Enemy : MonoBehaviour
         if (distanceToTarget <= viewRange)
         {
             agent.SetDestination(aiTarget.position);
-            GetComponent<Animator>().SetTrigger("Move");
-            GetComponent<Animator>().SetBool("Attack", false);
+            //GetComponent<Animator>().SetTrigger("Move");
+            //GetComponent<Animator>().SetBool("Attack", false);
         }
     }
 
     private void AttackAITarget()
     {
-        GetComponent<Animator>().SetBool("Attack", true);
+        //GetComponent<Animator>().SetBool("Attack", true);
     }
 
     private void OnDrawGizmosSelected()
@@ -77,6 +77,6 @@ public class Enemy : MonoBehaviour
     public void DamageThePlayer()
     {
         if (aiTarget == null) return;
-        aiTarget.GetComponent<PlayerHealth>().Damage(attackDamage);
+        //aiTarget.GetComponent<PlayerHealth>().Damage(attackDamage);
     }
 }

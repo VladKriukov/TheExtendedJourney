@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 
 public class ConnectedSpawner : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class ConnectedSpawner : MonoBehaviour
     [SerializeField] GameObject water;
     [SerializeField] GameObject edgeOfWorld;
     [SerializeField] GameObject edgeOfWorldRight;
+
+    private GameObject spawnedWater;
 
     [HideInInspector] public PossibleChunks generatedTerrain; // the terrain that was selected to generate for this spawner
 
@@ -62,8 +65,19 @@ public class ConnectedSpawner : MonoBehaviour
         possibleSelectedTerrainIndexes.Clear();
         prevXSpawner = null;
         prevZSpawner = null;
-        generatedConnectedSpawner = null;
-        nextSpawnerExists = false;
+        HideAllTerrains();
+        //generatedTerrain = null;
+        //generatedConnectedSpawner = null;
+        //nextSpawnerExists = false;
+
+        if (spawningDirection == false)
+        {
+            gameObject.name = "Left_" + currentChunkFromTrack;
+        }
+        else
+        {
+            gameObject.name = "Right_" + currentChunkFromTrack;
+        }
 
         if (firstTimeSpawning)
         {
@@ -82,7 +96,6 @@ public class ConnectedSpawner : MonoBehaviour
                 prevZSpawner = backwardsChunk;
                 break;
             }
-            
         }
         
         switch (slopeType)
@@ -209,6 +222,7 @@ public class ConnectedSpawner : MonoBehaviour
         }
 
         generatedTerrain.gameObject.SetActive(true);
+        generatedTerrain.GetComponent<NavMeshSurface>().BuildNavMesh();
 
         // check if there is a need to spawn another connected spawner
         if (GetThisChunkSpawner(currentChunkFromTrack + 1) != null)
@@ -230,7 +244,11 @@ public class ConnectedSpawner : MonoBehaviour
                 {
                     thisChunkGenerator.connectedSpawners.Add(Instantiate(connectedSpawner, new Vector3(transform.position.x - chunkSpawner.chunkXOffset, transform.position.y, transform.position.z), Quaternion.identity, transform.parent).GetComponent<ConnectedSpawner>());
                     generatedConnectedSpawner = thisChunkGenerator.connectedSpawners[thisChunkGenerator.connectedSpawners.Count - 1];
-                    Instantiate(water, new Vector3(transform.position.x - chunkSpawner.chunkXOffset, (Game.minAltitudeSteps + Game.waterLevel - 1) * chunkSpawner.chunkYOffset, transform.position.z), Quaternion.identity);
+                    spawnedWater = Instantiate(water, new Vector3(transform.position.x - chunkSpawner.chunkXOffset, (Game.minAltitudeSteps + Game.waterLevel - 1) * chunkSpawner.chunkYOffset, transform.position.z), Quaternion.identity).gameObject;
+                }
+                else
+                {
+                    spawnedWater.transform.position = new Vector3(transform.position.x - chunkSpawner.chunkXOffset, (Game.minAltitudeSteps + Game.waterLevel - 1) * chunkSpawner.chunkYOffset, transform.parent.position.z);
                 }
                 if (generatedConnectedSpawner != null)
                 {
@@ -243,9 +261,12 @@ public class ConnectedSpawner : MonoBehaviour
                 {
                     thisChunkGenerator.connectedSpawners.Add(Instantiate(connectedSpawner, new Vector3(transform.position.x + chunkSpawner.chunkXOffset, transform.position.y, transform.position.z), Quaternion.identity, transform.parent).GetComponent<ConnectedSpawner>());
                     generatedConnectedSpawner = thisChunkGenerator.connectedSpawners[thisChunkGenerator.connectedSpawners.Count - 1];
-                    Instantiate(water, new Vector3(transform.position.x + chunkSpawner.chunkXOffset, (Game.minAltitudeSteps - -Game.waterLevel - 1) * chunkSpawner.chunkYOffset, transform.position.z), Quaternion.identity);
+                    spawnedWater = Instantiate(water, new Vector3(transform.position.x + chunkSpawner.chunkXOffset, (Game.minAltitudeSteps - -Game.waterLevel - 1) * chunkSpawner.chunkYOffset, transform.position.z), Quaternion.identity).gameObject;
                 }
-
+                else
+                {
+                    spawnedWater.transform.position = new Vector3(transform.position.x + chunkSpawner.chunkXOffset, (Game.minAltitudeSteps + Game.waterLevel - 1) * chunkSpawner.chunkYOffset, transform.parent.position.z);
+                }
                 if (generatedConnectedSpawner != null)
                 {
                     //Debug.Log("required steps length: " + generatedTerrain.requiredRightAltitudeSteps.Length + ", possible indexes length: " + possibleSelectedTerrainIndexes.Count + ", rand: " + rand + ", randth index: " + possibleSelectedTerrainIndexes[rand] + ", generated terrain: " + generatedTerrain.name + ", possibleXItems length: " + possibleXItems.Count);
@@ -263,6 +284,7 @@ public class ConnectedSpawner : MonoBehaviour
             {
                 Instantiate(edgeOfWorldRight, new Vector3(transform.position.x + chunkSpawner.chunkXOffset, (Game.minAltitudeSteps - -Game.waterLevel - 1) * chunkSpawner.chunkYOffset, transform.position.z), Quaternion.identity);
             }
+            //GetComponent<NavMeshSurface>().BuildNavMesh();
             Invoke(nameof(GenerateNextBigChunk), nextChunkSpawnDelay);
         }
     }
@@ -356,10 +378,7 @@ public class ConnectedSpawner : MonoBehaviour
 
     void SelectItem()
     {
-        foreach (Transform item in transform)
-        {
-            item.gameObject.SetActive(false);
-        }
+        HideAllTerrains();
 
         if (possibleChunksToSpawn.Count == 0) // if there are still no possible combinations from both sides
         {
@@ -521,6 +540,14 @@ public class ConnectedSpawner : MonoBehaviour
         }
         rand = Random.Range(0, possibleChunksToSpawn.Count);
         //Debug.LogError("There is a missing terrain here - need to create a new fit");
+    }
+
+    void HideAllTerrains()
+    {
+        foreach (Transform item in transform)
+        {
+            item.gameObject.SetActive(false);
+        }
     }
 
     void PoolTerrains()
