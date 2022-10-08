@@ -15,10 +15,10 @@ public class ConnectedSpawner : MonoBehaviour
 
     private GameObject spawnedWater;
 
-    [HideInInspector] public PossibleChunks generatedTerrain; // the terrain that was selected to generate for this spawner
+    private PossibleChunks generatedTerrain; // the terrain that was selected to generate for this spawner
 
-    [HideInInspector] public ConnectedSpawner prevXSpawner;
-    [HideInInspector] public ConnectedSpawner prevZSpawner;
+    private ConnectedSpawner prevXSpawner;
+    private ConnectedSpawner prevZSpawner;
 
     [HideInInspector] public int currentAltitude;
     [HideInInspector] public int currentChunkFromTrack;
@@ -59,8 +59,10 @@ public class ConnectedSpawner : MonoBehaviour
         currentChunkFromTrack = _currentChunkFromTrack;
         spawningDirection = rightDirection;
 
+        foundItem = false;
         possibleXItems.Clear();
         possibleZItems.Clear();
+        possibleXSlopes.Clear();
         possibleChunksToSpawn.Clear();
         possibleSelectedTerrainIndexes.Clear();
         prevXSpawner = null;
@@ -104,54 +106,65 @@ public class ConnectedSpawner : MonoBehaviour
                 if (spawningDirection == false)
                 {
                     SetFirstGeneratedTerrain(leftStraightItems);
-                    transform.position = new Vector3(transform.position.x, transform.position.y + generatedTerrain.leftStartingStep * chunkSpawner.chunkYOffset, transform.position.z);
+                    transform.position = new Vector3(transform.position.x, chunkSpawner.chunkAltitude * chunkSpawner.chunkYOffset + generatedTerrain.leftStartingStep * chunkSpawner.chunkYOffset, transform.position.z);
                 }
                 else
                 {
                     SetFirstGeneratedTerrain(rightStraightItems);
-                    transform.position = new Vector3(transform.position.x, transform.position.y + generatedTerrain.rightStartingStep * chunkSpawner.chunkYOffset, transform.position.z);
+                    transform.position = new Vector3(transform.position.x, chunkSpawner.chunkAltitude * chunkSpawner.chunkYOffset + generatedTerrain.rightStartingStep * chunkSpawner.chunkYOffset, transform.position.z);
                 }
                 break;
             case RailSpawner.StartingSlopeType.Up:
                 if (spawningDirection == false)
                 {
                     SetFirstGeneratedTerrain(leftUpItems);
-                    transform.position = new Vector3(transform.position.x, transform.position.y + generatedTerrain.leftStartingStep * chunkSpawner.chunkYOffset, transform.position.z);
+                    transform.position = new Vector3(transform.position.x, chunkSpawner.chunkAltitude * chunkSpawner.chunkYOffset + generatedTerrain.leftStartingStep * chunkSpawner.chunkYOffset, transform.position.z);
                 }
                 else
                 {
                     SetFirstGeneratedTerrain(rightUpItems);
-                    transform.position = new Vector3(transform.position.x, transform.position.y + generatedTerrain.rightStartingStep * chunkSpawner.chunkYOffset, transform.position.z);
+                    transform.position = new Vector3(transform.position.x, chunkSpawner.chunkAltitude * chunkSpawner.chunkYOffset + generatedTerrain.rightStartingStep * chunkSpawner.chunkYOffset, transform.position.z);
                 }
                 break;
             case RailSpawner.StartingSlopeType.Down:
                 if (spawningDirection == false)
                 {
                     SetFirstGeneratedTerrain(leftDownItems);
-                    transform.position = new Vector3(transform.position.x, transform.position.y + generatedTerrain.leftStartingStep * chunkSpawner.chunkYOffset, transform.position.z);
+                    transform.position = new Vector3(transform.position.x, chunkSpawner.chunkAltitude * chunkSpawner.chunkYOffset + generatedTerrain.leftStartingStep * chunkSpawner.chunkYOffset, transform.position.z);
                 }
                 else
                 {
                     SetFirstGeneratedTerrain(rightDownItems);
-                    transform.position = new Vector3(transform.position.x, transform.position.y + generatedTerrain.rightStartingStep * chunkSpawner.chunkYOffset, transform.position.z);
+                    transform.position = new Vector3(transform.position.x, chunkSpawner.chunkAltitude * chunkSpawner.chunkYOffset + generatedTerrain.rightStartingStep * chunkSpawner.chunkYOffset, transform.position.z);
                 }
                 break;
             case RailSpawner.StartingSlopeType.NA:
                 // get the previous X chunk since this is not the first chunk to spawn from the rails
                 prevXSpawner = GetThisChunkSpawner(currentChunkFromTrack - 1);
 
+                transform.position = new Vector3(transform.position.x, prevXSpawner.transform.position.y, transform.position.z);
+                possibleXItems.Clear();
                 if (spawningDirection == true)
                 {
                     switch (prevXSpawner.generatedTerrain.leftSlopeMatch)
                     {
                         case PossibleChunks.LeftStartingSlopeType.Straight:
-                            possibleXItems = rightStraightItems;
+                            foreach (var item in rightStraightItems)
+                            {
+                                possibleXItems.Add(item);
+                            }
                             break;
                         case PossibleChunks.LeftStartingSlopeType.Up:
-                            possibleXItems = rightUpItems;
+                            foreach (var item in rightUpItems)
+                            {
+                                possibleXItems.Add(item);
+                            }
                             break;
                         case PossibleChunks.LeftStartingSlopeType.Down:
-                            possibleXItems = rightDownItems;
+                            foreach (var item in rightDownItems)
+                            {
+                                possibleXItems.Add(item);
+                            }
                             break;
                         case PossibleChunks.LeftStartingSlopeType.NA:
                             break;
@@ -164,13 +177,22 @@ public class ConnectedSpawner : MonoBehaviour
                     switch (prevXSpawner.generatedTerrain.rightSlopeMatch)
                     {
                         case PossibleChunks.RightStartingSlopeType.Straight:
-                            possibleXItems = leftStraightItems;
+                            foreach (var item in leftStraightItems)
+                            {
+                                possibleXItems.Add(item);
+                            }
                             break;
                         case PossibleChunks.RightStartingSlopeType.Up:
-                            possibleXItems = leftUpItems;
+                            foreach (var item in leftUpItems)
+                            {
+                                possibleXItems.Add(item);
+                            }
                             break;
                         case PossibleChunks.RightStartingSlopeType.Down:
-                            possibleXItems = leftDownItems;
+                            foreach (var item in leftDownItems)
+                            {
+                                possibleXItems.Add(item);
+                            }
                             break;
                         case PossibleChunks.RightStartingSlopeType.NA:
                             break;
@@ -291,6 +313,7 @@ public class ConnectedSpawner : MonoBehaviour
 
     void CollectAndComparePossibleTerrainsToSpawn()
     {
+        possibleChunksToSpawn.Clear();
         // collect all the possible combinations in the vertical direction
         foreach (var item in prevZSpawner.generatedTerrain.forewardItems)
         {
@@ -318,9 +341,13 @@ public class ConnectedSpawner : MonoBehaviour
 
     void SetFirstGeneratedTerrain(List<GameObject> slopeItems)
     {
+        possibleXItems.Clear();
         if (prevZSpawner != null)
         {
-            possibleXItems = slopeItems;
+            foreach (var item in slopeItems)
+            {
+                possibleXItems.Add(item);
+            }
             CollectAndComparePossibleTerrainsToSpawn();
             rand = Random.Range(0, possibleChunksToSpawn.Count);
             SelectItem();
@@ -444,12 +471,12 @@ public class ConnectedSpawner : MonoBehaviour
         // a technically more accurate temporary solution for this would be to separate the chunk slope types into even further slope types being stronger up or down slopes (those that change height by 2 chunk height units rather than 1, aka y 12 rather than y 6 which is the normal height change). Here we are generalising both the simple 1 height unit and 2 height units as just up or down slopings
 
         if (prevZSpawner == null) return;
-
+        possibleXSlopes.Clear();
         if (prevZSpawner.transform.position.y > transform.position.y)
         {
             // force spawn a chunk going up
             Debug.LogWarning("The current chunk is getting out of hand, need to go upwards");
-
+            
             if (spawningDirection == true)
             {
                 foreach (Transform item in transform)
@@ -478,7 +505,6 @@ public class ConnectedSpawner : MonoBehaviour
             }
             if (possibleXSlopes.Count > 0)
             {
-                possibleChunksToSpawn.Clear();
                 possibleXItemsBeforeChange = possibleXItems;
                 possibleXItems = possibleXSlopes;
                 SelectXItems();
@@ -517,7 +543,6 @@ public class ConnectedSpawner : MonoBehaviour
             }
             if (possibleXSlopes.Count > 0)
             {
-                possibleChunksToSpawn.Clear();
                 possibleXItemsBeforeChange = possibleXItems;
                 possibleXItems = possibleXSlopes;
                 SelectXItems();
@@ -532,6 +557,7 @@ public class ConnectedSpawner : MonoBehaviour
 
     void SelectXItems()
     {
+        possibleChunksToSpawn.Clear();
         possibleSelectedTerrainIndexes.Clear();
         for (int i = 0; i < possibleXItems.Count; i++)
         {
