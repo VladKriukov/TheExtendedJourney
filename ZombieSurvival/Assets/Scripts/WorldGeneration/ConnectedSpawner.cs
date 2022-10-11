@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using Unity.AI.Navigation;
 
 public class ConnectedSpawner : MonoBehaviour
 {
@@ -244,7 +243,6 @@ public class ConnectedSpawner : MonoBehaviour
         }
 
         generatedTerrain.gameObject.SetActive(true);
-        generatedTerrain.GetComponent<NavMeshSurface>().BuildNavMesh();
 
         // check if there is a need to spawn another connected spawner
         if (GetThisChunkSpawner(currentChunkFromTrack + 1) != null)
@@ -306,7 +304,6 @@ public class ConnectedSpawner : MonoBehaviour
             {
                 Instantiate(edgeOfWorldRight, new Vector3(transform.position.x + chunkSpawner.chunkXOffset, (Game.minAltitudeSteps - -Game.waterLevel - 1) * chunkSpawner.chunkYOffset, transform.position.z), Quaternion.identity);
             }
-            //GetComponent<NavMeshSurface>().BuildNavMesh();
             Invoke(nameof(GenerateNextBigChunk), nextChunkSpawnDelay);
         }
     }

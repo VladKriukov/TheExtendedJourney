@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using Unity.AI.Navigation;
 
 public class ChunkSpawner : MonoBehaviour
 {
@@ -41,7 +40,6 @@ public class ChunkSpawner : MonoBehaviour
             {
                 Debug.Log("Stopped Spawning");
                 CancelInvoke();
-                //GetComponent<NavMeshSurface>().BuildNavMesh();
             }
         }
         else
