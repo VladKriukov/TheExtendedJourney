@@ -138,7 +138,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayTime: 2
   lerpTime: 5
-  targetHealth: 0
 --- !u!1 &7693951920609816744
 GameObject:
   m_ObjectHideFlags: 0
