@@ -17,6 +17,7 @@ public class ChunkSpawner : MonoBehaviour
 
     int chunkDistanceCounter;
     ChunkGenerator chunkOfInterest;
+    GameObject water;
 
     private void Awake()
     {
@@ -24,6 +25,8 @@ public class ChunkSpawner : MonoBehaviour
         Game.totalProgressParts = numberOfChunksToSpawn * Game.maxChunksFromTrack * 2;
         chunkGenerators.Add(Instantiate(chunk, transform).GetComponent<ChunkGenerator>());
         chunkOfInterest = chunkGenerators[0];
+        water = transform.parent.GetChild(1).gameObject;
+        water.transform.position = new Vector3(0, (Game.minAltitudeSteps + Game.waterLevel - 1) * chunkYOffset, transform.position.z);
     }
 
     public void GenerateNextChunk(Transform chunkToMove = null)
@@ -62,6 +65,7 @@ public class ChunkSpawner : MonoBehaviour
         chunkOfInterest.transform.parent.GetComponent<ChunkSpawner>().chunkAltitude = chunkAltitude;
 
         chunkOfInterest.SpawnChunk();
+        water.transform.position += new Vector3(0, 0, 30);
     }
 
     public void SpawnedRails()
