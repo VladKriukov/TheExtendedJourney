@@ -36,4 +36,20 @@ public class Train : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("PlayerTrigger") && Vector3.Distance(transform.position, other.transform.position) < 100)
+        {
+            rb.isKinematic = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("PlayerTrigger") && Vector3.Distance(transform.position, other.transform.position) > 100)
+        {
+            rb.isKinematic = true;
+        }
+    }
 }

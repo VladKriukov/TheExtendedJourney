@@ -122,6 +122,10 @@ public class CameraInterractor : MonoBehaviour
                 {
                     hit.collider.GetComponent<Seat>().Sit(transform.parent.parent.gameObject);
                 }
+                if (hit.collider.GetComponent<Interactable>() != null)
+                {
+                    hit.collider.GetComponent<Interactable>().Interract();
+                }
             }
             if (Input.GetMouseButtonDown(0)) // left click
             {

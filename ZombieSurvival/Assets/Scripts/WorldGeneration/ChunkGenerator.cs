@@ -8,6 +8,9 @@ public class ChunkGenerator : MonoBehaviour
 
     [HideInInspector] public int chunkIndex;
 
+    public delegate void MovingFromBehind();
+    public static MovingFromBehind OnMovingFromBehind;
+
     ChunkSpawner chunkSpawner;
 
     private void Start()
@@ -27,6 +30,7 @@ public class ChunkGenerator : MonoBehaviour
     {
         if (other.CompareTag("ChunkForward"))
         {
+            OnMovingFromBehind?.Invoke();
             chunkSpawner.GenerateNextChunk(transform);
         }
     }

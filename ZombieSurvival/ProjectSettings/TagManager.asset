@@ -9,6 +9,9 @@ TagManager:
   - ChunkForward
   - PickUpAble
   - Water
+  - Interractable
+  - ChunkBackward
+  - PlayerTrigger
   layers:
   - Default
   - TransparentFX

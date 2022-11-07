@@ -1,5 +1,5 @@
 public interface Interactable
 {
     public void Interract();
-    public void SecondaryInterraction();
+    //public void SecondaryInterraction();
 }
