@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class ChunkSpawner : MonoBehaviour
 {
@@ -12,8 +13,12 @@ public class ChunkSpawner : MonoBehaviour
     [SerializeField] GameObject startingPlatform;
 
     [HideInInspector] public int chunkAltitude;
+    
+    public List<SavedChunk> savedChunks = new List<SavedChunk>();
+    public SavedChunk currentChunk;
 
     List<ChunkGenerator> chunkGenerators = new List<ChunkGenerator>();
+    
 
     int chunkDistanceCounter;
     ChunkGenerator chunkOfInterest;
@@ -27,6 +32,9 @@ public class ChunkSpawner : MonoBehaviour
         chunkOfInterest = chunkGenerators[0];
         water = transform.parent.GetChild(1).gameObject;
         water.transform.position = new Vector3(0, (Game.minAltitudeSteps + Game.waterLevel - 1) * chunkYOffset, transform.position.z);
+        currentChunk.chunkGenerator = chunkOfInterest;
+        savedChunks.Add(currentChunk);
+        //savedChunks[0] = currentChunk; // used to save the chunk data
     }
 
     public void GenerateNextChunk(Transform chunkToMove = null)
@@ -155,4 +163,14 @@ public class ChunkSpawner : MonoBehaviour
         }
         return null;
     }
+}
+
+[Serializable]
+public struct SavedChunk
+{
+    public RailSpawner.StartingSlopeType railSlope;
+    public float chunkHeight;
+    public ChunkGenerator chunkGenerator;
+    public List<ConnectedSpawner> leftConnectedSpawners;
+    public List<ConnectedSpawner> rightConnectedSpawners;
 }

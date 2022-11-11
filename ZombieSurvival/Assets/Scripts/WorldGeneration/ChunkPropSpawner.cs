@@ -5,6 +5,7 @@ using System.Collections;
 public class ChunkPropSpawner : MonoBehaviour
 {
     [SerializeField] List<GameObject> itemVariants = new List<GameObject>();
+    //[SerializeField] List<GameObject> seasonalChristmasItems = new List<GameObject>();
     [SerializeField] int minAmount;
     [SerializeField] int maxAmount;
     [Tooltip("False = 100% chance of spawning")][SerializeField] bool randomiseSpawningChance;
@@ -14,6 +15,8 @@ public class ChunkPropSpawner : MonoBehaviour
     [SerializeField] LayerMask layerMask;
 
     List<GameObject> spawnedItems = new List<GameObject>();
+
+    // seasonal enum
 
     GameObject item;
     RaycastHit hit;
@@ -25,7 +28,6 @@ public class ChunkPropSpawner : MonoBehaviour
         maxAmount = Mathf.Clamp(maxAmount * Game.chunkPropMultiplier, 0, 25);
         spawningChance *= 1 / Game.chunkPropDensity;
         PoolItems();
-        
     }
 
     void PoolItems()

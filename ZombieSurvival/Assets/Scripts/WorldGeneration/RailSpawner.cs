@@ -2,17 +2,20 @@ using UnityEngine;
 
 public class RailSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject connectedSpawner;
+    [SerializeField] private GameObject connectedSpawner;
+
     [Tooltip("The chance of 1 in x that this rail will be a slope. The bigger the number, the lower the chance")]
-    [SerializeField] int slopeChance = 5;
-    [SerializeField] GameObject railStraight;
-    [SerializeField] GameObject railSlope;
+    [SerializeField] private int slopeChance = 5;
+
+    [SerializeField] private GameObject railStraight;
+    [SerializeField] private GameObject railSlope;
 
     [HideInInspector]
     public enum StartingSlopeType
     {
         Straight, Up, Down, NA
     }
+
     [HideInInspector] public StartingSlopeType startingSlopeType;
 
     [HideInInspector] public int nextChunkAltitudeChange;
@@ -23,7 +26,7 @@ public class RailSpawner : MonoBehaviour
     private ChunkSpawner chunkSpawner;
     private int finishedChunkCount;
 
-    GameObject instantiatedSpawner;
+    private GameObject instantiatedSpawner;
 
     private void Awake()
     {
@@ -50,7 +53,7 @@ public class RailSpawner : MonoBehaviour
         return;
     }
 
-    void SpawnSpawners()
+    private void SpawnSpawners()
     {
         thisChunkGenerator.connectedSpawners[0].GenerateTerrain(chunkSpawner.chunkAltitude, 1, true, startingSlopeType);
         thisChunkGenerator.connectedSpawners[1].GenerateTerrain(chunkSpawner.chunkAltitude, 1, false, startingSlopeType);
@@ -67,7 +70,7 @@ public class RailSpawner : MonoBehaviour
         }
     }
 
-    void GenerateRails(int previousAltitude)
+    private void GenerateRails(int previousAltitude)
     {
         if (firstTimeSpawning) PoolRails();
 
@@ -85,21 +88,17 @@ public class RailSpawner : MonoBehaviour
             else
             {
                 startingSlopeType = StartingSlopeType.Down;
-
-                if (previousAltitude > (Game.minAltitudeSteps + Game.waterLevel - 1))
-                {
-                    rand = Random.Range(1, 3);
-                    startingSlopeType = (StartingSlopeType)rand;
-                }
-                else
-                {
-                    startingSlopeType = StartingSlopeType.Up;
-                }
             }
         }
         else
         {
             startingSlopeType = StartingSlopeType.Straight;
+        }
+
+        if (previousAltitude < (Game.minAltitudeSteps + Game.waterLevel))
+        {
+            Debug.Log("prev altitude: " + previousAltitude + ", min altitude steps: " + Game.minAltitudeSteps + ", water level: " + (Game.waterLevel) + ", min alt steps + water level = " + (Game.minAltitudeSteps + Game.waterLevel - 1));
+            startingSlopeType = StartingSlopeType.Up;
         }
 
         switch (startingSlopeType)
@@ -108,23 +107,26 @@ public class RailSpawner : MonoBehaviour
                 transform.GetChild(0).gameObject.SetActive(true);
                 nextChunkAltitudeChange = 0;
                 break;
+
             case StartingSlopeType.Up:
                 transform.GetChild(1).gameObject.SetActive(true);
                 transform.GetChild(1).eulerAngles = new Vector3(0, 180, 0);
                 nextChunkAltitudeChange = 1;
                 break;
+
             case StartingSlopeType.Down:
                 transform.GetChild(1).gameObject.SetActive(true);
                 transform.GetChild(1).eulerAngles = new Vector3(0, 0, 0);
                 nextChunkAltitudeChange = -1;
                 break;
+
             default:
                 break;
         }
         chunkSpawner.SpawnedRails();
     }
 
-    void PoolRails()
+    private void PoolRails()
     {
         Instantiate(railStraight, transform).SetActive(false);
         Instantiate(railSlope, transform).SetActive(false);

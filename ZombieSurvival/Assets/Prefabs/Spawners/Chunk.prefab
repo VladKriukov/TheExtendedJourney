@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06973a40b6f49c94fb84961b03a57952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnDownwards: 1
   connectedSpawner: {fileID: 4334786835559783382, guid: 6264c10aaa4a268449feefc0fb32ec2c,
     type: 3}
   slopeChance: 5
