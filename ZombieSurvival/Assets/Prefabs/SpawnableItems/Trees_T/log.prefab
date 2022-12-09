@@ -140,6 +140,9 @@ MonoBehaviour:
   picupRotationOffset: {x: 0, y: 0, z: 0, w: 0}
   holdingRayOffset: -0.3
   spawningOffset: {x: 0, y: 0, z: 0}
+  craftingItem: 1
+  itemType: 2
+  itemIcon: {fileID: 0}
 --- !u!114 &-7694518987567802286
 MonoBehaviour:
   m_ObjectHideFlags: 0

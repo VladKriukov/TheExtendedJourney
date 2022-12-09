@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemProperties : MonoBehaviour
 {
@@ -21,6 +22,15 @@ public class ItemProperties : MonoBehaviour
 
     [Header("SpawningOffset")]
     public Vector3 spawningOffset;
+
+    [Header("Crafting")]
+    public bool craftingItem;
+    public enum ItemType
+    {
+        NA, Stick, Log, Stone
+    }
+    public ItemType itemType;
+    public Image itemIcon;
 
     private void Awake()
     {

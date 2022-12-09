@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-    [CreateAssetMenu]
+    //[CreateAssetMenu(fileName = "RampAsset", menuName = "Ramps/RampAsset", order = 2)]
     public class RampAsset : ScriptableObject
     {
         public Gradient gradient = new Gradient();

@@ -91,6 +91,10 @@ public class CameraInterractor : MonoBehaviour
                     pickUpObject = hit.collider.gameObject;
                     if (pickUpObject.transform.parent != null)
                     {
+                        if (pickUpObject.transform.parent.GetComponent<CraftingTable>() != null)
+                        {
+                            pickUpObject.transform.parent.GetComponent<CraftingTable>().RemoveItem(pickUpObject);
+                        }
                         if (pickUpObject.transform.parent.GetComponent<PhysicsStopper>() != null)
                         {
                             pickUpObject.transform.parent.GetComponent<PhysicsStopper>().RemoveItem(pickUpObject);

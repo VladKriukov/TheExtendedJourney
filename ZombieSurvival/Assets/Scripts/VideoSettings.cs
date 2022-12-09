@@ -27,7 +27,7 @@ public class VideoSettings : MonoBehaviour
             if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
             {
                 currentResolutionIndex = resolutions.Length - i - 1;
-                Debug.Log(currentResolutionIndex);
+                //Debug.Log(currentResolutionIndex);
             }
         }
         resolutionDropdown.AddOptions(resolutionOptions);

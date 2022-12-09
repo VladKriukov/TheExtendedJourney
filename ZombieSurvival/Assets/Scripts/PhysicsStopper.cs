@@ -45,9 +45,9 @@ public class PhysicsStopper : MonoBehaviour
 
             if (item != null)
             {
+                waitingItems.Remove(item);
                 if (item.transform.parent == null)
                 {
-                    waitingItems.Remove(item);
                     Destroy(item.GetComponent<Rigidbody>());
                     //item.GetComponent<Rigidbody>().drag = 9999;
                     //item.GetComponent<Rigidbody>().angularDrag = 9999;
