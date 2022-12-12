@@ -8,9 +8,7 @@ public class ConnectedSpawner : MonoBehaviour
     [SerializeField] float nextChunkSpawnDelay = 2f;
 
     public List<GameObject> spawningTerrains = new List<GameObject>(); // GameObjects to instantiate
-    [SerializeField] GameObject water;
     [SerializeField] GameObject edgeOfWorld;
-    [SerializeField] GameObject edgeOfWorldRight;
 
     private GameObject spawnedWater;
 
@@ -296,13 +294,9 @@ public class ConnectedSpawner : MonoBehaviour
         }
         else
         {
-            if (spawningDirection == false)
+            if (transform.position.y > (Game.minAltitudeSteps + Game.waterLevel - 1) * 6)
             {
-                //Instantiate(edgeOfWorld, new Vector3(transform.position.x - chunkSpawner.chunkXOffset, (Game.minAltitudeSteps - -Game.waterLevel - 1) * chunkSpawner.chunkYOffset, transform.position.z), Quaternion.identity);
-            }
-            else
-            {
-                //Instantiate(edgeOfWorldRight, new Vector3(transform.position.x + chunkSpawner.chunkXOffset, (Game.minAltitudeSteps - -Game.waterLevel - 1) * chunkSpawner.chunkYOffset, transform.position.z), Quaternion.identity);
+                Instantiate(edgeOfWorld, transform).transform.parent = null;
             }
             Invoke(nameof(GenerateNextBigChunk), nextChunkSpawnDelay);
         }
