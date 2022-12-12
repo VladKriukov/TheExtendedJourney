@@ -11439,7 +11439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643bc95efabec1b4c9a9cfd0facc8d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishingRod: {fileID: 0}
+  fishingRod: {fileID: 8918653064723968806}
   baiting: 0
 --- !u!1 &831092608
 GameObject:
@@ -34257,17 +34257,17 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   colorGradientTexture: {fileID: 0}
   shallowColor: {r: 0, g: 0.7725491, b: 0.62352943, a: 0.5019608}
-  deepColor: {r: 0.01176471, g: 0.2859733, b: 0.50980073, a: 1}
+  deepColor: {r: 0.01176471, g: 0.28597313, b: 0.50980073, a: 1}
   colorDepth: 1.06
-  horizonColor: {r: 0, g: 0.22714984, b: 0.8, a: 1}
+  horizonColor: {r: 0, g: 0.22714964, b: 0.8, a: 1}
   horizonDistance: 4.7
   shoreFade: 1
-  shoreColor: {r: 0, g: 0.98039216, b: 0.3016596, a: 0}
+  shoreColor: {r: 0, g: 0.98039216, b: 0.30165944, a: 0}
   shoreStrength: 0
   shoreBlend: 1
   shoreDepth: 0.77
   waveColor: {r: 0, g: 0, b: 0, a: 0}
-  underwaterColor: {r: 0.20363611, g: 0.30950272, b: 0.517647, a: 0.78}
+  underwaterColor: {r: 0.20363593, g: 0.30950254, b: 0.517647, a: 0.78}
   underwaterColorStrength: 0.78
   underwaterRefractionStrength: 0.099
   surfaceFoamTexture: {fileID: 2800000, guid: d3b0d77dfe711a04c8ff18ecc260aa66, type: 3}
