@@ -19,7 +19,6 @@ public class ChunkSpawner : MonoBehaviour
 
     List<ChunkGenerator> chunkGenerators = new List<ChunkGenerator>();
     
-
     int chunkDistanceCounter;
     ChunkGenerator chunkOfInterest;
     GameObject water;
@@ -39,6 +38,7 @@ public class ChunkSpawner : MonoBehaviour
 
     public void GenerateNextChunk(Transform chunkToMove = null)
     {
+        SaveBigChunk();
         if (chunkGenerators.Count >= numberOfChunksToSpawn) // if the chunks are being moved from behind
         {
             if (chunkToMove != null)
@@ -60,9 +60,18 @@ public class ChunkSpawner : MonoBehaviour
         }
     }
 
-    void SpawnChunk(Transform chunkToMove)
+    void SaveBigChunk()
     {
-        chunkOfInterest = chunkToMove.GetComponent<ChunkGenerator>();
+        // Saves all the connected spawner infos for each connected spawner from that line (the X axis line, children of 1 chunk generator) of connected spawners. The info for each one would be then retrieved through the "chunkFromTrack" index within each connected spawner
+        foreach (var item in chunkGenerators[chunkGenerators.Count - 1].connectedSpawners)
+        {
+            currentChunk.connectedSpawners = item.connectedSpawnerInfos;
+        }
+    }
+
+    void SpawnChunk(Transform chunkToSpawn)
+    {
+        chunkOfInterest = chunkToSpawn.GetComponent<ChunkGenerator>();
 
         chunkDistanceCounter++;
         chunkOfInterest.chunkIndex = chunkDistanceCounter;
@@ -163,14 +172,4 @@ public class ChunkSpawner : MonoBehaviour
         }
         return null;
     }
-}
-
-[Serializable]
-public struct SavedChunk
-{
-    public RailSpawner.StartingSlopeType railSlope;
-    public float chunkHeight;
-    public ChunkGenerator chunkGenerator;
-    public List<ConnectedSpawner> leftConnectedSpawners;
-    public List<ConnectedSpawner> rightConnectedSpawners;
 }
