@@ -38,12 +38,12 @@ public class ChunkSpawner : MonoBehaviour
 
     public void GenerateNextChunk(Transform chunkToMove = null)
     {
-        SaveBigChunk();
-        // todo: also check if chunks have already been spawned before
+        SaveMovingChunk(chunkOfInterest);
         if (chunkGenerators.Count >= numberOfChunksToSpawn) // if the chunks are being moved from behind
         {
             if (chunkToMove != null)
             {
+                SaveMovingChunk(chunkGenerators[chunkGenerators.Count - 1]);
                 Debug.Log("Attempting to move chunk from behind");
                 SpawnChunk(chunkToMove);
                 MoveChunk();
@@ -57,26 +57,35 @@ public class ChunkSpawner : MonoBehaviour
         else
         {
             chunkGenerators.Add(Instantiate(chunk, transform).GetComponent<ChunkGenerator>());
-            SpawnChunk(chunkGenerators[chunkGenerators.Count-1].transform);
+            SpawnChunk(chunkGenerators[chunkGenerators.Count - 1].transform);
         }
     }
 
-    void SaveBigChunk()
+    void SaveMovingChunk(ChunkGenerator chunkToSave)
     {
-        // Saves all the connected spawner infos for each connected spawner from that line (the X axis line, children of 1 chunk generator) of connected spawners. The info for each one would be then retrieved through the "chunkFromTrack" index within each connected spawner
+        // Saves all the connected spawner infos for each connected spawner from that line (the X axis line, children of 1 chunk generator) of connected spawners. The info for each one would be then retrieved through the "chunkFromTrack" index within each connected spawner, taken from the savedChunks list
         // create new save (new item in list) if this hasn't been saved before, otherwise update it
-        foreach (var item in chunkGenerators[chunkGenerators.Count - 1].connectedSpawners)
-        {
-            //currentChunk.connectedSpawners = item.connectedSpawnerInfos;
-        }
-    }
 
-    void SaveMovingChunk(Transform chunkToSave)
-    {
-        ChunkGenerator chunkGenerator = chunkToSave.GetComponent<ChunkGenerator>();
-        foreach (var item in chunkGenerator.connectedSpawners)
+        //ChunkGenerator chunkGenerator = chunkToSave.GetComponent<ChunkGenerator>();
+
+        Debug.Log("current chunk index: " + chunkToSave.chunkIndex + ", number of saved chunks: " + savedChunks.Count);
+
+        currentChunk.railSlope = chunkToSave.GetComponent<RailSpawner>().startingSlopeType;
+        currentChunk.chunkHeight = chunkAltitude; //* chunkYOffset;
+        currentChunk.chunkGenerator = chunkToSave;
+        currentChunk.connectedSpawners.Clear();
+        for (int i = 0; i < chunkToSave.connectedSpawners.Count; i++)
         {
-            //savedChunks[chunkGenerator.chunkIndex].connectedSpawners
+            currentChunk.connectedSpawners.Add(chunkToSave.connectedSpawners[i].currentChunk);
+        }
+
+        if (savedChunks.Count < chunkToSave.chunkIndex + 1)
+        {
+            savedChunks.Add(currentChunk);
+        }
+        else
+        {
+            savedChunks[chunkToSave.chunkIndex] = currentChunk;
         }
     }
 

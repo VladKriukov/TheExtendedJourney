@@ -9,8 +9,7 @@ public class ConnectedSpawner : MonoBehaviour
 
     public List<GameObject> spawningTerrains = new List<GameObject>(); // GameObjects to instantiate
 
-    public List<ConnectedSpawnerInfo> connectedSpawnerInfos = new List<ConnectedSpawnerInfo>();
-    public ConnectedSpawnerInfo currentChunk;
+    public ConnectedSpawnerInfo currentChunk; // temporary value
 
     [SerializeField] GameObject edgeOfWorld;
 
@@ -252,7 +251,7 @@ public class ConnectedSpawner : MonoBehaviour
             nextSpawnerExists = true;
         }
 
-        //SaveChunk();
+        SaveChunk();
 
         Invoke(nameof(SpawnNextChunk), nextChunkSpawnDelay * Game.chunkPropMultiplier);
         Game.progress++;
@@ -268,7 +267,7 @@ public class ConnectedSpawner : MonoBehaviour
             currentChunk.chunkProps.Add(item.gameObject);
         }
 
-        connectedSpawnerInfos[thisChunkGenerator.chunkIndex - 1] = currentChunk;
+        //connectedSpawnerInfos[thisChunkGenerator.chunkIndex] = currentChunk;
     }
 
     void SpawnNextChunk()
@@ -588,7 +587,6 @@ public class ConnectedSpawner : MonoBehaviour
 
     void PoolTerrains()
     {
-        connectedSpawnerInfos.Add(currentChunk);
         if (transform.childCount < 9)
         {
             foreach (GameObject item in spawningTerrains)
