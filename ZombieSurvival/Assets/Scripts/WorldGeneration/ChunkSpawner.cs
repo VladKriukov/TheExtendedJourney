@@ -39,6 +39,7 @@ public class ChunkSpawner : MonoBehaviour
     public void GenerateNextChunk(Transform chunkToMove = null)
     {
         SaveBigChunk();
+        // todo: also check if chunks have already been spawned before
         if (chunkGenerators.Count >= numberOfChunksToSpawn) // if the chunks are being moved from behind
         {
             if (chunkToMove != null)
@@ -63,9 +64,19 @@ public class ChunkSpawner : MonoBehaviour
     void SaveBigChunk()
     {
         // Saves all the connected spawner infos for each connected spawner from that line (the X axis line, children of 1 chunk generator) of connected spawners. The info for each one would be then retrieved through the "chunkFromTrack" index within each connected spawner
+        // create new save (new item in list) if this hasn't been saved before, otherwise update it
         foreach (var item in chunkGenerators[chunkGenerators.Count - 1].connectedSpawners)
         {
-            currentChunk.connectedSpawners = item.connectedSpawnerInfos;
+            //currentChunk.connectedSpawners = item.connectedSpawnerInfos;
+        }
+    }
+
+    void SaveMovingChunk(Transform chunkToSave)
+    {
+        ChunkGenerator chunkGenerator = chunkToSave.GetComponent<ChunkGenerator>();
+        foreach (var item in chunkGenerator.connectedSpawners)
+        {
+            //savedChunks[chunkGenerator.chunkIndex].connectedSpawners
         }
     }
 

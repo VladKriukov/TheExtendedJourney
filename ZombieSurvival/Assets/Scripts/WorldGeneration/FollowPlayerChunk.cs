@@ -3,29 +3,32 @@ using UnityEngine;
 public class FollowPlayerChunk : MonoBehaviour
 {
     [SerializeField] Transform playerfollow;
-    [SerializeField] float zOffset;
+    [SerializeField] Transform behindChunkTrigger;
+    [SerializeField] Transform frontChunkTrigger;
+
+    private void Awake()
+    {
+        behindChunkTrigger.position = new Vector3(0, 0, transform.position.z - Game.numberOfChunksToSpawn / 2 * 30 - 15);
+        frontChunkTrigger.position = new Vector3(0, 0, transform.position.z + Game.numberOfChunksToSpawn / 2 * 30 + 15);
+    }
 
     private void OnDisable()
     {
-        ChunkGenerator.OnMovingFromBehind -= EnableFollow;
+        ChunkGenerator.OnMovingFromBehind -= EnableFrontChunkTrigger;
     }
 
     private void OnEnable()
     {
-        ChunkGenerator.OnMovingFromBehind += EnableFollow;
+        ChunkGenerator.OnMovingFromBehind += EnableFrontChunkTrigger;
     }
 
-    void EnableFollow()
+    void EnableFrontChunkTrigger()
     {
-        if (name == "ChunkTriggerBackward")
-        {
-            GetComponent<BoxCollider>().enabled = true;
-            zOffset = -200 + 10 * (Game.numberOfChunksToSpawn - 4);
-        }
+        frontChunkTrigger.GetComponent<BoxCollider>().enabled = true;
     }
 
     private void Update()
     {
-        transform.position = new Vector3(0, -25, playerfollow.position.z - zOffset);
+        transform.position = new Vector3(0, 0, playerfollow.position.z);
     }
 }

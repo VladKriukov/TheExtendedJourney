@@ -252,13 +252,13 @@ public class ConnectedSpawner : MonoBehaviour
             nextSpawnerExists = true;
         }
 
-        SaveChunk();
+        //SaveChunk();
 
         Invoke(nameof(SpawnNextChunk), nextChunkSpawnDelay * Game.chunkPropMultiplier);
         Game.progress++;
     }
 
-    void SaveChunk()
+    public void SaveChunk()
     {
         currentChunk.spawnedChunk = generatedTerrain.gameObject;
         currentChunk.chunkProps.Clear();
