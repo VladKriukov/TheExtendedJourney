@@ -16,6 +16,9 @@ public class ChunkPropSpawner : MonoBehaviour
 
     List<GameObject> spawnedItems = new List<GameObject>();
 
+    List<ChunkPropInfo> allChunkPropInfos = new List<ChunkPropInfo>();
+    List<ChunkPropInfo> activeChunkPropInfos = new List<ChunkPropInfo>();
+
     // seasonal enum
 
     GameObject item;
@@ -27,30 +30,37 @@ public class ChunkPropSpawner : MonoBehaviour
         minAmount = Mathf.Clamp(minAmount * Game.chunkPropMultiplier, 0, 15);
         maxAmount = Mathf.Clamp(maxAmount * Game.chunkPropMultiplier, 0, 25);
         spawningChance *= 1 / Game.chunkPropDensity;
+    }
+
+    private void OnEnable()
+    {
         PoolItems();
+        CheckSpawning();
+    }
+
+    private void OnDisable()
+    {
+        foreach (var item in spawnedItems)
+        {
+            item.SetActive(false);
+        }
     }
 
     void PoolItems()
     {
-        //StartCoroutine(nameof(Pooling));
+        ChunkPropInfo chunkPropInfo = new ChunkPropInfo();
         for (int i = 0; i < maxAmount; i++)
         {
-            spawnedItems.Add(Instantiate(itemVariants[Random.Range(0, itemVariants.Count)], transform));
-            spawnedItems[i].SetActive(false);
-            //yield return new WaitForSeconds(0.05f);
-        }
-        CheckSpawning();
-    }
+            if (spawnedItems.Count >= maxAmount) break;
 
-    IEnumerator Pooling()
-    {
-        for (int i = 0; i < maxAmount; i++)
-        {
-            spawnedItems.Add(Instantiate(itemVariants[Random.Range(0, itemVariants.Count)], transform));
+            int rand = Random.Range(0, itemVariants.Count);
+            spawnedItems.Add(Instantiate(itemVariants[rand], transform));
             spawnedItems[i].SetActive(false);
-            yield return new WaitForSeconds(0.05f);
+
+            chunkPropInfo.chunkPropRef = spawnedItems[i];
+            chunkPropInfo.chunkPropPrefab = itemVariants[rand];
+            allChunkPropInfos.Add(chunkPropInfo);
         }
-        CheckSpawning();
     }
 
     void CheckSpawning()
@@ -102,6 +112,25 @@ public class ChunkPropSpawner : MonoBehaviour
             {
                 Debug.LogError("Failed to spawn");
                 item.SetActive(false);
+            }
+            if (item.activeInHierarchy == true)
+            {
+                activeChunkPropInfos.Add(allChunkPropInfos[i]);
+            }
+        }
+        Invoke(nameof(SaveSpawnedItems), 0.5f);
+    }
+
+    void SaveSpawnedItems()
+    {
+        foreach (var item in activeChunkPropInfos)
+        {
+            if (item.chunkPropRef.activeInHierarchy == true)
+            {
+                if (transform.parent.GetComponent<ConnectedSpawner>() != null)
+                {
+                    transform.parent.GetComponent<ConnectedSpawner>().currentChunk.chunkProps.Add(item);
+                }
             }
         }
     }

@@ -15,6 +15,13 @@ public struct SavedChunk
 public struct ConnectedSpawnerInfo
 {
     public GameObject spawnedChunk;
-    public List<GameObject> chunkProps;
+    public List<ChunkPropInfo> chunkProps;
     public GameObject structure; // todo: add structures
+}
+
+[Serializable]
+public struct ChunkPropInfo
+{
+    public GameObject chunkPropRef;
+    public GameObject chunkPropPrefab;
 }
