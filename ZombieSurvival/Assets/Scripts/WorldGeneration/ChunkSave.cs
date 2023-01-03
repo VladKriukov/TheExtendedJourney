@@ -15,6 +15,9 @@ public struct SavedChunk
 public struct ConnectedSpawnerInfo
 {
     public GameObject spawnedChunk;
+    public bool spawningDirection;
+    public int chunkFromTrack;
+    public Vector3 position;
     public List<ChunkPropInfo> chunkProps;
     public GameObject structure; // todo: add structures
 }

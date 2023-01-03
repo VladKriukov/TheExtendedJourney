@@ -6,7 +6,7 @@ public class ChunkGenerator : MonoBehaviour
     [HideInInspector] public List<ConnectedSpawner> connectedSpawners = new List<ConnectedSpawner>();
     [HideInInspector] public RailSpawner railTerrainSpawner;
 
-    [HideInInspector] public int chunkIndex;
+    public int chunkIndex;
 
     public delegate void MovingFromBehind();
     public static MovingFromBehind OnMovingFromBehind;
@@ -28,10 +28,17 @@ public class ChunkGenerator : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("ChunkForward"))
+        switch (other.gameObject.tag)
         {
-            OnMovingFromBehind?.Invoke();
-            chunkSpawner.GenerateNextChunk(transform);
+            case "ChunkForward":
+                OnMovingFromBehind?.Invoke();
+                chunkSpawner.GenerateNextChunk(transform);
+                break;
+            case "ChunkBackward":
+                chunkSpawner.ReGenerateAChunk(this);
+                break;
+            default:
+                break;
         }
     }
 }

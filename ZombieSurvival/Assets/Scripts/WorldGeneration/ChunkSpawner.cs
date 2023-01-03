@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System;
 
 public class ChunkSpawner : MonoBehaviour
 {
@@ -61,15 +60,31 @@ public class ChunkSpawner : MonoBehaviour
         }
     }
 
+    public void ReGenerateAChunk(ChunkGenerator chunkToMove, bool backwards = true)
+    {
+        chunkOfInterest = chunkToMove;
+        int chunkIndex = chunkOfInterest.chunkIndex - Game.numberOfChunksToSpawn;
+        if (chunkOfInterest.chunkIndex - Game.numberOfChunksToSpawn < 0) return;
+
+        RailSpawner railSpawner = chunkOfInterest.GetComponent<RailSpawner>();
+
+        railSpawner.startingSlopeType = savedChunks[chunkIndex].railSlope;
+        chunkOfInterest.chunkIndex = chunkIndex;
+        //chunkAltitude = (int)savedChunks[chunkIndex].chunkHeight;
+        chunkOfInterest.transform.position = new Vector3(0, savedChunks[chunkIndex].chunkHeight, chunkZOffset * chunkIndex);
+        water.transform.position -= new Vector3(0, 0, 30);
+        railSpawner.ReGenerateRails(chunkIndex);
+    }
+
     void SaveMovingChunk(ChunkGenerator chunkToSave)
     {
         // Saves all the connected spawner infos for each connected spawner from that line (the X axis line, children of 1 chunk generator) of connected spawners. The info for each one would be then retrieved through the "chunkFromTrack" index within each connected spawner, taken from the savedChunks list
         // create new save (new item in list) if this hasn't been saved before, otherwise update it
-
+        chunkOfInterest = chunkToSave;
         SavedChunk currentChunk = new SavedChunk();
 
         currentChunk.railSlope = chunkToSave.GetComponent<RailSpawner>().startingSlopeType;
-        currentChunk.chunkHeight = chunkAltitude; //* chunkYOffset;
+        currentChunk.chunkHeight = chunkAltitude * chunkYOffset;
         currentChunk.chunkGenerator = chunkToSave;
         currentChunk.connectedSpawners = new List<ConnectedSpawnerInfo>();
 
@@ -78,6 +93,8 @@ public class ChunkSpawner : MonoBehaviour
             currentChunk.connectedSpawners.Add(chunkToSave.connectedSpawners[i].currentChunk);
         }
 
+        Debug.Log("Number of saved chunks: " + savedChunks.Count + ", chunk index: " + chunkToSave.chunkIndex);
+
         if (savedChunks.Count < chunkToSave.chunkIndex + 1)
         {
             Debug.Log("Chunk " + chunkToSave.chunkIndex + " doesn't have a save. Creating a new one");
@@ -85,6 +102,8 @@ public class ChunkSpawner : MonoBehaviour
         }
         else
         {
+            if (savedChunks.Count > chunkToSave.chunkIndex + 1) return;
+
             Debug.Log("Overriding chunk " + chunkToSave.chunkIndex + " save");
             savedChunks[chunkToSave.chunkIndex] = currentChunk;
         }

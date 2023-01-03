@@ -65,17 +65,33 @@ public class RailSpawner : MonoBehaviour
         if (finishedChunkCount == 2)
         {
             Debug.Log("Next chunk");
+            //HideAllTerrains();
             chunkSpawner.GenerateNextChunk();
             finishedChunkCount = 0;
+        }
+    }
+
+    public void ReGenerateRails(int chunkIndex)
+    {
+        EnableRails();
+        HideAllTerrains();
+        foreach (var item in thisChunkGenerator.connectedSpawners)
+        {
+            item.ReGenerateChunk(chunkIndex);
+        }
+    }
+
+    void HideAllTerrains()
+    {
+        foreach (var item in thisChunkGenerator.connectedSpawners)
+        {
+            item.HideAllTerrains();
         }
     }
 
     private void GenerateRails(int previousAltitude)
     {
         if (firstTimeSpawning) PoolRails();
-
-        transform.GetChild(0).gameObject.SetActive(false);
-        transform.GetChild(1).gameObject.SetActive(false);
 
         rand = Random.Range(0, slopeChance);
         if (rand <= 1)
@@ -101,6 +117,16 @@ public class RailSpawner : MonoBehaviour
             startingSlopeType = StartingSlopeType.Up;
         }
 
+        EnableRails();
+        
+        chunkSpawner.SpawnedRails();
+    }
+
+    void EnableRails()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(1).gameObject.SetActive(false);
+
         switch (startingSlopeType)
         {
             case StartingSlopeType.Straight:
@@ -123,7 +149,6 @@ public class RailSpawner : MonoBehaviour
             default:
                 break;
         }
-        chunkSpawner.SpawnedRails();
     }
 
     private void PoolRails()

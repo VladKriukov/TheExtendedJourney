@@ -252,9 +252,24 @@ public class ConnectedSpawner : MonoBehaviour
         }
 
         currentChunk.spawnedChunk = generatedTerrain.gameObject; // save chunk
+        currentChunk.spawningDirection = spawningDirection;
+        currentChunk.chunkFromTrack = currentChunkFromTrack;
+        currentChunk.position = transform.position;
 
         Invoke(nameof(SpawnNextChunk), nextChunkSpawnDelay * Game.chunkPropMultiplier);
         Game.progress++;
+    }
+
+    public void ReGenerateChunk(int chunkIndex)
+    {
+        foreach (var item in chunkSpawner.savedChunks[chunkIndex].connectedSpawners)
+        {
+            if (item.chunkFromTrack == currentChunkFromTrack && item.spawningDirection == spawningDirection)
+            {
+                item.spawnedChunk.SetActive(true);
+                transform.position = item.position;
+            }
+        }
     }
 
     void SpawnNextChunk()
@@ -564,7 +579,7 @@ public class ConnectedSpawner : MonoBehaviour
         //Debug.LogError("There is a missing terrain here - need to create a new fit");
     }
 
-    void HideAllTerrains()
+    public void HideAllTerrains()
     {
         foreach (Transform item in transform)
         {
