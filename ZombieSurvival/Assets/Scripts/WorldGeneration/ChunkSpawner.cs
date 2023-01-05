@@ -44,8 +44,17 @@ public class ChunkSpawner : MonoBehaviour
             {
                 SaveMovingChunk(chunkGenerators[chunkGenerators.Count - 1]);
                 Debug.Log("Attempting to move chunk from behind");
-                SpawnChunk(chunkToMove);
-                MoveChunk();
+                Debug.Log("Chunk index: " + (chunkToMove.GetComponent<ChunkGenerator>().chunkIndex + Game.numberOfChunksToSpawn) + ", chunk distance counter: " + chunkDistanceCounter);
+                if (chunkToMove.GetComponent<ChunkGenerator>().chunkIndex + Game.numberOfChunksToSpawn < chunkDistanceCounter + 1)
+                {
+                    ReGenerateAChunk(chunkToMove.GetComponent<ChunkGenerator>(), false);
+                }
+                else
+                {
+                    SpawnChunk(chunkToMove);
+                    MoveChunk();
+                }
+                
             }
             else
             {
@@ -63,16 +72,26 @@ public class ChunkSpawner : MonoBehaviour
     public void ReGenerateAChunk(ChunkGenerator chunkToMove, bool backwards = true)
     {
         chunkOfInterest = chunkToMove;
-        int chunkIndex = chunkOfInterest.chunkIndex - Game.numberOfChunksToSpawn;
-        if (chunkOfInterest.chunkIndex - Game.numberOfChunksToSpawn < 0) return;
-
+        int chunkIndex = 0;
+        if (backwards == true)
+        {
+            chunkIndex = chunkOfInterest.chunkIndex - Game.numberOfChunksToSpawn;
+            water.transform.position -= new Vector3(0, 0, 30);
+            if (chunkOfInterest.chunkIndex - Game.numberOfChunksToSpawn < 0) return;
+        }
+        else
+        {
+            chunkIndex = chunkOfInterest.chunkIndex + Game.numberOfChunksToSpawn;
+            water.transform.position += new Vector3(0, 0, 30);
+            Debug.Log("Regenerating forward. Old chunk index: " + chunkOfInterest.chunkIndex + ", New chunk index: " + chunkIndex);
+        }
+        
         RailSpawner railSpawner = chunkOfInterest.GetComponent<RailSpawner>();
 
         railSpawner.startingSlopeType = savedChunks[chunkIndex].railSlope;
         chunkOfInterest.chunkIndex = chunkIndex;
         //chunkAltitude = (int)savedChunks[chunkIndex].chunkHeight;
         chunkOfInterest.transform.position = new Vector3(0, savedChunks[chunkIndex].chunkHeight, chunkZOffset * chunkIndex);
-        water.transform.position -= new Vector3(0, 0, 30);
         railSpawner.ReGenerateRails(chunkIndex);
     }
 
