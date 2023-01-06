@@ -35,6 +35,7 @@ public class FishingRod : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            animator.SetTrigger("Retrieve");
             Retrieve();
         }
 
@@ -50,6 +51,7 @@ public class FishingRod : MonoBehaviour
         bobber.GetComponent<Rigidbody>().Sleep();
         bobber.SetActive(false);
         StopAllCoroutines();
+        transform.GetChild(2).gameObject.SetActive(true);
         castRod = false;
     }
 
