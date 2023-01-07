@@ -20,13 +20,13 @@ public class Train : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W))
             {
-                rb.AddForce(new Vector3(0, 0, forwardForce));
+                rb.AddForce(new Vector3(0, 0, forwardForce * rb.mass * Time.deltaTime));
                 fuelTank.fuel -= fuelUsage * Time.deltaTime;
                 rb.drag = Mathf.Abs(rb.velocity.z * dragMultiplier);
             }
             if (Input.GetKey(KeyCode.S))
             {
-                rb.AddForce(new Vector3(0, 0, reverseForce));
+                rb.AddForce(new Vector3(0, 0, reverseForce * rb.mass * Time.deltaTime));
                 fuelTank.fuel -= fuelUsage * Time.deltaTime;
                 rb.drag = Mathf.Abs(rb.velocity.z * dragMultiplier);
             }
