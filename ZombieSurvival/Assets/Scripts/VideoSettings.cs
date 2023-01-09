@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Rendering;
 using TMPro;
 using System.Collections.Generic;
 
@@ -8,7 +8,7 @@ public class VideoSettings : MonoBehaviour
     public static VideoSettings instance;
 
     public bool postProcessing = true;
-    [SerializeField] PostProcessVolume[] postProcessVolumes;
+    [SerializeField] Volume[] volumes;
     public bool particles = true;
 
     [SerializeField] TMP_Dropdown resolutionDropdown;
@@ -54,7 +54,7 @@ public class VideoSettings : MonoBehaviour
     public void SetPostProcessing(bool b)
     {
         postProcessing = b;
-        foreach (var item in postProcessVolumes)
+        foreach (var item in volumes)
         {
             item.enabled = b;
         }

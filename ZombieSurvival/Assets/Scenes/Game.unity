@@ -2345,18 +2345,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e91d5bfc80553904d9f3c73f17cfca10, type: 3}
---- !u!114 &146783726 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1567729879, guid: 6bacecc4f3df9584198879c73a6b6c36,
-    type: 3}
-  m_PrefabInstance: {fileID: 859965339}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &156072870
 GameObject:
   m_ObjectHideFlags: 0
@@ -11561,6 +11549,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -934509182286773251, guid: 6bacecc4f3df9584198879c73a6b6c36,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 817876819, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: itemNameDisplay
       value: 
@@ -11867,6 +11860,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b08486c4c7e864be79238142865f17ec, type: 3}
+--- !u!114 &886141881 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -934509182286773251, guid: 6bacecc4f3df9584198879c73a6b6c36,
+    type: 3}
+  m_PrefabInstance: {fileID: 859965339}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &890752665
 GameObject:
   m_ObjectHideFlags: 0
@@ -26346,9 +26351,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   postProcessing: 1
-  postProcessVolumes:
-  - {fileID: 146783726}
-  - {fileID: 0}
+  volumes:
+  - {fileID: 690223149}
+  - {fileID: 886141881}
   particles: 1
   resolutionDropdown: {fileID: 1580659157}
 --- !u!1 &2003738384
@@ -33408,17 +33413,17 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   colorGradientTexture: {fileID: 0}
   shallowColor: {r: 0, g: 0.7725491, b: 0.62352943, a: 0.5019608}
-  deepColor: {r: 0.01176471, g: 0.28595826, b: 0.50980073, a: 1}
+  deepColor: {r: 0.01176471, g: 0.28595722, b: 0.50980073, a: 1}
   colorDepth: 1.06
-  horizonColor: {r: 0, g: 0.22713476, b: 0.8, a: 1}
+  horizonColor: {r: 0, g: 0.22713372, b: 0.8, a: 1}
   horizonDistance: 4.7
   shoreFade: 1
-  shoreColor: {r: 0, g: 0.98039216, b: 0.30164456, a: 0}
+  shoreColor: {r: 0, g: 0.98039216, b: 0.30164352, a: 0}
   shoreStrength: 0
   shoreBlend: 1
   shoreDepth: 0.77
   waveColor: {r: 0, g: 0, b: 0, a: 0}
-  underwaterColor: {r: 0.20362183, g: 0.30948767, b: 0.517647, a: 0.78}
+  underwaterColor: {r: 0.20362085, g: 0.30948663, b: 0.517647, a: 0.78}
   underwaterColorStrength: 0.78
   underwaterRefractionStrength: 0.099
   surfaceFoamTexture: {fileID: 2800000, guid: d3b0d77dfe711a04c8ff18ecc260aa66, type: 3}
