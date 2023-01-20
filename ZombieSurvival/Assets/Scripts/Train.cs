@@ -112,15 +112,22 @@ public class Train : MonoBehaviour
             rb.drag = Mathf.Abs(rb.velocity.z * dragMultiplier);
         }
 
-        if (acceptingInput && Input.GetKeyDown(KeyCode.F))
+        if (acceptingInput)
         {
-            if (trainEngine.activeInHierarchy == true)
+            if (Input.GetKeyDown(KeyCode.F))
             {
-                StopEngine();
+                if (trainEngine.activeInHierarchy == true)
+                {
+                    StopEngine();
+                }
+                else
+                {
+                    StartEngine();
+                }
             }
-            else
+            if (Input.GetKeyDown(KeyCode.H))
             {
-                StartEngine();
+                engineAudio.transform.GetChild(2).GetComponent<AudioSource>().Play();
             }
         }
     }

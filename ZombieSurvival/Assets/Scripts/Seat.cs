@@ -4,6 +4,7 @@ public class Seat : MonoBehaviour
 {
     [SerializeField] Train controlledTrain;
     [SerializeField] Vector3 offset;
+    [SerializeField] GameObject trainUI;
     GameObject player;
     float cooldown = 0.5f;
 
@@ -18,6 +19,7 @@ public class Seat : MonoBehaviour
         controlledTrain.acceptingInput = true;
         controlledTrain.StartEngine();
         cooldown = 0.5f;
+        trainUI.SetActive(true);
     }
 
     private void Update()
@@ -26,6 +28,10 @@ public class Seat : MonoBehaviour
         if (player != null && Input.GetKeyDown(KeyCode.E) && cooldown <= 0)
         {
             Exit();
+        }
+        if (controlledTrain.acceptingInput == true && Input.GetKeyDown(KeyCode.F1))
+        {
+            trainUI.transform.GetChild(0).gameObject.SetActive(!trainUI.transform.GetChild(0).gameObject.activeInHierarchy);
         }
     }
 
@@ -37,5 +43,6 @@ public class Seat : MonoBehaviour
         player.GetComponent<Collider>().enabled = true;
         player = null;
         controlledTrain.acceptingInput = false;
+        trainUI.SetActive(false);
     }
 }
