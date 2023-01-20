@@ -21,6 +21,7 @@ public class AudioSettings : MonoBehaviour
     {
         var result = 20 * Mathf.Log10(volume);
         masterMixer.SetFloat("TrainVolume", result);
+        masterMixer.SetFloat("TrainExtrasVolume", result);
     }
 
     public void ChangeToolsVolume(float volume)

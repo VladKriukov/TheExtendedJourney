@@ -15,7 +15,8 @@ public class Seat : MonoBehaviour
         player.GetComponent<FirstPersonController>().enableHeadBob = false;
         player.GetComponent<Rigidbody>().isKinematic = true;
         player.GetComponent<Collider>().enabled = false;
-        controlledTrain.enabled = true;
+        controlledTrain.acceptingInput = true;
+        controlledTrain.StartEngine();
         cooldown = 0.5f;
     }
 
@@ -35,6 +36,6 @@ public class Seat : MonoBehaviour
         player.GetComponent<Rigidbody>().isKinematic = false;
         player.GetComponent<Collider>().enabled = true;
         player = null;
-        controlledTrain.enabled = false;
+        controlledTrain.acceptingInput = false;
     }
 }
