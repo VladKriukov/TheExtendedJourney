@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -1686357830007619809}
   - component: {fileID: 2402631681756446841}
   - component: {fileID: 1042073563658909311}
+  - component: {fileID: -2318214371135006707}
   m_Layer: 9
   m_Name: 00
   m_TagString: Untagged
@@ -182,7 +183,7 @@ MonoBehaviour:
   spawningOffset: {x: 0, y: 0}
   layerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 528
 --- !u!114 &-1686357830007619809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +209,7 @@ MonoBehaviour:
   spawningOffset: {x: 0, y: 0}
   layerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 528
 --- !u!114 &2402631681756446841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +237,7 @@ MonoBehaviour:
   spawningOffset: {x: 0, y: 0}
   layerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 528
 --- !u!114 &1042073563658909311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,6 +256,29 @@ MonoBehaviour:
   maxAmount: 6
   randomiseSpawningChance: 1
   spawningChance: 3
+  spawningRange: {x: 14, y: 14}
+  spawningOffset: {x: 0, y: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 528
+--- !u!114 &-2318214371135006707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389758202622836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6712f74caaa79db4288c90004ca02061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemVariants:
+  - {fileID: 7737598014678085768, guid: 9ca6c07d7d9fb564da8977a10a5ecd70, type: 3}
+  minAmount: 0
+  maxAmount: 2
+  randomiseSpawningChance: 0
+  spawningChance: 5
   spawningRange: {x: 14, y: 14}
   spawningOffset: {x: 0, y: 0}
   layerMask:

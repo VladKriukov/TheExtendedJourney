@@ -20,7 +20,7 @@ TagManager:
   - Water
   - UI
   - 
-  - 
+  - ObstacleTrigger
   - Lighting
   - Ground
   - Postprocessing
