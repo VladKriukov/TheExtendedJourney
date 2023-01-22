@@ -14,6 +14,7 @@ public class Seat : MonoBehaviour
         player.transform.parent = transform;
         player.transform.position = transform.position + offset;
         player.GetComponent<FirstPersonController>().enableHeadBob = false;
+        player.GetComponent<FirstPersonController>().enableSprint = false;
         player.GetComponent<Rigidbody>().isKinematic = true;
         player.GetComponent<Collider>().enabled = false;
         controlledTrain.acceptingInput = true;
@@ -39,6 +40,7 @@ public class Seat : MonoBehaviour
     {
         player.transform.parent = null;
         player.GetComponent<FirstPersonController>().enableHeadBob = true;
+        player.GetComponent<FirstPersonController>().enableSprint = true;
         player.GetComponent<Rigidbody>().isKinematic = false;
         player.GetComponent<Collider>().enabled = true;
         player = null;

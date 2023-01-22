@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class Game : MonoBehaviour
 
     public static float totalProgressParts;
     public static float progress;
+
+    public static Stats stats;
     [SerializeField] Image progressBar;
     [SerializeField] TMP_Text progressNumber;
     [SerializeField] GameObject menuCamera;
@@ -80,9 +83,7 @@ public class Game : MonoBehaviour
     }
 
     public void PauseMenu()
-    { 
-        // the pause menu isn't working as the mouse gets re-captured by the fps controller
-        
+    {
         if (!inGame) return;
 
         gamePaused = !gamePaused;
@@ -102,6 +103,11 @@ public class Game : MonoBehaviour
         }
         player.SetActive(!gamePaused);
         menuCamera.SetActive(gamePaused);
+    }
+
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void QuitGame()
@@ -138,4 +144,10 @@ public class Game : MonoBehaviour
             Cursor.visible = true;
         }
     }
+}
+
+public struct Stats
+{
+    public float furthestDistanceTravelled;
+    // possibly add more to show in stats
 }

@@ -30,7 +30,7 @@ public class ItemProperties : MonoBehaviour
         NA, Stick, Log, Stone
     }
     public ItemType itemType;
-    public Image itemIcon;
+    public Sprite itemIcon;
 
     private void Awake()
     {

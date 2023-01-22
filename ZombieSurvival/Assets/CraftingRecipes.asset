@@ -13,7 +13,16 @@ MonoBehaviour:
   m_Name: CraftingRecipes
   m_EditorClassIdentifier: 
   recipes:
+  - itemName: Axe
+    itemSprite: {fileID: 21300000, guid: e8101fe1826ae99458560ed837246fd9, type: 3}
+    requiredItems:
+    - requiredItem: 1
+      amount: 2
+    - requiredItem: 3
+      amount: 2
+    output: {fileID: 1000010500439178, guid: c2822dd95f87e4f2a91af761dc190577, type: 3}
   - itemName: Pickaxe
+    itemSprite: {fileID: 21300000, guid: efaaa1f8c3455f74a92e7292049f05a2, type: 3}
     requiredItems:
     - requiredItem: 1
       amount: 2

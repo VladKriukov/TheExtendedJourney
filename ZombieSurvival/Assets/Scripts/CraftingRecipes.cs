@@ -12,6 +12,7 @@ public class CraftingRecipes : ScriptableObject
 public struct Recipe
 {
     public string itemName;
+    public Sprite itemSprite;
     public List<RecipeItem> requiredItems;
     //public List<InterchangableRecipeItems> interchangableItems;
     public GameObject output;

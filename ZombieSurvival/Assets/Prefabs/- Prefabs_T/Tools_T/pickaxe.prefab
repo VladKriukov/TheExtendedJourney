@@ -144,7 +144,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000010422294592}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: fb2953cc620520a41a58ecb44cba24b4, type: 2}
   m_CullingMode: 0
@@ -178,3 +178,7 @@ MonoBehaviour:
   pickupLocationOffset: {x: 0, y: 0, z: 0}
   picupRotationOffset: {x: 0, y: 0, z: 0, w: 0}
   holdingRayOffset: -0.15
+  spawningOffset: {x: 0, y: 0, z: 0}
+  craftingItem: 0
+  itemType: 0
+  itemIcon: {fileID: 21300000, guid: efaaa1f8c3455f74a92e7292049f05a2, type: 3}

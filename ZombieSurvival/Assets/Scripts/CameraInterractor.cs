@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class CameraInterractor : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class CameraInterractor : MonoBehaviour
     private void Update()
     {
         //if (PauseManager.paused == true) return;
+
+        if (player.isAlive == false) return;
 
         RaycastHit hit;
 
@@ -84,6 +87,12 @@ public class CameraInterractor : MonoBehaviour
 
         if (hitting == true)
         {
+            if (hit.collider.GetComponent<Button>() && Input.GetMouseButtonDown(0))
+            {
+                hit.collider.GetComponent<Button>().onClick.Invoke();
+            }
+
+            // todo: show on screen instructions
             if (Input.GetKeyDown(KeyCode.E))
             {
                 if (hit.collider.CompareTag("PickUpAble"))

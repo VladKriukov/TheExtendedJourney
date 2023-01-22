@@ -20,11 +20,14 @@ public class AnimalAI : MonoBehaviour
     [SerializeField] float runSpeed;
     [SerializeField] float rotationSpeed;
     [SerializeField] float avoidanceTime;
+    [SerializeField] float attackDelay;
+    [SerializeField] float attackDamage;
     [SerializeField] LayerMask layerMask;
 
     Rigidbody rb;
     bool avoidanceDirection;
     float idleTime;
+    float attackTime;
     float currentSpeed;
 
     RaycastHit hit;
@@ -107,6 +110,15 @@ public class AnimalAI : MonoBehaviour
                 else
                 {
                     // attack
+                    if (chaseTarget != null)
+                    {
+                        attackTime -= Time.deltaTime;
+                        if (attackTime <= 0)
+                        {
+                            attackTime = attackDelay;
+                            chaseTarget.GetComponent<Player>().ChangeHealth(attackDamage);
+                        }
+                    }
                 }
             }
         }

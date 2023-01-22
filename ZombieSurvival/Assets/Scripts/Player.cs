@@ -10,9 +10,11 @@ public class Player : MonoBehaviour
     [SerializeField] float hungerDamageAmount;
     [SerializeField] Image healthDisplay;
     [SerializeField] Image hungerDisplay;
+    [SerializeField] Animator canvasAnimator;
     float playerHealth;
     float playerHunger;
     float timer;
+    public bool isAlive = true;
 
     private void Awake()
     {
@@ -22,6 +24,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (isAlive == false) return;
         if (playerHunger > 0)
         {
             playerHunger -= hungerDecreaseRate * Time.deltaTime;
@@ -46,6 +49,11 @@ public class Player : MonoBehaviour
 
         healthDisplay.fillAmount = playerHealth / maxHealth;
         hungerDisplay.fillAmount = playerHunger / maxHunger;
+
+        if (transform.position.z > Game.stats.furthestDistanceTravelled)
+        {
+            Game.stats.furthestDistanceTravelled = Mathf.Floor(transform.position.z);
+        }
     }
 
     public void AddFood(float amount)
@@ -55,6 +63,21 @@ public class Player : MonoBehaviour
 
     public void ChangeHealth(float amount)
     {
+        if (isAlive == false) return;
+
         playerHealth = Mathf.Clamp(playerHealth + amount, 0, maxHealth);
+        if (playerHealth <= 0)
+        {
+            Debug.Log("Game Over");
+            GetComponent<Rigidbody>().isKinematic = true;
+            GetComponent<FirstPersonController>().enableHeadBob = false;
+            GetComponent<FirstPersonController>().enableSprint = false;
+            GetComponent<FirstPersonController>().enableZoom = false;
+            GetComponent<FirstPersonController>().cameraCanMove = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            isAlive = false;
+            canvasAnimator.SetTrigger("GameOver");
+        }
     }
 }

@@ -14,13 +14,14 @@ GameObject:
   - component: {fileID: 7748407510985456408}
   - component: {fileID: 7738017484635048368}
   - component: {fileID: 7738017484635048369}
+  - component: {fileID: 1325033879116400578}
   m_Layer: 0
   m_Name: TestWolf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7740773077695906406
 Transform:
   m_ObjectHideFlags: 0
@@ -136,16 +137,41 @@ MonoBehaviour:
   losingSightDistance: 25
   destinationPoint: {x: 0, y: 0, z: 0}
   roamingDistance: 50
-  destinationStoppingThreshold: 1
+  destinationStoppingThreshold: 1.5
   minIdleTime: 0
   maxIdleTime: 10
   walkSpeed: 2.5
   runSpeed: 4.5
   rotationSpeed: 3
   avoidanceTime: 2
+  attackDelay: 1.5
+  attackDamage: -20
   layerMask:
     serializedVersion: 2
     m_Bits: 513
+--- !u!114 &1325033879116400578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7737598014678085768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6035169e3746224cae20bd2dc512f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectiveItem: 3
+  damagable: 1
+  health: 40
+  drops:
+  - {fileID: 1587465349317454, guid: 6ebb1b291f74c46a0948e14863865900, type: 3}
+  numberOfDrops: 2
+  spawnRange: {x: 0.5, y: 0, z: 0.5}
+  spawnOffset: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
+  healthPopupGO: {fileID: 7693951919032916010, guid: f357864c422c33b4787f375220093b74,
+    type: 3}
 --- !u!1 &7738017485082168587
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,6 +302,7 @@ GameObject:
   - component: {fileID: 2839041484751946579}
   - component: {fileID: 1604397546130630599}
   - component: {fileID: 8144563192970930467}
+  - component: {fileID: 8144563192970930468}
   m_Layer: 0
   m_Name: VisionCone
   m_TagString: Untagged
@@ -362,3 +389,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: 4b67bddb7f08f4c4ebb0fba348169739, type: 3}
+--- !u!135 &8144563192970930468
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8144563192970930466}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.38
+  m_Center: {x: 0, y: 1.08, z: 0}
