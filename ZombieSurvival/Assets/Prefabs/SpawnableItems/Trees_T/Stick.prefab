@@ -135,8 +135,8 @@ MonoBehaviour:
   foodValue: 0
   healthValue: 0
   closePickup: 1
-  pickupLocationOffset: {x: 0, y: 0, z: 0}
-  picupRotationOffset: {x: 0, y: 0, z: 0, w: 0}
+  pickupLocationOffset: {x: -0.252, y: 0.331, z: 0.036}
+  picupRotationOffset: {x: -0.08196902, y: 0.271493, z: -0.39171007, w: 0.8752918}
   holdingRayOffset: 0
   spawningOffset: {x: 0, y: 0, z: 0}
   craftingItem: 1

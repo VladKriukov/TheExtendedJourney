@@ -12,6 +12,7 @@ public class ChunkPropSpawner : MonoBehaviour
     [SerializeField] float spawningChance;
     [SerializeField] Vector2 spawningRange;
     [SerializeField] Vector2 spawningOffset;
+    [SerializeField] bool spawnAtY0;
     [SerializeField] LayerMask layerMask;
 
     List<GameObject> spawnedItems = new List<GameObject>();
@@ -106,6 +107,10 @@ public class ChunkPropSpawner : MonoBehaviour
                 else
                 {
                     item.transform.position = new Vector3(item.transform.position.x, hit.point.y, item.transform.position.z);
+                }
+                if (spawnAtY0 == true)
+                {
+                    item.transform.position = new Vector3(item.transform.position.x, transform.position.y, item.transform.position.z);
                 }
             }
             else

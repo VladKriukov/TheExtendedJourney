@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class Train : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Train : MonoBehaviour
     [SerializeField] FuelTank fuelTank;
     [SerializeField] GameObject trainEngine;
     [SerializeField] float throttleSpeed;
+    [SerializeField] TMP_Text throttleText;
     float currentThrottle;
     bool movingForward;
     AudioSource engineOff;
@@ -19,6 +21,7 @@ public class Train : MonoBehaviour
 
     public bool acceptingInput;
     Rigidbody rb;
+    bool trainOn;
 
     private void Awake()
     {
@@ -31,22 +34,30 @@ public class Train : MonoBehaviour
     public void StartEngine()
     {
         trainEngine.SetActive(true);
+        trainOn = true;
     }
 
     public void StopEngine()
     {
         currentThrottle = 0;
         engineOff.Play();
+        trainOn = false;
         Invoke(nameof(EngineOff), engineOff.clip.length);
     }
 
     void EngineOff()
     {
         trainEngine.SetActive(false);
+        trainOn = false;
     }
 
     private void Update()
     {
+        throttleText.text = "Throttle: " + (Mathf.Round(currentThrottle * 100f) / 100f);
+        if (trainOn == true)
+        {
+            engineAudio.enabled = !Game.gamePaused;
+        }
         if (fuelTank.fuel > 0 && acceptingInput == true && trainEngine.activeInHierarchy == true)
         {
             if (Input.GetKey(KeyCode.W))

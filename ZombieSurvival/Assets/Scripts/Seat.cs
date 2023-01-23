@@ -7,6 +7,7 @@ public class Seat : MonoBehaviour
     [SerializeField] GameObject trainUI;
     GameObject player;
     float cooldown = 0.5f;
+    bool helpOn = true;
 
     public void Sit(GameObject _player)
     {
@@ -26,13 +27,18 @@ public class Seat : MonoBehaviour
     private void Update()
     {
         cooldown -= Time.deltaTime;
+        if (controlledTrain.acceptingInput == true && helpOn == true)
+        {
+            trainUI.gameObject.SetActive(!Game.gamePaused);
+        }
         if (player != null && Input.GetKeyDown(KeyCode.E) && cooldown <= 0)
         {
             Exit();
         }
-        if (controlledTrain.acceptingInput == true && Input.GetKeyDown(KeyCode.F1))
+        if (controlledTrain.acceptingInput == true && Input.GetKeyDown(KeyCode.F1) && Game.gamePaused == false)
         {
-            trainUI.transform.GetChild(0).gameObject.SetActive(!trainUI.transform.GetChild(0).gameObject.activeInHierarchy);
+            trainUI.gameObject.SetActive(!trainUI.transform.GetChild(0).gameObject.activeInHierarchy);
+            helpOn = !helpOn;
         }
     }
 

@@ -19,10 +19,21 @@ public class Resource : MonoBehaviour
     [SerializeField] Vector3 spawnOffset;
     [SerializeField] Quaternion rotation;
     [SerializeField] GameObject healthPopupGO;
+    AudioSource audioSource;
     HealthPopup healthPopup;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public void Damage(float amount, Vector3 hitPoint, Vector3 hitNormal)
     {
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
+        
         if (damagable == false) return;
         health -= amount;
         if (healthPopup == null)

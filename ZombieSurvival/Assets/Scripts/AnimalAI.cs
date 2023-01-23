@@ -22,6 +22,7 @@ public class AnimalAI : MonoBehaviour
     [SerializeField] float avoidanceTime;
     [SerializeField] float attackDelay;
     [SerializeField] float attackDamage;
+    [SerializeField] float dragMultiplier = 3;
     [SerializeField] LayerMask layerMask;
 
     Rigidbody rb;
@@ -73,10 +74,15 @@ public class AnimalAI : MonoBehaviour
                 movementType = MovementType.Roaming;
                 chaseTarget = null;
             }
-            rb.velocity = transform.forward * currentSpeed + Vector3.down;
+            rb.AddForce(transform.forward * currentSpeed);
+            rb.drag = Mathf.Abs(rb.velocity.z * dragMultiplier);
+            //rb.velocity = transform.forward * currentSpeed + Vector3.down;
             //rb.velocity += Vector3.down * 2f;
 
+            destinationPoint.y = transform.position.y;
+
             Vector3 targetDirection = destinationPoint - transform.position;
+            targetDirection.y = 0;
             float singleStep = rotationSpeed * Time.deltaTime;
             Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
             Debug.DrawRay(transform.position, newDirection, Color.red);
@@ -124,6 +130,7 @@ public class AnimalAI : MonoBehaviour
         }
         else if (movementType == MovementType.Idle)
         {
+            rb.drag = 20;
             idleTime -= Time.deltaTime;
             if (idleTime <= 0)
             {
@@ -139,12 +146,8 @@ public class AnimalAI : MonoBehaviour
     // todo: fix so it doesn't go in the water (convert to IEnumerator)
     void CreateRandomDestination()
     {
-        destinationPoint = new Vector3(transform.position.x + Random.Range(0, roamingDistance), transform.position.y, transform.position.z + Random.Range(0, roamingDistance));
-        hitting = Physics.Raycast(destinationPoint + new Vector3(0, 50, 0), Vector3.down, out hit, 200, layerMask);
-        if (hitting == true)
-        {
-            destinationPoint = new Vector3(destinationPoint.x, hit.point.y, destinationPoint.z);
-        }
+        destinationPoint = new Vector3(transform.position.x + Random.Range(-roamingDistance, roamingDistance), transform.position.y, transform.position.z + Random.Range(-roamingDistance, roamingDistance));
+        
         movementType = MovementType.Roaming;
     }
 

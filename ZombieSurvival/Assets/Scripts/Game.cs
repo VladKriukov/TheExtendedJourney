@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class Game : MonoBehaviour
 {
@@ -26,12 +27,13 @@ public class Game : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] Slider altitudeStepsSlider;
     [SerializeField] Slider chunksFromTrackSlider;
+    [SerializeField] List<TMP_Text> distanceTravelledTexts = new List<TMP_Text>();
 
     Animator animator;
 
     bool loading;
 
-    bool gamePaused;
+    public static bool gamePaused;
     bool inGame;
 
     private void Awake()
@@ -142,6 +144,10 @@ public class Game : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+        }
+        foreach (var item in distanceTravelledTexts)
+        {
+            item.text = "" + (Mathf.Round(stats.furthestDistanceTravelled * 10f) / 10f) + "m";
         }
     }
 }

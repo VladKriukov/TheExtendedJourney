@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
 
         if (transform.position.z > Game.stats.furthestDistanceTravelled)
         {
-            Game.stats.furthestDistanceTravelled = Mathf.Floor(transform.position.z);
+            Game.stats.furthestDistanceTravelled = transform.position.z;
         }
     }
 

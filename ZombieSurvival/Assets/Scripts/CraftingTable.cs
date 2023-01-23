@@ -65,7 +65,8 @@ public class CraftingTable : MonoBehaviour
     {
         if (item.GetComponent<ItemProperties>().craftingItem == true)
         {
-            //Debug.Log("Removing item");
+            GetComponent<PhysicsStopper>().RemoveItem(item);
+            Debug.Log("Removing item");
             craftingTableInventory.Remove(item);
             craftingBook.RemoveItemFromCurrentItems(item.name);
         }
@@ -112,7 +113,7 @@ public class CraftingTable : MonoBehaviour
             {
                 if (currentItem.GetComponent<ItemProperties>().itemType == item.requiredItem)
                 {
-                    Debug.Log("Required item type matched");
+                    //Debug.Log("Required item type matched");
                     availableSpecifiedItem.Add(currentItem);
                 }
             }
