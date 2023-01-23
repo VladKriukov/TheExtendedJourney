@@ -34,7 +34,7 @@ public class Game : MonoBehaviour
     bool loading;
 
     public static bool gamePaused;
-    bool inGame;
+    public static bool inGame;
 
     private void Awake()
     {
@@ -79,6 +79,11 @@ public class Game : MonoBehaviour
         waterLevel = (int)value - 1;
     }
 
+    public void SetFogDensity(float value)
+    {
+        RenderSettings.fogDensity = value;
+    }
+
     public void StartLoading()
     {
         loading = true;
@@ -109,6 +114,7 @@ public class Game : MonoBehaviour
 
     public void PlayAgain()
     {
+        progress = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

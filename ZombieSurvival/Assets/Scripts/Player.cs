@@ -77,6 +77,7 @@ public class Player : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             isAlive = false;
+            Game.inGame = false;
             canvasAnimator.SetTrigger("GameOver");
         }
     }

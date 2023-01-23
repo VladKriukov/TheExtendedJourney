@@ -23,7 +23,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4891814196483320
 Transform:
@@ -185,6 +185,7 @@ MonoBehaviour:
   spawningChance: 4
   spawningRange: {x: 14, y: 14}
   spawningOffset: {x: 0, y: 0}
+  spawnAtY0: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 528
@@ -211,6 +212,7 @@ MonoBehaviour:
   spawningChance: 6
   spawningRange: {x: 14, y: 14}
   spawningOffset: {x: 0, y: 0}
+  spawnAtY0: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 528
@@ -239,6 +241,7 @@ MonoBehaviour:
   spawningChance: 10
   spawningRange: {x: 14, y: 14}
   spawningOffset: {x: 0, y: 0}
+  spawnAtY0: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 528
@@ -262,6 +265,7 @@ MonoBehaviour:
   spawningChance: 3
   spawningRange: {x: 14, y: 14}
   spawningOffset: {x: 0, y: 0}
+  spawnAtY0: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 528
@@ -285,6 +289,7 @@ MonoBehaviour:
   spawningChance: 5
   spawningRange: {x: 14, y: 14}
   spawningOffset: {x: 0, y: 0}
+  spawnAtY0: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 512

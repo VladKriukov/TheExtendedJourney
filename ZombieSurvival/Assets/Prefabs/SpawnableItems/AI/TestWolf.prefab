@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 1604397546130630599}
   - component: {fileID: 8144563192970930467}
   - component: {fileID: 8144563192970930468}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VisionCone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

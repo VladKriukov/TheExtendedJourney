@@ -27,6 +27,7 @@ public class Tool : MonoBehaviour
 
     private void Update()
     {
+        if (Game.inGame == false) return;
         animator.enabled = heldInHands;
         if (heldInHands == false) return;
 
