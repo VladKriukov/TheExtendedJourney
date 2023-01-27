@@ -1,9 +1,7 @@
 Ideas:
-- Make end of world inf water
 - Swimming mechanics
 - Weapons made from scratch
 - Work on starting area looks
 
 Performance improvements:
 - hide things not visible by camera
-- make water singular strip
