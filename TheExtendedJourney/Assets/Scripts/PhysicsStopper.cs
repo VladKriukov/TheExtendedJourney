@@ -33,10 +33,14 @@ public class PhysicsStopper : MonoBehaviour
         {
             while (item != null)
             {
-                if (item.GetComponent<Rigidbody>().velocity.magnitude > 0.25f)
+                if(item.tag == "PickUpAble")
                 {
-                    yield return new WaitForSeconds(0.5f);
+                    if (item.GetComponent<Rigidbody>().velocity.magnitude > 0.25f)
+                    {
+                        yield return new WaitForSeconds(0.5f);
+                    }
                 }
+                
                 else
                 {
                     break;

@@ -40,16 +40,20 @@ public class CraftingTable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<ItemProperties>().craftingItem == true)
+        if(other.GetComponent<ItemProperties>()!= null)
         {
-            if (craftingTableInventory.Contains(other.gameObject) == false)
+            if (other.GetComponent<ItemProperties>().craftingItem == true)
             {
-                craftingTableInventory.Add(other.gameObject);
-                craftingBook.AddItemToCurrentItems(other.gameObject.name);
-                
-                //Craft("Pickaxe");
+                if (craftingTableInventory.Contains(other.gameObject) == false)
+                {
+                    craftingTableInventory.Add(other.gameObject);
+                    craftingBook.AddItemToCurrentItems(other.gameObject.name);
+
+                    //Craft("Pickaxe");
+                }
             }
         }
+        
     }
 
     private void OnTriggerExit(Collider other)
