@@ -105,25 +105,26 @@ public class AnimalAI : MonoBehaviour
                 default:
                     break;
             }
-            if (Vector3.Distance(transform.position, destinationPoint) <= destinationStoppingThreshold)
+
+            if (movementType == MovementType.Roaming)
             {
-                if (movementType == MovementType.Roaming)
+                if (Vector3.Distance(transform.position, destinationPoint) <= destinationStoppingThreshold)
                 {
                     idleTime = Random.Range(minIdleTime, maxIdleTime);
                     movementType = MovementType.Idle;
                     destinationPoint = Vector3.zero;
                 }
-                else
+            }
+            else
+            {
+                if (chaseTarget != null && Vector3.Distance(transform.position, chaseTarget.position) <= destinationStoppingThreshold)
                 {
                     // attack
-                    if (chaseTarget != null)
+                    attackTime -= Time.deltaTime;
+                    if (attackTime <= 0)
                     {
-                        attackTime -= Time.deltaTime;
-                        if (attackTime <= 0)
-                        {
-                            attackTime = attackDelay;
-                            chaseTarget.GetComponent<Player>().ChangeHealth(attackDamage);
-                        }
+                        attackTime = attackDelay;
+                        chaseTarget.GetComponent<Player>().ChangeHealth(attackDamage);
                     }
                 }
             }

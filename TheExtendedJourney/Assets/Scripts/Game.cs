@@ -96,6 +96,9 @@ public class Game : MonoBehaviour
         gamePaused = !gamePaused;
         animator.SetBool("Paused", gamePaused);
 
+        player.SetActive(!gamePaused);
+        menuCamera.SetActive(gamePaused);
+
         if (gamePaused == true)
         {
             Time.timeScale = 0;
@@ -108,8 +111,6 @@ public class Game : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
-        player.SetActive(!gamePaused);
-        menuCamera.SetActive(gamePaused);
     }
 
     public void PlayAgain()

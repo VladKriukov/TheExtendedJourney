@@ -36,7 +36,7 @@ public class FirstPersonController : MonoBehaviour
 
     // Internal Variables
     private float yaw = 0.0f;
-    private float pitch = 0.0f;
+    public float pitch = 0.0f;
     private Image crosshairObject;
 
     #region Camera Zoom Variables
@@ -221,7 +221,6 @@ public class FirstPersonController : MonoBehaviour
 
             // Clamp pitch between lookAngle
             pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
-
             transform.localEulerAngles = new Vector3(0, yaw, 0);
             playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
         }

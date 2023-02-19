@@ -52,6 +52,7 @@ public class CameraInterractor : MonoBehaviour
             //LerpToHoldingLocation();
             if (Input.GetKeyDown(KeyCode.Q))
             {
+                if (player.GetComponent<FirstPersonController>().pitch > 70) return;
                 if (pickUpObject.GetComponent<Tool>() != null) pickUpObject.GetComponent<Tool>().heldInHands = false;
                 if (pickUpObject.GetComponent<Animator>() != null) pickUpObject.GetComponent<Animator>().enabled = false;
                 
@@ -60,10 +61,6 @@ public class CameraInterractor : MonoBehaviour
                 pickUpObject.GetComponent<Collider>().enabled = true;
                 pickUpObject.layer = 0;
                 pickUpObject.transform.parent = null;
-                if (pickUpObject.GetComponent<ItemProperties>() != null)
-                {
-                    
-                }
                 pickUpObject.transform.position = droppingLocation.GetChild(0).position;
                 pickUpObject = null;
                 holdingItem = false;
