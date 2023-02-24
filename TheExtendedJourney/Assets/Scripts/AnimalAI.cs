@@ -33,10 +33,12 @@ public class AnimalAI : MonoBehaviour
 
     RaycastHit hit;
     bool hitting;
+    Game game;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        game = FindObjectOfType<Game>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -124,7 +126,15 @@ public class AnimalAI : MonoBehaviour
                     if (attackTime <= 0)
                     {
                         attackTime = attackDelay;
-                        chaseTarget.GetComponent<Player>().ChangeHealth(attackDamage);
+                        //chaseTarget.GetComponent<Player>().ChangeHealth(attackDamage);
+                        if (!game.enemyBuff)//This has been slightley changed as an example of the buff in the game script, can easly be changed back if needed
+                        {
+                            chaseTarget.GetComponent<Player>().ChangeHealth(attackDamage);
+                        }
+                        if(game.enemyBuff)
+                        {
+                            chaseTarget.GetComponent<Player>().ChangeHealth(attackDamage*2);
+                        }
                     }
                 }
             }

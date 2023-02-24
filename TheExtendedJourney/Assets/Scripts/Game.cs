@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System.Collections;
 
 public class Game : MonoBehaviour
 {
@@ -28,6 +29,12 @@ public class Game : MonoBehaviour
     [SerializeField] Slider altitudeStepsSlider;
     [SerializeField] Slider chunksFromTrackSlider;
     [SerializeField] List<TMP_Text> distanceTravelledTexts = new List<TMP_Text>();
+
+    public bool enemyBuff = false;//This and the four values below are used for the idle checking mechanic
+    bool timerRunning = false;
+    [SerializeField] float idleCheckTime = 5;//This is how long the script will wait for, in seconds, before adding one to the idle time value
+    [SerializeField] float maxIdleTime = 10;//This is how long the player can stay idle for without the buff being added to the enemies
+    float idleTime = 0, lastFurthestDistance = 0;
 
     Animator animator;
 
@@ -156,6 +163,34 @@ public class Game : MonoBehaviour
         {
             item.text = "" + (Mathf.Round(stats.furthestDistanceTravelled * 10f) / 10f) + "m";
         }
+        if(inGame && !gamePaused && !timerRunning)//This checks to see if the game is running, has not been paused and if the coroutine is already running before running the timer
+        {
+            timerRunning = true;
+            StartCoroutine(IncrementEnemyBuff());
+        }
+    }
+    IEnumerator IncrementEnemyBuff()
+    {
+        if (lastFurthestDistance >= stats.furthestDistanceTravelled)//Checks to see if the distance traveled at last check is the same as last time, if it is the same or greater 
+                                                                    //Then it will either increment the idle time or activate the buff, it can never be greater than but is just a failsafe
+        {
+            if (idleTime <= maxIdleTime)
+            {
+                idleTime += 1;
+            }
+            if (idleTime >= maxIdleTime)
+            {
+                enemyBuff = true;
+            }
+        }
+        if (lastFurthestDistance < stats.furthestDistanceTravelled)//If the player has moved more than they had the last time it checked the timer resets and deactivates the buff if it is active
+        {
+            enemyBuff = false;
+            idleTime = 0;
+        }
+        lastFurthestDistance = stats.furthestDistanceTravelled;//Once the checks are done it will record the players new furthest distance traveled
+        yield return new WaitForSecondsRealtime(idleCheckTime);//This is how long it waits to check again, increasing this or the maxIdleTime value will increase how long the player has before the need to make some progress        
+        timerRunning = false;//This is here so it allows the function to run again
     }
 }
 
