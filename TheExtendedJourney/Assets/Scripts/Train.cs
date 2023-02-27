@@ -20,6 +20,8 @@ public class Train : MonoBehaviour
     GameObject breaksAudio;
 
     public bool acceptingInput;
+    [HideInInspector] public FirstPersonController player;
+    [HideInInspector] public float playerStartingFOV;
     Rigidbody rb;
     bool trainOn;
 
@@ -33,12 +35,17 @@ public class Train : MonoBehaviour
 
     public void StartEngine()
     {
+        if (fuelTank.fuel <= 0) return;
         trainEngine.SetActive(true);
         trainOn = true;
     }
 
     public void StopEngine()
     {
+        if (player != null)
+        {
+            player.fov = playerStartingFOV;
+        }
         currentThrottle = 0;
         engineOff.Play();
         trainOn = false;
@@ -111,6 +118,15 @@ public class Train : MonoBehaviour
                 breaksAudio.SetActive(false);
                 if (currentThrottle == 0) currentForce = 0;
             }
+
+            if (player.dynamicFOV == true)
+            {
+                player.fov = playerStartingFOV + currentThrottle * 20;
+            }
+            else
+            {
+                player.fov = playerStartingFOV;
+            }
         }
 
         engineAudio.pitch = (currentThrottle * 2) + 1;
@@ -121,6 +137,10 @@ public class Train : MonoBehaviour
             fuelTank.fuel -= fuelUsage * Time.deltaTime * currentThrottle;
             fuelTank.fuel -= idleFuelUsage * Time.deltaTime;
             rb.drag = Mathf.Abs(rb.velocity.z * dragMultiplier);
+            if (fuelTank.fuel <= 0)
+            {
+                StopEngine();
+            }
         }
 
         if (acceptingInput)

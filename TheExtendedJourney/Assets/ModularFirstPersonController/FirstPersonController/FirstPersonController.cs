@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 #if UNITY_EDITOR
     using UnityEditor;
@@ -27,6 +28,7 @@ public class FirstPersonController : MonoBehaviour
     public bool cameraCanMove = true;
     public float mouseSensitivity = 2f;
     public float maxLookAngle = 50f;
+    public bool dynamicFOV = true;
 
     // Crosshair
     public bool lockCursor = true;
@@ -130,6 +132,18 @@ public class FirstPersonController : MonoBehaviour
     private float timer = 0;
 
     #endregion
+
+    public void ChangeFOV(float value)
+    {
+        fov = value;
+        playerCamera.fieldOfView = fov;
+        sprintFOV = fov + 20;
+    }
+
+    public void EnableDynamicFOV(bool b)
+    {
+        dynamicFOV = b;
+    }
 
     private void Awake()
     {
@@ -278,7 +292,10 @@ public class FirstPersonController : MonoBehaviour
             if(isSprinting)
             {
                 isZoomed = false;
-                playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, sprintFOV, sprintFOVStepTime * Time.deltaTime);
+                if (dynamicFOV == true)
+                {
+                    playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, sprintFOV, sprintFOVStepTime * Time.deltaTime);
+                }
 
                 // Drain sprint remaining while sprinting
                 if(!unlimitedSprint)
