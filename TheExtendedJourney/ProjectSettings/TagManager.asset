@@ -12,6 +12,7 @@ TagManager:
   - Interractable
   - ChunkBackward
   - PlayerTrigger
+  - Train
   layers:
   - Default
   - TransparentFX

@@ -43,10 +43,29 @@ public class AnimalAI : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        switch (other.tag)
         {
-            chaseTarget = other.gameObject.transform;
-            destinationPoint = chaseTarget.position;
+            case "Player":
+                chaseTarget = other.gameObject.transform;
+                destinationPoint = chaseTarget.position;
+                break;
+            case "Train":
+                
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Train"))
+        {
+            Debug.Log("TRain");
+            if (collision.collider.transform.parent.GetComponent<Rigidbody>().velocity.z > 5)
+            {
+                GetComponent<Resource>().DropLoot();
+            }
         }
     }
 
