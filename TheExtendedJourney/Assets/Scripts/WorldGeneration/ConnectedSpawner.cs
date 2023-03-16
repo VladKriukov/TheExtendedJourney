@@ -245,6 +245,8 @@ public class ConnectedSpawner : MonoBehaviour
 
         generatedTerrain.gameObject.SetActive(true);
 
+        generatedTerrain.ChangeChunkBiome();
+
         // check if there is a need to spawn another connected spawner
         if (GetThisChunkSpawner(currentChunkFromTrack + 1) != null)
         {

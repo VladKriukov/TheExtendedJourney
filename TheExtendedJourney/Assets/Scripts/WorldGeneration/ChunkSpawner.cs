@@ -9,6 +9,16 @@ public class ChunkSpawner : MonoBehaviour
     public float chunkXOffset; // the chunk size in width (possibly same as Z offset since it is square)
     public float chunkZOffset; // the chunk size in length
 
+    public enum CurrentBiome
+    {
+        Grass, Snow, Sand, Fall
+    }
+    public static CurrentBiome currentBiome;
+    public CurrentBiome previousChunkBiome;
+    public int minBiomeSize;
+    public int maxBiomeSize;
+    int currentBiomeSize;
+
     [SerializeField] GameObject startingPlatform;
 
     [HideInInspector] public int chunkAltitude;
@@ -54,7 +64,6 @@ public class ChunkSpawner : MonoBehaviour
                     SpawnChunk(chunkToMove);
                     MoveChunk();
                 }
-                
             }
             else
             {
@@ -130,6 +139,37 @@ public class ChunkSpawner : MonoBehaviour
 
     void SpawnChunk(Transform chunkToSpawn)
     {
+        if (previousChunkBiome == currentBiome)
+        {
+            currentBiomeSize++;
+            if (currentBiomeSize > Random.Range(minBiomeSize, maxBiomeSize))
+            {
+                switch (Random.Range(0, 4))
+                {
+                    case 0:
+                        currentBiome = CurrentBiome.Grass;
+                        break;
+                    case 1:
+                        currentBiome = CurrentBiome.Snow;
+                        break;
+                    case 2:
+                        currentBiome = CurrentBiome.Sand;
+                        break;
+                    case 3:
+                        currentBiome = CurrentBiome.Fall;
+                        break;
+                    default:
+                        break;
+                }
+                currentBiomeSize = 0;
+            }
+        }
+        else
+        {
+            currentBiomeSize = 0;
+        }
+
+        previousChunkBiome = currentBiome;
         chunkOfInterest = chunkToSpawn.GetComponent<ChunkGenerator>();
 
         chunkDistanceCounter++;

@@ -155,6 +155,12 @@ MonoBehaviour:
   requiredBackwardAltitudeSteps: 0000000000000000000000000100000000000000
   leftStartingStep: -1
   rightStartingStep: 0
+  topMaterialElementID: 0
+  dirt: {fileID: 2100000, guid: 6e3ac6e47b4d7a44685dfef9bf209413, type: 2}
+  grass: {fileID: 2100000, guid: fb045539f4b18a242aca8e57e88c5cd7, type: 2}
+  snow: {fileID: 2100000, guid: 5f35ae9530edec84085e28d4c3302e29, type: 2}
+  sand: {fileID: 2100000, guid: 42caffe1132386f4daa037a9663088b9, type: 2}
+  fall: {fileID: 2100000, guid: 700ae469e5be9ac4095d29b97116027a, type: 2}
   leftSlopeMatch: 0
   rightSlopeMatch: 0
   leftSloping: 1

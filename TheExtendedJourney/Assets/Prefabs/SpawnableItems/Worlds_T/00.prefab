@@ -104,7 +104,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 7c4d1ca50256a459195640dd715606ab, type: 3}
+  m_Mesh: {fileID: -4658242316707497442, guid: 7c4d1ca50256a459195640dd715606ab, type: 3}
 --- !u!114 &2589284590534909410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +151,12 @@ MonoBehaviour:
   requiredBackwardAltitudeSteps: 0000000000000000000000000100000000000000
   leftStartingStep: 0
   rightStartingStep: 0
+  topMaterialElementID: 1
+  dirt: {fileID: 2100000, guid: 6e3ac6e47b4d7a44685dfef9bf209413, type: 2}
+  grass: {fileID: 2100000, guid: fb045539f4b18a242aca8e57e88c5cd7, type: 2}
+  snow: {fileID: 2100000, guid: 5f35ae9530edec84085e28d4c3302e29, type: 2}
+  sand: {fileID: 2100000, guid: 42caffe1132386f4daa037a9663088b9, type: 2}
+  fall: {fileID: 2100000, guid: 700ae469e5be9ac4095d29b97116027a, type: 2}
   leftSlopeMatch: 0
   rightSlopeMatch: 2
   leftSloping: 0
