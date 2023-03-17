@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1665389280784259502}
   - component: {fileID: -7736594926000123501}
   - component: {fileID: 542969005929272318}
+  - component: {fileID: -7890252767754501761}
   m_Layer: 9
   m_Name: 01
   m_TagString: Untagged
@@ -147,12 +148,6 @@ MonoBehaviour:
   requiredBackwardAltitudeSteps: 0100000001000000010000000100000000000000
   leftStartingStep: 0
   rightStartingStep: 0
-  topMaterialElementID: 0
-  dirt: {fileID: 2100000, guid: 6e3ac6e47b4d7a44685dfef9bf209413, type: 2}
-  grass: {fileID: 2100000, guid: fb045539f4b18a242aca8e57e88c5cd7, type: 2}
-  snow: {fileID: 2100000, guid: 5f35ae9530edec84085e28d4c3302e29, type: 2}
-  sand: {fileID: 2100000, guid: 42caffe1132386f4daa037a9663088b9, type: 2}
-  fall: {fileID: 2100000, guid: 700ae469e5be9ac4095d29b97116027a, type: 2}
   leftSlopeMatch: 2
   rightSlopeMatch: 2
   leftSloping: 0
@@ -169,15 +164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6712f74caaa79db4288c90004ca02061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemVariants:
-  - {fileID: 1000010757296548, guid: 82bd0e3eef3cc854eae31c6f4cd718bf, type: 3}
-  - {fileID: 1000012548533322, guid: 3678017521dcb4e1bacbd3270c78a089, type: 3}
-  - {fileID: 1000014286827952, guid: 818821d8635b7754b97b69789a4a2d0f, type: 3}
-  - {fileID: 1000011078951186, guid: 2559aa2d368562248aea8c62e35ac2fd, type: 3}
-  - {fileID: 1000011913286906, guid: 90e80017d9ec13d41994176c5753e38d, type: 3}
-  - {fileID: 1000013497436514, guid: ddf7f5e45e33643f29f98935b0a24dd3, type: 3}
-  - {fileID: 1000011791129056, guid: ecffebeddb5514952927bb855076b838, type: 3}
-  - {fileID: 1000011788818366, guid: bac0554aef76116419238af986418dc6, type: 3}
+  itemVariants: {fileID: 11400000, guid: 1ccc24a44da5d56499fa0afb0439bd09, type: 2}
+  currentItemVariants: []
   minAmount: 1
   maxAmount: 6
   randomiseSpawningChance: 1
@@ -200,11 +188,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6712f74caaa79db4288c90004ca02061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemVariants:
-  - {fileID: 2119687541962724407, guid: 7d75bf6cf00808c49a890bb31215091c, type: 3}
-  - {fileID: 1000011032761792, guid: 2658a717abb234446829f8a02100617e, type: 3}
-  - {fileID: 1000010418045386, guid: b3a2d7a4838ad404eacfdc0ccaf763e6, type: 3}
-  - {fileID: 1000011501164198, guid: e2a184eee3066c849bee3b0b9035c911, type: 3}
+  itemVariants: {fileID: 11400000, guid: 98080f7ff98106c4a8a0678448f5a7a0, type: 2}
+  currentItemVariants: []
   minAmount: 1
   maxAmount: 3
   randomiseSpawningChance: 1
@@ -227,13 +212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6712f74caaa79db4288c90004ca02061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemVariants:
-  - {fileID: 1000011210138126, guid: f9c68666ec758cb48afb06107c00dfcd, type: 3}
-  - {fileID: 1000010740007340, guid: 54baad8be8f0849b2b20fd1da61be15f, type: 3}
-  - {fileID: 1000013070978894, guid: 16c6ecb322f65d1498b1b8b303ba2b90, type: 3}
-  - {fileID: 1000013466349968, guid: f91bd5ad6daecb6499fa5fcadcc2888c, type: 3}
-  - {fileID: 1000013039910218, guid: e23f1f429b8014fe3a8b083d568be8d6, type: 3}
-  - {fileID: 1000010604084324, guid: 6387db88c4179b14eba08bb62d247de7, type: 3}
+  itemVariants: {fileID: 11400000, guid: 2b5eb84e540f445449ac57a0b0fce756, type: 2}
+  currentItemVariants: []
   minAmount: 2
   maxAmount: 5
   randomiseSpawningChance: 1
@@ -256,8 +236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6712f74caaa79db4288c90004ca02061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemVariants:
-  - {fileID: 1000014092007092, guid: 5a8a1573ed9c5dd4cb5b6ef56898b3ba, type: 3}
+  itemVariants: {fileID: 11400000, guid: e85dfa4aff5199546b451df9d4e09003, type: 2}
+  currentItemVariants: []
   minAmount: 2
   maxAmount: 6
   randomiseSpawningChance: 1
@@ -280,8 +260,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6712f74caaa79db4288c90004ca02061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemVariants:
-  - {fileID: 7737598014678085768, guid: 9ca6c07d7d9fb564da8977a10a5ecd70, type: 3}
+  itemVariants: {fileID: 11400000, guid: b04560fe3a07afb4794dd37cf47ef27a, type: 2}
+  currentItemVariants: []
   minAmount: 0
   maxAmount: 2
   randomiseSpawningChance: 0
@@ -292,3 +272,17 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &-7890252767754501761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342696323144794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d631e0e705c7b246babbfd791142a81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialToChangeID: 0
+  biomeMaterials: {fileID: 11400000, guid: 5503817a0b7c2bd4face12833757eb57, type: 2}

@@ -1,10 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Collections;
 
 public class ChunkPropSpawner : MonoBehaviour
 {
-    [SerializeField] List<GameObject> itemVariants = new List<GameObject>();
+    [SerializeField] ItemVariants itemVariants;
     //[SerializeField] List<GameObject> seasonalChristmasItems = new List<GameObject>();
     [SerializeField] int minAmount;
     [SerializeField] int maxAmount;
@@ -14,6 +13,8 @@ public class ChunkPropSpawner : MonoBehaviour
     [SerializeField] Vector2 spawningOffset;
     [SerializeField] bool spawnAtY0;
     [SerializeField] LayerMask layerMask;
+
+    List<GameObject> currentItemVariants = new List<GameObject>();
 
     List<GameObject> spawnedItems = new List<GameObject>();
 
@@ -49,17 +50,41 @@ public class ChunkPropSpawner : MonoBehaviour
 
     void PoolItems()
     {
+        switch (ChunkSpawner.currentBiome)
+        {
+            case ChunkSpawner.CurrentBiome.Grass:
+                currentItemVariants = itemVariants.itemVariants_Normal;
+                Debug.LogWarning("Grass");
+                break;
+            case ChunkSpawner.CurrentBiome.Snow:
+                currentItemVariants = itemVariants.itemVariants_Snow;
+                Debug.LogWarning("Snow");
+                break;
+            case ChunkSpawner.CurrentBiome.Sand:
+                currentItemVariants = itemVariants.itemVariants_Sand;
+                Debug.LogWarning("Sand");
+                break;
+            case ChunkSpawner.CurrentBiome.Fall:
+                currentItemVariants = itemVariants.itemVariants_Fall;
+                Debug.LogWarning("Fall");
+                break;
+            default:
+                break;
+        }
+
+        if (currentItemVariants.Count == 0) return;
+
         ChunkPropInfo chunkPropInfo = new ChunkPropInfo();
         for (int i = 0; i < maxAmount; i++)
         {
             if (spawnedItems.Count >= maxAmount) break;
 
-            int rand = Random.Range(0, itemVariants.Count);
-            spawnedItems.Add(Instantiate(itemVariants[rand], transform));
+            int rand = Random.Range(0, currentItemVariants.Count);
+            spawnedItems.Add(Instantiate(currentItemVariants[rand], transform));
             spawnedItems[i].SetActive(false);
 
             chunkPropInfo.chunkPropRef = spawnedItems[i];
-            chunkPropInfo.chunkPropPrefab = itemVariants[rand];
+            chunkPropInfo.chunkPropPrefab = currentItemVariants[rand];
             allChunkPropInfos.Add(chunkPropInfo);
         }
     }
@@ -81,6 +106,7 @@ public class ChunkPropSpawner : MonoBehaviour
 
     void SpawnItems()
     {
+        if (currentItemVariants.Count == 0) return;
         for (int i = 0; i < Random.Range(minAmount, maxAmount); i++)
         {
             if (transform.parent.position.y <= (-Game.waterLevel - 1) * 6)

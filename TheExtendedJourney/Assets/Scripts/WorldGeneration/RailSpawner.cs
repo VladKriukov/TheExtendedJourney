@@ -149,6 +149,9 @@ public class RailSpawner : MonoBehaviour
             default:
                 break;
         }
+
+        transform.GetChild(0).GetComponent<BiomeChanger>().ChangeBiome();
+        transform.GetChild(1).GetComponent<BiomeChanger>().ChangeBiome();
     }
 
     private void PoolRails()

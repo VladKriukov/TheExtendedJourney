@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1274386127027540263}
   - component: {fileID: 2824334347756026087}
   m_Layer: 0
-  m_Name: tree-round
+  m_Name: AppleTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57ba98e3be52b89429024a39a2496722, type: 3}
+  m_Name: BigRocks
+  m_EditorClassIdentifier: 
+  itemVariants_Normal:
+  - {fileID: 2119687541962724407, guid: 7d75bf6cf00808c49a890bb31215091c, type: 3}
+  - {fileID: 1000011032761792, guid: 2658a717abb234446829f8a02100617e, type: 3}
+  - {fileID: 1000010418045386, guid: b3a2d7a4838ad404eacfdc0ccaf763e6, type: 3}
+  - {fileID: 1000011501164198, guid: e2a184eee3066c849bee3b0b9035c911, type: 3}
+  itemVariants_Snow:
+  - {fileID: 2119687541962724407, guid: 7d75bf6cf00808c49a890bb31215091c, type: 3}
+  - {fileID: 1000011032761792, guid: 2658a717abb234446829f8a02100617e, type: 3}
+  - {fileID: 1000010418045386, guid: b3a2d7a4838ad404eacfdc0ccaf763e6, type: 3}
+  - {fileID: 1000011501164198, guid: e2a184eee3066c849bee3b0b9035c911, type: 3}
+  itemVariants_Sand:
+  - {fileID: 2119687541962724407, guid: 7d75bf6cf00808c49a890bb31215091c, type: 3}
+  - {fileID: 1000011032761792, guid: 2658a717abb234446829f8a02100617e, type: 3}
+  - {fileID: 1000010418045386, guid: b3a2d7a4838ad404eacfdc0ccaf763e6, type: 3}
+  - {fileID: 1000011501164198, guid: e2a184eee3066c849bee3b0b9035c911, type: 3}
+  itemVariants_Fall:
+  - {fileID: 2119687541962724407, guid: 7d75bf6cf00808c49a890bb31215091c, type: 3}
+  - {fileID: 1000011032761792, guid: 2658a717abb234446829f8a02100617e, type: 3}
+  - {fileID: 1000010418045386, guid: b3a2d7a4838ad404eacfdc0ccaf763e6, type: 3}
+  - {fileID: 1000011501164198, guid: e2a184eee3066c849bee3b0b9035c911, type: 3}
