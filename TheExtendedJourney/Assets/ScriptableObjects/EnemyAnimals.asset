@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ba98e3be52b89429024a39a2496722, type: 3}
   m_Name: EnemyAnimals
   m_EditorClassIdentifier: 
-  itemVariants_Normal: []
+  itemVariants_Normal:
+  - {fileID: 7737598014678085768, guid: 9ca6c07d7d9fb564da8977a10a5ecd70, type: 3}
   itemVariants_Snow: []
   itemVariants_Sand: []
-  itemVariants_Fall: []
+  itemVariants_Fall:
+  - {fileID: 7737598014678085768, guid: 9ca6c07d7d9fb564da8977a10a5ecd70, type: 3}
