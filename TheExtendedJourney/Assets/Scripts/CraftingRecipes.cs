@@ -6,7 +6,6 @@ using UnityEngine;
 public class CraftingRecipes : ScriptableObject
 {
     public List<Recipe> recipes = new List<Recipe>();
-    public List<UpgradeRecipie> upgrade = new List<UpgradeRecipie>();//This is the list of upgrade recipies
 }
 
 [Serializable]
@@ -18,7 +17,6 @@ public struct Recipe
     //public List<InterchangableRecipeItems> interchangableItems;
     public GameObject output;
 }
-
 
 [Serializable]
 public struct RecipeItem
@@ -32,19 +30,4 @@ public struct InterchangableRecipeItems
 {
     public List<ItemProperties.ItemType> items;
     public int amount;
-}
-
-[Serializable]//This and the below RequiredItems gives the recipie for the upgrade, the output is used in a switch statement for the upgrade script
-public struct UpgradeRecipie
-{
-    public string upgradeName;
-    public List<RecipeItem> itemNeeded;
-    public int output;
-}
-
-[Serializable]
-public struct RequiredItem
-{
-    public ItemProperties.ItemType type;
-    public int ammount;
 }

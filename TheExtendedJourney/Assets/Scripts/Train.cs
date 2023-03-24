@@ -5,8 +5,8 @@ public class Train : MonoBehaviour
 {
     [SerializeField] float forwardForce;
     [SerializeField] float reverseForce;
-    [SerializeField] public float fuelUsage;
-    [SerializeField] public float idleFuelUsage;
+    [SerializeField] float fuelUsage;
+    [SerializeField] float idleFuelUsage;
     [SerializeField] float dragMultiplier;
     [SerializeField] FuelTank fuelTank;
     [SerializeField] GameObject trainEngine;
