@@ -15,6 +15,10 @@ public class ChunkPropSpawner : MonoBehaviour
     [SerializeField] LayerMask layerMask;
 
     List<GameObject> currentItemVariants = new List<GameObject>();
+    List<GameObject> spawnedGrassItems = new List<GameObject>();
+    List<GameObject> spawnedSnowItems = new List<GameObject>();
+    List<GameObject> spawnedSandItems = new List<GameObject>();
+    List<GameObject> spawnedFallItems = new List<GameObject>();
 
     List<GameObject> spawnedItems = new List<GameObject>();
 
@@ -50,32 +54,43 @@ public class ChunkPropSpawner : MonoBehaviour
 
     void PoolItems()
     {
+        ChunkPropInfo chunkPropInfo = new ChunkPropInfo();
+
+        spawnedGrassItems = InstantiateItems(spawnedGrassItems, itemVariants.itemVariants_Normal, chunkPropInfo);
+        spawnedSnowItems = InstantiateItems(spawnedSnowItems, itemVariants.itemVariants_Snow, chunkPropInfo);
+        spawnedSandItems = InstantiateItems(spawnedSandItems, itemVariants.itemVariants_Sand, chunkPropInfo);
+        spawnedFallItems = InstantiateItems(spawnedFallItems, itemVariants.itemVariants_Fall, chunkPropInfo);
+
         switch (ChunkSpawner.currentBiome)
         {
             case ChunkSpawner.CurrentBiome.Grass:
                 currentItemVariants = itemVariants.itemVariants_Normal;
+                spawnedItems = spawnedGrassItems;
                 Debug.LogWarning("Grass");
                 break;
             case ChunkSpawner.CurrentBiome.Snow:
                 currentItemVariants = itemVariants.itemVariants_Snow;
+                spawnedItems = spawnedSnowItems;
                 Debug.LogWarning("Snow");
                 break;
             case ChunkSpawner.CurrentBiome.Sand:
                 currentItemVariants = itemVariants.itemVariants_Sand;
+                spawnedItems = spawnedSandItems;
                 Debug.LogWarning("Sand");
                 break;
             case ChunkSpawner.CurrentBiome.Fall:
                 currentItemVariants = itemVariants.itemVariants_Fall;
+                spawnedItems = spawnedFallItems;
                 Debug.LogWarning("Fall");
                 break;
             default:
                 break;
         }
 
-        if (currentItemVariants.Count == 0) return;
+        //if (currentItemVariants.Count == 0) return;
 
-        ChunkPropInfo chunkPropInfo = new ChunkPropInfo();
-        for (int i = 0; i < maxAmount; i++)
+        
+        /*for (int i = 0; i < maxAmount; i++)
         {
             if (spawnedItems.Count >= maxAmount) break;
 
@@ -87,6 +102,24 @@ public class ChunkPropSpawner : MonoBehaviour
             chunkPropInfo.chunkPropPrefab = currentItemVariants[rand];
             allChunkPropInfos.Add(chunkPropInfo);
         }
+        */
+    }
+
+    List<GameObject> InstantiateItems(List<GameObject> spawnedItems, List<GameObject> itemVariants, ChunkPropInfo chunkPropInfo)
+    {
+        for (int i = 0; i < maxAmount; i++)
+        {
+            if (spawnedItems.Count >= maxAmount) break;
+            int rand = Random.Range(0, itemVariants.Count);
+
+            spawnedItems.Add(Instantiate(itemVariants[rand], transform));
+            spawnedItems[i].SetActive(false);
+
+            chunkPropInfo.chunkPropRef = spawnedItems[i];
+            chunkPropInfo.chunkPropPrefab = itemVariants[rand];
+            allChunkPropInfos.Add(chunkPropInfo);
+        }
+        return spawnedItems;
     }
 
     void CheckSpawning()

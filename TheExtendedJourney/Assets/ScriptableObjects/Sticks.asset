@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ba98e3be52b89429024a39a2496722, type: 3}
   m_Name: Sticks
   m_EditorClassIdentifier: 
-  itemVariants_Normal: []
+  itemVariants_Normal:
+  - {fileID: 1000014092007092, guid: 5a8a1573ed9c5dd4cb5b6ef56898b3ba, type: 3}
   itemVariants_Snow: []
   itemVariants_Sand: []
-  itemVariants_Fall: []
+  itemVariants_Fall:
+  - {fileID: 1000014092007092, guid: 5a8a1573ed9c5dd4cb5b6ef56898b3ba, type: 3}

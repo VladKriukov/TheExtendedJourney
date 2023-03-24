@@ -12,7 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ba98e3be52b89429024a39a2496722, type: 3}
   m_Name: SmallRocks
   m_EditorClassIdentifier: 
-  itemVariants_Normal: []
-  itemVariants_Snow: []
-  itemVariants_Sand: []
-  itemVariants_Fall: []
+  itemVariants_Normal:
+  - {fileID: 1000011210138126, guid: f9c68666ec758cb48afb06107c00dfcd, type: 3}
+  - {fileID: 1000010740007340, guid: 54baad8be8f0849b2b20fd1da61be15f, type: 3}
+  - {fileID: 1000013466349968, guid: f91bd5ad6daecb6499fa5fcadcc2888c, type: 3}
+  - {fileID: 1000013039910218, guid: e23f1f429b8014fe3a8b083d568be8d6, type: 3}
+  itemVariants_Snow:
+  - {fileID: 1000013659323616, guid: fc3700cef4d097d4aa4d786c37576947, type: 3}
+  - {fileID: 1000010245899088, guid: 3ee6164a9d9cf974ca3e2e31c3e866a0, type: 3}
+  itemVariants_Sand:
+  - {fileID: 1000010740007340, guid: 54baad8be8f0849b2b20fd1da61be15f, type: 3}
+  - {fileID: 1000011210138126, guid: f9c68666ec758cb48afb06107c00dfcd, type: 3}
+  - {fileID: 1000013466349968, guid: f91bd5ad6daecb6499fa5fcadcc2888c, type: 3}
+  - {fileID: 1000013039910218, guid: e23f1f429b8014fe3a8b083d568be8d6, type: 3}
+  itemVariants_Fall:
+  - {fileID: 1000010740007340, guid: 54baad8be8f0849b2b20fd1da61be15f, type: 3}
+  - {fileID: 1000013070978894, guid: 16c6ecb322f65d1498b1b8b303ba2b90, type: 3}
+  - {fileID: 1000013039910218, guid: e23f1f429b8014fe3a8b083d568be8d6, type: 3}
+  - {fileID: 1000010604084324, guid: 6387db88c4179b14eba08bb62d247de7, type: 3}

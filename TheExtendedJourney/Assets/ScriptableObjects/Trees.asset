@@ -24,7 +24,20 @@ MonoBehaviour:
   itemVariants_Snow:
   - {fileID: 1000012694061644, guid: 5df3865001828b64bb3e4a4a643b9c6a, type: 3}
   - {fileID: 1000013953907348, guid: e04ddf1c689edf34d99ea2d7e60538ce, type: 3}
-  itemVariants_Sand: []
+  - {fileID: 1000014100774136, guid: f8b9b5e03f0fcf040ab99eb2a1e66dc4, type: 3}
+  - {fileID: 1000011026012008, guid: adf8215ae9f6fe542a756cdb936f638c, type: 3}
+  - {fileID: 1000013899730080, guid: 29933bfe03a83214a88e6be833ed9b04, type: 3}
+  - {fileID: 1000013872209822, guid: be57f7e42b162aa41969fdc0086a5f4e, type: 3}
+  - {fileID: 1000011791129056, guid: ecffebeddb5514952927bb855076b838, type: 3}
+  itemVariants_Sand:
+  - {fileID: 1000010941489026, guid: 43c4953bafdd8c447a2146dc2f16f970, type: 3}
+  - {fileID: 1000011791129056, guid: ecffebeddb5514952927bb855076b838, type: 3}
   itemVariants_Fall:
   - {fileID: 1000010390400564, guid: aa6cff232e1878a41832c385dfb3da6d, type: 3}
   - {fileID: 1000012458660936, guid: 909b472e39d3ad34c955a4c2eca9c1c9, type: 3}
+  - {fileID: 1000013835898310, guid: 8049f64979334004cb3d981e952d340e, type: 3}
+  - {fileID: 1000010310182836, guid: 84bd30beff406cb44819ac3adf08c73f, type: 3}
+  - {fileID: 1302358480801442, guid: 1bfc1111e635a476eaf643757c67d570, type: 3}
+  - {fileID: 1000011224977878, guid: 82d00db6a33143948914a0e0278f3130, type: 3}
+  - {fileID: 1000014284232592, guid: d41b3a5006d417e42af345785736b386, type: 3}
+  - {fileID: 1000011791129056, guid: ecffebeddb5514952927bb855076b838, type: 3}
