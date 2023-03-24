@@ -118,15 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6712f74caaa79db4288c90004ca02061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemVariants:
-  - {fileID: 1000010757296548, guid: 82bd0e3eef3cc854eae31c6f4cd718bf, type: 3}
-  - {fileID: 1000012548533322, guid: 3678017521dcb4e1bacbd3270c78a089, type: 3}
-  - {fileID: 1000014286827952, guid: 818821d8635b7754b97b69789a4a2d0f, type: 3}
-  - {fileID: 1000011078951186, guid: 2559aa2d368562248aea8c62e35ac2fd, type: 3}
-  - {fileID: 1000011913286906, guid: 90e80017d9ec13d41994176c5753e38d, type: 3}
-  - {fileID: 1000013497436514, guid: ddf7f5e45e33643f29f98935b0a24dd3, type: 3}
-  - {fileID: 1000011791129056, guid: ecffebeddb5514952927bb855076b838, type: 3}
-  - {fileID: 1000011788818366, guid: bac0554aef76116419238af986418dc6, type: 3}
+  itemVariants: {fileID: 11400000, guid: 1ccc24a44da5d56499fa0afb0439bd09, type: 2}
   minAmount: 2
   maxAmount: 5
   randomiseSpawningChance: 1
@@ -149,15 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6712f74caaa79db4288c90004ca02061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemVariants:
-  - {fileID: 1000010757296548, guid: 82bd0e3eef3cc854eae31c6f4cd718bf, type: 3}
-  - {fileID: 1000012548533322, guid: 3678017521dcb4e1bacbd3270c78a089, type: 3}
-  - {fileID: 1000014286827952, guid: 818821d8635b7754b97b69789a4a2d0f, type: 3}
-  - {fileID: 1000011078951186, guid: 2559aa2d368562248aea8c62e35ac2fd, type: 3}
-  - {fileID: 1000011913286906, guid: 90e80017d9ec13d41994176c5753e38d, type: 3}
-  - {fileID: 1000013497436514, guid: ddf7f5e45e33643f29f98935b0a24dd3, type: 3}
-  - {fileID: 1000011791129056, guid: ecffebeddb5514952927bb855076b838, type: 3}
-  - {fileID: 1000011788818366, guid: bac0554aef76116419238af986418dc6, type: 3}
+  itemVariants: {fileID: 11400000, guid: 1ccc24a44da5d56499fa0afb0439bd09, type: 2}
   minAmount: 2
   maxAmount: 5
   randomiseSpawningChance: 1
