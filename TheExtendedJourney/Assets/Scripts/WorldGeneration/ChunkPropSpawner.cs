@@ -107,6 +107,8 @@ public class ChunkPropSpawner : MonoBehaviour
 
     List<GameObject> InstantiateItems(List<GameObject> spawnedItems, List<GameObject> itemVariants, ChunkPropInfo chunkPropInfo)
     {
+        if (itemVariants.Count == 0) return null;
+
         for (int i = 0; i < maxAmount; i++)
         {
             if (spawnedItems.Count >= maxAmount) break;
