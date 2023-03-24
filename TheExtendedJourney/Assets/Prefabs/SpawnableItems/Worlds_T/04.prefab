@@ -175,7 +175,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemVariants: {fileID: 11400000, guid: 1ccc24a44da5d56499fa0afb0439bd09, type: 2}
-  currentItemVariants: []
   minAmount: 1
   maxAmount: 6
   randomiseSpawningChance: 1
@@ -199,7 +198,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemVariants: {fileID: 11400000, guid: 98080f7ff98106c4a8a0678448f5a7a0, type: 2}
-  currentItemVariants: []
   minAmount: 1
   maxAmount: 3
   randomiseSpawningChance: 1
@@ -223,7 +221,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemVariants: {fileID: 11400000, guid: 2b5eb84e540f445449ac57a0b0fce756, type: 2}
-  currentItemVariants: []
   minAmount: 2
   maxAmount: 5
   randomiseSpawningChance: 1
@@ -247,7 +244,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemVariants: {fileID: 11400000, guid: e85dfa4aff5199546b451df9d4e09003, type: 2}
-  currentItemVariants: []
   minAmount: 2
   maxAmount: 6
   randomiseSpawningChance: 1
@@ -271,7 +267,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemVariants: {fileID: 11400000, guid: b04560fe3a07afb4794dd37cf47ef27a, type: 2}
-  currentItemVariants: []
   minAmount: 0
   maxAmount: 2
   randomiseSpawningChance: 0
@@ -294,8 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6712f74caaa79db4288c90004ca02061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemVariants: {fileID: 0}
-  currentItemVariants: []
+  itemVariants: {fileID: 11400000, guid: 97edfeeab1c255f4d87266ff4160e97e, type: 2}
   minAmount: 1
   maxAmount: 1
   randomiseSpawningChance: 1

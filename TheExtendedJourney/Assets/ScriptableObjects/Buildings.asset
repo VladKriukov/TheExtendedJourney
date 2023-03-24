@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57ba98e3be52b89429024a39a2496722, type: 3}
+  m_Name: Buildings
+  m_EditorClassIdentifier: 
+  itemVariants_Normal:
+  - {fileID: 4155885667506130822, guid: 0cffde46990fbff4fb5e817d18bae3e7, type: 3}
+  itemVariants_Snow:
+  - {fileID: 4155885667506130822, guid: 0cffde46990fbff4fb5e817d18bae3e7, type: 3}
+  itemVariants_Sand:
+  - {fileID: 4155885667506130822, guid: 0cffde46990fbff4fb5e817d18bae3e7, type: 3}
+  itemVariants_Fall:
+  - {fileID: 4155885667506130822, guid: 0cffde46990fbff4fb5e817d18bae3e7, type: 3}

@@ -46,9 +46,9 @@ public class ChunkPropSpawner : MonoBehaviour
 
     private void OnDisable()
     {
-        foreach (var item in spawnedItems)
+        foreach (Transform item in transform)
         {
-            item.SetActive(false);
+            item.gameObject.SetActive(false);
         }
     }
 
