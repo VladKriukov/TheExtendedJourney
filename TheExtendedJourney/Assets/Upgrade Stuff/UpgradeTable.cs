@@ -9,10 +9,14 @@ public class UpgradeTable : MonoBehaviour
 
     List<bool> requiredItemAvailable = new List<bool>();
     Train train;
+    FuelTank fTank;
     int recipeID = 0;
+    float fuelToAdd;
     void Start()
     {
         train = FindObjectOfType<Train>();
+        fTank = FindObjectOfType<FuelTank>();
+        fuelToAdd = fTank.maxFuelCapacity * 0.5f;
     }
 
     void Update()
@@ -97,9 +101,15 @@ public class UpgradeTable : MonoBehaviour
         switch (upgradeToDo)
         {
             case 0:
-                train.fuelUsage = (float)(train.fuelUsage * 0.9);
-                train.idleFuelUsage = (float)(train.idleFuelUsage * 0.9);
+                train.fuelUsage = (train.fuelUsage * 0.9f);
+                train.idleFuelUsage = (train.idleFuelUsage * 0.9f);
                 ConsumeResources();
+                break;
+            case 1:
+                train.dragMultiplier = (train.dragMultiplier * 0.9f);
+                break;
+            case 2:
+                fTank.maxFuelCapacity += fuelToAdd;
                 break;
             default:
                 break;

@@ -7,8 +7,8 @@ public class Train : MonoBehaviour
     [SerializeField] float reverseForce;
     [SerializeField] public float fuelUsage;
     [SerializeField] public float idleFuelUsage;
-    [SerializeField] float dragMultiplier;
-    [SerializeField] FuelTank fuelTank;
+    [SerializeField] public float dragMultiplier;
+    [SerializeField] public FuelTank fuelTank;
     [SerializeField] GameObject trainEngine;
     [SerializeField] float throttleSpeed;
     [SerializeField] TMP_Text throttleText;
