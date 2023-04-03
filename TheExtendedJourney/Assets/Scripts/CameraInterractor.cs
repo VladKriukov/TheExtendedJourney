@@ -139,6 +139,14 @@ public class CameraInterractor : MonoBehaviour
                     itemNameDisplay.GetComponent<TMP_Text>().text = pickUpObject.name;
                     itemNameDisplay.SetTrigger("ShowItemName");
                 }
+                if (hit.collider.GetComponent<Seat>() != null)
+                {
+                    hit.collider.GetComponent<Seat>().Sit(transform.parent.parent.gameObject);
+                }
+                if (hit.collider.GetComponent<Interactable>() != null)
+                {
+                    hit.collider.GetComponent<Interactable>().Interract();
+                }
             }
             if (Input.GetMouseButtonDown(0)) // left click
             {

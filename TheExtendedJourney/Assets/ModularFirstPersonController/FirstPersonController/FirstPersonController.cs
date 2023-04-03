@@ -60,6 +60,7 @@ public class FirstPersonController : MonoBehaviour
     public bool playerCanMove = true;
     public float walkSpeed = 5f;
     public float maxVelocityChange = 10f;
+    public float trainZVelocity;
 
     // Internal Variables
     private bool isWalking = false;
@@ -400,7 +401,13 @@ public class FirstPersonController : MonoBehaviour
                 isWalking = false;
             }
 
-            // All movement calculations shile sprint is active
+            if (trainZVelocity != 0)
+            {
+                rb.velocity = transform.TransformDirection(targetVelocity) * ((enableSprint && Input.GetKey(sprintKey) && sprintRemaining > 0f && !isSprintCooldown) ? sprintSpeed : walkSpeed) + new Vector3(0, rb.velocity.y, trainZVelocity);
+                return;
+            }
+
+            // All movement calculations while sprint is active
             if (enableSprint && Input.GetKey(sprintKey) && sprintRemaining > 0f && !isSprintCooldown)
             {
                 targetVelocity = transform.TransformDirection(targetVelocity) * sprintSpeed;
