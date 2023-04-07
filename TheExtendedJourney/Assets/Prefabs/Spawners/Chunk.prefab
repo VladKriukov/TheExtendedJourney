@@ -61,13 +61,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06973a40b6f49c94fb84961b03a57952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDownwards: 1
   connectedSpawner: {fileID: 4334786835559783382, guid: 6264c10aaa4a268449feefc0fb32ec2c,
     type: 3}
   slopeChance: 5
   railStraight: {fileID: 1229436274973794, guid: bc104868401de4486a279e20c6b863ac,
     type: 3}
   railSlope: {fileID: 1496875689521022, guid: 390f14aa1f922498c975eb6c04907f99, type: 3}
+  trainStation: {fileID: 5897289422115760423, guid: a766525b8e30f87448a5810a41c9bc66,
+    type: 3}
+  trainStationChance: 5
   startingSlopeType: 0
   nextChunkAltitudeChange: 0
 --- !u!65 &690057969355778345

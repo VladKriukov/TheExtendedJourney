@@ -9,6 +9,8 @@ public class RailSpawner : MonoBehaviour
 
     [SerializeField] private GameObject railStraight;
     [SerializeField] private GameObject railSlope;
+    [SerializeField] private GameObject trainStation;
+    [SerializeField] private float trainStationChance;
 
     [HideInInspector]
     public enum StartingSlopeType
@@ -27,6 +29,8 @@ public class RailSpawner : MonoBehaviour
     private int finishedChunkCount;
 
     private GameObject instantiatedSpawner;
+
+    GameObject station;
 
     private void Awake()
     {
@@ -49,6 +53,12 @@ public class RailSpawner : MonoBehaviour
             instantiatedSpawner = Instantiate(connectedSpawner, new Vector3(transform.position.x - chunkSpawner.chunkXOffset, transform.position.y, transform.position.z), Quaternion.identity, transform);
             thisChunkGenerator.connectedSpawners.Add(instantiatedSpawner.GetComponent<ConnectedSpawner>());
         }
+        if (Random.Range(0, trainStationChance) < 1 && startingSlopeType == StartingSlopeType.Straight)
+        {
+            station = Instantiate(trainStation, transform.GetChild(0).gameObject.activeInHierarchy ? transform.GetChild(0) : transform.GetChild(1));
+            station.transform.localScale = new Vector3((int)Random.Range(0, 2) < 1 ? -1 : 1, 1, (int)Random.Range(0, 2) < 1 ? -1 : 1);
+        }
+
         Invoke(nameof(SpawnSpawners), 0.1f);
         return;
     }
@@ -87,6 +97,7 @@ public class RailSpawner : MonoBehaviour
         {
             item.HideAllTerrains();
         }
+        if (station != null) station.SetActive(false);
     }
 
     private void GenerateRails(int previousAltitude)
