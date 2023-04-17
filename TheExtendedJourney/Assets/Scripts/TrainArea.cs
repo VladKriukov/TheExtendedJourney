@@ -9,6 +9,7 @@ public class TrainArea : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //other.transform.parent = null;
+            player.trainZVelocity = 0;
             player = null;
         }
     }

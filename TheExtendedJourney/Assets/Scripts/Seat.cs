@@ -13,27 +13,31 @@ public class Seat : MonoBehaviour
     public void Sit(GameObject _player)
     {
         player = _player;
-        controlledTrain.player = player.GetComponent<FirstPersonController>();
-        controlledTrain.playerStartingFOV = player.GetComponent<FirstPersonController>().fov;
         player.transform.parent = transform;
         player.transform.position = transform.position + offset;
         player.GetComponent<FirstPersonController>().enableHeadBob = false;
         player.GetComponent<FirstPersonController>().enableSprint = false;
         player.GetComponent<Rigidbody>().isKinematic = true;
         player.GetComponent<Collider>().enabled = false;
-        controlledTrain.acceptingInput = true;
-        controlledTrain.StartEngine();
         cooldown = 0.5f;
-        if (playerUnderstanding < 1)
+
+        if (controlledTrain != null)
         {
-            trainUI.SetActive(true);
+            controlledTrain.player = player.GetComponent<FirstPersonController>();
+            controlledTrain.playerStartingFOV = player.GetComponent<FirstPersonController>().fov;
+            controlledTrain.acceptingInput = true;
+            controlledTrain.StartEngine();
+            if (playerUnderstanding < 1)
+            {
+                trainUI.SetActive(true);
+            }
         }
     }
 
     private void Update()
     {
         cooldown -= Time.deltaTime;
-        if (controlledTrain.acceptingInput == true && helpOn == true)
+        if (controlledTrain != null && controlledTrain.acceptingInput == true && helpOn == true)
         {
             trainUI.gameObject.SetActive(!Game.gamePaused);
         }
@@ -42,7 +46,7 @@ public class Seat : MonoBehaviour
             Exit();
         }
 
-        if (playerUnderstanding < 1 && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.H) || Input.GetKey(KeyCode.F)))
+        if (controlledTrain != null && playerUnderstanding < 1 && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.H) || Input.GetKey(KeyCode.F)))
         {
             playerUnderstanding += Time.deltaTime * 0.1f;
             if (playerUnderstanding >= 1)
@@ -52,7 +56,7 @@ public class Seat : MonoBehaviour
             }
         }
 
-        if (controlledTrain.acceptingInput == true && Input.GetKeyDown(KeyCode.F1) && Game.gamePaused == false)
+        if (controlledTrain != null && controlledTrain.acceptingInput == true && Input.GetKeyDown(KeyCode.F1) && Game.gamePaused == false)
         {
             trainUI.gameObject.SetActive(!trainUI.transform.GetChild(0).gameObject.activeInHierarchy);
             helpOn = !helpOn;
@@ -66,10 +70,14 @@ public class Seat : MonoBehaviour
         player.GetComponent<FirstPersonController>().enableSprint = true;
         player.GetComponent<Rigidbody>().isKinematic = false;
         player.GetComponent<Collider>().enabled = true;
-        controlledTrain.player = null;
-        controlledTrain.acceptingInput = false;
-        player.GetComponent<FirstPersonController>().fov = controlledTrain.playerStartingFOV;
+        
+        if (controlledTrain != null)
+        {
+            controlledTrain.player = null;
+            controlledTrain.acceptingInput = false;
+            trainUI.SetActive(false);
+            player.GetComponent<FirstPersonController>().fov = controlledTrain.playerStartingFOV;
+        }
         player = null;
-        trainUI.SetActive(false);
     }
 }

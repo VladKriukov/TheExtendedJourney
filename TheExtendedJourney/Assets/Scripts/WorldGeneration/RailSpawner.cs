@@ -56,7 +56,13 @@ public class RailSpawner : MonoBehaviour
         if (Random.Range(0, trainStationChance) < 1 && startingSlopeType == StartingSlopeType.Straight)
         {
             station = Instantiate(trainStation, transform.GetChild(0).gameObject.activeInHierarchy ? transform.GetChild(0) : transform.GetChild(1));
-            station.transform.localScale = new Vector3((int)Random.Range(0, 2) < 1 ? -1 : 1, 1, (int)Random.Range(0, 2) < 1 ? -1 : 1);
+            int rand1 = Random.Range(0, 2);
+            int rand2 = Random.Range(0, 2);
+            station.transform.localScale = new Vector3(rand1 < 1 ? -1 : 1, 1, rand2 < 1 ? -1 : 1);
+            for (int i = 0; i < 6; i++)
+            {
+                station.transform.GetChild(i).localScale = new Vector3(rand1 < 1 ? -1 * station.transform.GetChild(i).localScale.x : 1 * station.transform.GetChild(i).localScale.x, 1 * station.transform.GetChild(i).localScale.y, rand2 < 1 ? -1 * station.transform.GetChild(i).localScale.z : 1 * station.transform.GetChild(i).localScale.z);
+            }
         }
 
         Invoke(nameof(SpawnSpawners), 0.1f);
