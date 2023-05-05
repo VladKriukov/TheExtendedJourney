@@ -28,17 +28,18 @@ public class PhysicsStopper : MonoBehaviour
 
     IEnumerator LockItem(GameObject item)
     {
-        if (item.GetComponent<Rigidbody>() == null) waitingItems.Remove(item);
-
         yield return new WaitForSeconds(lockWaitTime);
         if (waitingItems.Contains(item))
         {
             while (item != null)
             {                    
-                if (item.GetComponent<Rigidbody>().velocity.magnitude > 0.25f)
-                {                       
-                    yield return new WaitForSeconds(0.5f);                    
-                }                
+                if(item.tag != "PlayerTrigger")
+                {
+                    if (item.GetComponent<Rigidbody>().velocity.magnitude > 0.25f)
+                    {
+                        yield return new WaitForSeconds(0.5f);
+                    }
+                }    
                 else
                 {
                     break;
