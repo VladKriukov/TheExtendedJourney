@@ -404,6 +404,16 @@ public class FirstPersonController : MonoBehaviour
             if (trainZVelocity != 0)
             {
                 rb.velocity = transform.TransformDirection(targetVelocity) * ((enableSprint && Input.GetKey(sprintKey) && sprintRemaining > 0f && !isSprintCooldown) ? sprintSpeed : walkSpeed) + new Vector3(0, rb.velocity.y, trainZVelocity);
+                if (enableSprint && Input.GetKey(sprintKey) && sprintRemaining > 0f && !isSprintCooldown)
+                {
+                    Vector3 velocity = rb.velocity;
+                    Vector3 velocityChange = (targetVelocity - velocity);
+                    if (velocityChange.x != 0 || velocityChange.z != 0) isSprinting = true;
+                }
+                else
+                {
+                    isSprinting = false;
+                }
                 return;
             }
 

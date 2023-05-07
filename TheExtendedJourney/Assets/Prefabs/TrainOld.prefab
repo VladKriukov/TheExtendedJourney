@@ -3824,6 +3824,8 @@ MonoBehaviour:
   throttleSpeed: 0.5
   throttleText: {fileID: 0}
   acceptingInput: 0
+  player: {fileID: 0}
+  playerStartingFOV: 0
 --- !u!1 &4230188055111428598
 GameObject:
   m_ObjectHideFlags: 0
