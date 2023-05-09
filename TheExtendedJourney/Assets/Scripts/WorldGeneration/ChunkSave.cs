@@ -8,6 +8,7 @@ public struct SavedChunk
     public RailSpawner.StartingSlopeType railSlope;
     public float chunkHeight;
     public ChunkGenerator chunkGenerator;
+    public ChunkSpawner.CurrentBiome chunkBiome;
     public List<ConnectedSpawnerInfo> connectedSpawners;
 }
 

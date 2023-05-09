@@ -273,6 +273,10 @@ public class ConnectedSpawner : MonoBehaviour
             {
                 item.spawnedChunk.SetActive(true);
                 transform.position = item.position;
+                if (item.spawnedChunk.GetComponent<BiomeChanger>() != null)
+                {
+                    item.spawnedChunk.GetComponent<BiomeChanger>().ChangeBiome();
+                }
             }
         }
     }

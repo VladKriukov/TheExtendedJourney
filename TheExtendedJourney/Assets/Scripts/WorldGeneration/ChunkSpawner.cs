@@ -94,7 +94,9 @@ public class ChunkSpawner : MonoBehaviour
             water.transform.position += new Vector3(0, 0, 30);
             Debug.Log("Regenerating forward. Old chunk index: " + chunkOfInterest.chunkIndex + ", New chunk index: " + chunkIndex);
         }
-        
+
+        currentBiome = savedChunks[chunkIndex].chunkBiome;
+
         RailSpawner railSpawner = chunkOfInterest.GetComponent<RailSpawner>();
 
         railSpawner.startingSlopeType = savedChunks[chunkIndex].railSlope;
@@ -115,6 +117,7 @@ public class ChunkSpawner : MonoBehaviour
         currentChunk.chunkHeight = chunkAltitude * chunkYOffset;
         currentChunk.chunkGenerator = chunkToSave;
         currentChunk.connectedSpawners = new List<ConnectedSpawnerInfo>();
+        currentChunk.chunkBiome = currentBiome;
 
         for (int i = 0; i < chunkToSave.connectedSpawners.Count; i++)
         {
