@@ -43,10 +43,6 @@ public class Resource : MonoBehaviour
         healthPopup.transform.position = hitPoint;
         healthPopup.transform.LookAt(FindObjectOfType<Player>().transform.position);
         healthPopup.ShowHealth(health + amount, health);
-        if(health <= 0)
-        {
-            Destroy(this.gameObject);
-        }
     }
 
     public void DropLoot()
