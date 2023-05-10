@@ -169,6 +169,16 @@ public class Train : MonoBehaviour
         {
             rb.isKinematic = false;
         }
+        if(other.tag == "Enemy")
+        {
+            Debug.Log("Collision");
+            float damage = rb.velocity.z;
+            if(damage < 0) { damage *= -1; }
+            if(damage > 0)
+            {
+                other.GetComponent<Resource>().Damage(damage, other.transform.position, Vector3.zero);
+            }            
+        }
     }
 
     private void OnTriggerExit(Collider other)
