@@ -43007,6 +43007,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7737598014678085768, guid: 9ca6c07d7d9fb564da8977a10a5ecd70,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7738017485082168587, guid: 9ca6c07d7d9fb564da8977a10a5ecd70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7740773077695906406, guid: 9ca6c07d7d9fb564da8977a10a5ecd70,
         type: 3}
       propertyPath: m_RootOrder
@@ -44114,17 +44124,17 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   colorGradientTexture: {fileID: 0}
   shallowColor: {r: 0, g: 0.7725491, b: 0.62352943, a: 0.5019608}
-  deepColor: {r: 0.01176471, g: 0.28589594, b: 0.50980073, a: 1}
+  deepColor: {r: 0.01176471, g: 0.28589445, b: 0.50980073, a: 1}
   colorDepth: 1.06
-  horizonColor: {r: 0, g: 0.22707245, b: 0.8, a: 1}
+  horizonColor: {r: 0, g: 0.22707099, b: 0.8, a: 1}
   horizonDistance: 4.7
   shoreFade: 1
-  shoreColor: {r: 0, g: 0.98039216, b: 0.30158225, a: 0}
+  shoreColor: {r: 0, g: 0.98039216, b: 0.30158076, a: 0}
   shoreStrength: 0
   shoreBlend: 1
   shoreDepth: 0.77
   waveColor: {r: 0, g: 0, b: 0, a: 0}
-  underwaterColor: {r: 0.20356277, g: 0.30942535, b: 0.517647, a: 0.78}
+  underwaterColor: {r: 0.20356137, g: 0.30942386, b: 0.517647, a: 0.78}
   underwaterColorStrength: 0.78
   underwaterRefractionStrength: 0.099
   surfaceFoamTexture: {fileID: 2800000, guid: d3b0d77dfe711a04c8ff18ecc260aa66, type: 3}
