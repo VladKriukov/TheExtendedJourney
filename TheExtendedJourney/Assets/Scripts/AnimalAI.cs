@@ -40,6 +40,7 @@ public class AnimalAI : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         game = FindObjectOfType<Game>();
     }
+    
 
     private void OnTriggerEnter(Collider other)
     {

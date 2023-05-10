@@ -10,7 +10,7 @@ public class PhysicsStopper : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") != true)
+        if (other.CompareTag("PickUpAble") == true)
         {
             waitingItems.Add(other.gameObject);
             StartCoroutine(LockItem(other.gameObject));
@@ -32,14 +32,12 @@ public class PhysicsStopper : MonoBehaviour
         if (waitingItems.Contains(item))
         {
             while (item != null)
-            {                    
-                if(item.tag != "PlayerTrigger")
+            { 
+                if (item.GetComponent<Rigidbody>().velocity.magnitude > 0.25f)
                 {
-                    if (item.GetComponent<Rigidbody>().velocity.magnitude > 0.25f)
-                    {
-                        yield return new WaitForSeconds(0.5f);
-                    }
-                }    
+                    yield return new WaitForSeconds(0.5f);
+                    
+                }
                 else
                 {
                     break;

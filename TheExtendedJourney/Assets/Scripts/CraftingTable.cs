@@ -40,7 +40,8 @@ public class CraftingTable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-            
+        if (other.GetComponent<ItemProperties>() == null) return;
+
         if (other.GetComponent<ItemProperties>().craftingItem == true)           
         {            
             if (craftingTableInventory.Contains(other.gameObject) == false)                
@@ -65,6 +66,8 @@ public class CraftingTable : MonoBehaviour
 
     public void RemoveItem(GameObject item)
     {
+        if (item.GetComponent<ItemProperties>() == null) return;
+
         if (item.GetComponent<ItemProperties>().craftingItem == true)
         {
             GetComponent<PhysicsStopper>().RemoveItem(item);
