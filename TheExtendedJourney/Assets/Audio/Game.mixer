@@ -187,12 +187,16 @@ AudioMixerController:
   m_EnableSuspend: 1
   m_UpdateMode: 1
   m_ExposedParameters:
+  - guid: a0b12cac6d088b444b659b86e7e8dedc
+    name: DayVolume
   - guid: b36b4068d69d1da4d85fc818ff32ef9d
     name: MasterVolume
   - guid: b26f54b0a51cddb40a70791eb30e2e9d
     name: MusicVolume
   - guid: 6dce4e3056391644b9a24b4d1e1e940b
     name: NatureVolume
+  - guid: 2409446c3e3ad694cb6ade50c752df50
+    name: NightVolume
   - guid: 0e02bfcf8d87e154ba90b7c84d9555e2
     name: ToolsVolume
   - guid: 2650c9b240950d042b34804cdc67e8a1
@@ -271,6 +275,7 @@ AudioMixerSnapshotController:
     7cd594b646fbe0e4ea577b5488485841: -63.2
     86c23d570e67b4743ace92a646bab2f1: -65.4
     ce59fcda8e667af48a2d18222dee76e0: 0
+    2409446c3e3ad694cb6ade50c752df50: -80
   m_TransitionOverrides: {}
 --- !u!243 &1387280818881239457
 AudioMixerGroupController:

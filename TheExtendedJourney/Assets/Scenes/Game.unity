@@ -3592,7 +3592,7 @@ GameObject:
   m_Component:
   - component: {fileID: 202635891}
   m_Layer: 0
-  m_Name: DayNightCycle
+  m_Name: WeatherSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3626,8 +3626,9 @@ GameObject:
   - component: {fileID: 206392395}
   - component: {fileID: 206392397}
   - component: {fileID: 206392398}
+  - component: {fileID: 206392399}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: DayNightCycle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3751,6 +3752,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &206392399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206392394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0084638ac7b1b4b4d8c6cfd1bb94071e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 9f89943325f985e45868d4d8d2bdbf46, type: 2}
+  dayTimeVolume: 0
+  nightTimeVolume: 0
 --- !u!1 &206732849
 GameObject:
   m_ObjectHideFlags: 0
@@ -4220,6 +4236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 233581659}
   - component: {fileID: 233581660}
+  - component: {fileID: 233581661}
   m_Layer: 0
   m_Name: World
   m_TagString: Untagged
@@ -4256,6 +4273,103 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 4954068203978116682, guid: 9f89943325f985e45868d4d8d2bdbf46,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: b7cd035936f7d624cae5248be7b87b7b, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &233581661
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233581658}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -2096082635924302091, guid: 9f89943325f985e45868d4d8d2bdbf46,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: b1987680cf411794293748dacfdd75db, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -15139,6 +15253,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 786441860}
   m_CullTransparentMesh: 1
+--- !u!1 &799431995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 799431996}
+  m_Layer: 0
+  m_Name: PostProcessingEffects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &799431996
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799431995}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &802716238
 GameObject:
   m_ObjectHideFlags: 0
@@ -41144,6 +41289,7 @@ GameObject:
   - component: {fileID: 1070709125081625357}
   - component: {fileID: 9145917097116554287}
   - component: {fileID: 7861213838838099253}
+  - component: {fileID: 9145917097116554288}
   m_Layer: 0
   m_Name: Dashboard
   m_TagString: Untagged
@@ -48785,6 +48931,7 @@ GameObject:
   - component: {fileID: 6314662783175091970}
   - component: {fileID: 3439505382395534233}
   - component: {fileID: 5598643573498539698}
+  - component: {fileID: 6521360147133142261}
   m_Layer: 0
   m_Name: Counter
   m_TagString: Untagged
@@ -48792,6 +48939,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &6521360147133142261
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6521360147133142260}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.7461815, y: 3.4569187, z: 16.379702}
+  m_Center: {x: -27.94501, y: 0.6705625, z: 7.1734447}
 --- !u!4 &6524195342193813135
 Transform:
   m_ObjectHideFlags: 0
@@ -52434,6 +52594,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555785783720290852}
   m_Mesh: {fileID: -8259417878425161692, guid: 3461d7d836009d9448f6207b8ed6bbba, type: 3}
+--- !u!64 &9145917097116554288
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555785783720290852}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8259417878425161692, guid: 3461d7d836009d9448f6207b8ed6bbba, type: 3}
 --- !u!23 &9160453096984752575
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -52528,17 +52702,17 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   colorGradientTexture: {fileID: 0}
   shallowColor: {r: 0, g: 0.7725491, b: 0.62352943, a: 0.5019608}
-  deepColor: {r: 0.01176471, g: 0.28589433, b: 0.50980073, a: 1}
+  deepColor: {r: 0.01176471, g: 0.2858932, b: 0.50980073, a: 1}
   colorDepth: 1.06
-  horizonColor: {r: 0, g: 0.22707084, b: 0.8, a: 1}
+  horizonColor: {r: 0, g: 0.2270697, b: 0.8, a: 1}
   horizonDistance: 4.7
   shoreFade: 1
-  shoreColor: {r: 0, g: 0.98039216, b: 0.30158064, a: 0}
+  shoreColor: {r: 0, g: 0.98039216, b: 0.3015795, a: 0}
   shoreStrength: 0
   shoreBlend: 1
   shoreDepth: 0.77
   waveColor: {r: 0, g: 0, b: 0, a: 0}
-  underwaterColor: {r: 0.20356125, g: 0.30942374, b: 0.517647, a: 0.78}
+  underwaterColor: {r: 0.20356017, g: 0.3094226, b: 0.517647, a: 0.78}
   underwaterColorStrength: 0.78
   underwaterRefractionStrength: 0.099
   surfaceFoamTexture: {fileID: 2800000, guid: d3b0d77dfe711a04c8ff18ecc260aa66, type: 3}
