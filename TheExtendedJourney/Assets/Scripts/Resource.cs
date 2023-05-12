@@ -47,7 +47,7 @@ public class Resource : MonoBehaviour
         {
             if (health <= 0)
             {
-                Destroy(this.gameObject);
+                DropLoot();
             }
         }
     }

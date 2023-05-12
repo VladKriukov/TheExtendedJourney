@@ -23,7 +23,7 @@ public class Train : MonoBehaviour
     [HideInInspector] public FirstPersonController player;
     [HideInInspector] public float playerStartingFOV;
     Rigidbody rb;
-    bool trainOn;
+    public bool trainOn;
 
     private void Awake()
     {

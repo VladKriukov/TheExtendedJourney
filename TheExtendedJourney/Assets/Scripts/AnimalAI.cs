@@ -4,7 +4,7 @@ public class AnimalAI : MonoBehaviour
 {
     public enum MovementType
     {
-        Idle, Avoiding, Roaming, Attacking
+        Idle, Avoiding, Roaming, Attacking, Fleeing
     }
     public MovementType movementType;
     MovementType prevMovementType;
@@ -24,6 +24,8 @@ public class AnimalAI : MonoBehaviour
     [SerializeField] float attackDamage;
     [SerializeField] float dragMultiplier = 3;
     [SerializeField] LayerMask layerMask;
+    [SerializeField] float attackBuff;
+    [SerializeField] float fleeDistance;//This is how close the enemy needs to be to the train before it runs away
 
     Rigidbody rb;
     bool avoidanceDirection;
@@ -33,12 +35,15 @@ public class AnimalAI : MonoBehaviour
 
     RaycastHit hit;
     bool hitting;
+    bool runFromTrain;
     Game game;
+    Train trainScript;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         game = FindObjectOfType<Game>();
+        trainScript = FindObjectOfType<Train>();
     }
     
 
@@ -58,7 +63,7 @@ public class AnimalAI : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Train"))
         {
@@ -68,7 +73,7 @@ public class AnimalAI : MonoBehaviour
                 GetComponent<Resource>().DropLoot();
             }
         }
-    }
+    }This has been disabled so that the wolves only take damage and can be killed if the train is moving */
 
     public void AvoidObstacle(bool right)
     {
@@ -84,12 +89,17 @@ public class AnimalAI : MonoBehaviour
 
     private void Update()
     {
+        runFromTrain = trainScript.trainOn; //This is so the ai knows if the train is active and if it is can run away from it
         if (destinationPoint != Vector3.zero)
         {
             if (chaseTarget != null && Vector3.Distance(transform.position, chaseTarget.position) < losingSightDistance)
             {
                 movementType = MovementType.Attacking;
                 destinationPoint = chaseTarget.position;
+            }
+            if (runFromTrain && Vector3.Distance(transform.position, trainScript.gameObject.transform.position) <= fleeDistance)//This checks to see if the train is on and if the enemy is in range of it, if it is th eenemy runs away
+            {
+                movementType = MovementType.Fleeing;
             }
             else
             {
@@ -124,6 +134,10 @@ public class AnimalAI : MonoBehaviour
                     transform.rotation = Quaternion.LookRotation(newDirection);
                     //transform.rotation = new Quaternion(0, transform.rotation.y, 0, 1);
                     break;
+                case MovementType.Fleeing:
+                    currentSpeed = walkSpeed;
+                    transform.rotation = Quaternion.LookRotation(newDirection);
+                    break;
                 default:
                     break;
             }
@@ -136,6 +150,12 @@ public class AnimalAI : MonoBehaviour
                     movementType = MovementType.Idle;
                     destinationPoint = Vector3.zero;
                 }
+            }
+            if(movementType == MovementType.Fleeing)
+            {
+                if (transform.position.x <= trainScript.gameObject.transform.position.x) { destinationPoint = new Vector3(transform.position.x - fleeDistance,transform.position.y,transform.position.z); }
+                if (transform.position.x > trainScript.gameObject.transform.position.x) { destinationPoint = new Vector3(transform.position.x + fleeDistance, transform.position.y, transform.position.z); }
+
             }
             else
             {
@@ -153,7 +173,7 @@ public class AnimalAI : MonoBehaviour
                         }
                         if(game.enemyBuff)
                         {
-                            chaseTarget.GetComponent<Player>().ChangeHealth(attackDamage*2);
+                            chaseTarget.GetComponent<Player>().ChangeHealth(attackDamage += attackBuff);
                         }
                     }
                 }
