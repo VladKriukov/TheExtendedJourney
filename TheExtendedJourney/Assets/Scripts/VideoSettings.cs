@@ -9,6 +9,7 @@ public class VideoSettings : MonoBehaviour
 
     public bool postProcessing = true;
     [SerializeField] Volume[] volumes;
+    [SerializeField] PlayerHealthVisuals playerHealthVisuals;
     public bool particles = true;
 
     [SerializeField] TMP_Dropdown resolutionDropdown;
@@ -58,6 +59,7 @@ public class VideoSettings : MonoBehaviour
         {
             item.enabled = b;
         }
+        playerHealthVisuals.SetProcessing(b);
     }
 
     public void SetParticles(bool b)

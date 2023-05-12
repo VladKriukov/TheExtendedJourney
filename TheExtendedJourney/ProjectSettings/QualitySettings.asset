@@ -230,5 +230,5 @@ QualitySettings:
     excludedTargetPlatforms: []
   m_PerPlatformDefaultQuality:
     Server: 0
-    Standalone: 5
+    Standalone: 4
     WebGL: 0

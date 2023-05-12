@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] Image healthDisplay;
     [SerializeField] Image hungerDisplay;
     [SerializeField] Animator canvasAnimator;
+    [SerializeField] PlayerHealthVisuals healthVisuals;
     float playerHealth;
     float playerHunger;
     float timer;
@@ -66,6 +67,14 @@ public class Player : MonoBehaviour
         if (isAlive == false) return;
 
         playerHealth = Mathf.Clamp(playerHealth + amount, 0, maxHealth);
+
+        if (amount < 0)
+        {
+            healthVisuals.TookDamage();
+        }
+
+        healthVisuals.CheckHealth(playerHealth);
+
         if (playerHealth <= 0)
         {
             Debug.Log("Game Over");
@@ -78,7 +87,12 @@ public class Player : MonoBehaviour
             Cursor.visible = true;
             isAlive = false;
             Game.inGame = false;
-            canvasAnimator.SetTrigger("GameOver");
+            Invoke(nameof(GameOver), 3.5f);
         }
+    }
+
+    void GameOver()
+    {
+        canvasAnimator.SetTrigger("GameOver");
     }
 }
