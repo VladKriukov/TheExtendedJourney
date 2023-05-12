@@ -139,7 +139,7 @@ MonoBehaviour:
   losingSightDistance: 25
   destinationPoint: {x: 0, y: 0, z: 0}
   roamingDistance: 50
-  destinationStoppingThreshold: 1.5
+  destinationStoppingThreshold: 2
   minIdleTime: 0
   maxIdleTime: 10
   walkSpeed: 15
@@ -152,6 +152,9 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 513
+  attackBuff: 0
+  fleeDistance: 0
+  lockOnDistance: 0
 --- !u!114 &1325033879116400578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,6 +335,7 @@ GameObject:
   - component: {fileID: 1604397546130630599}
   - component: {fileID: 8144563192970930467}
   - component: {fileID: 8144563192970930468}
+  - component: {fileID: 3227040677638161886}
   m_Layer: 2
   m_Name: VisionCone
   m_TagString: Untagged
@@ -431,3 +435,15 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.38
   m_Center: {x: 0, y: 1.08, z: 0}
+--- !u!114 &3227040677638161886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8144563192970930466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63d5fc63d51e0434daf4f44e3ac554b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
