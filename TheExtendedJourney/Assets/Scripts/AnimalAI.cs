@@ -9,7 +9,7 @@ public class AnimalAI : MonoBehaviour
     public MovementType movementType;
     MovementType prevMovementType;
 
-    public Transform chaseTarget;
+    public GameObject chaseTarget;
     [SerializeField] float losingSightDistance;
     [SerializeField] Vector3 destinationPoint;
     [SerializeField] float roamingDistance;
@@ -26,6 +26,7 @@ public class AnimalAI : MonoBehaviour
     [SerializeField] LayerMask layerMask;
     [SerializeField] float attackBuff;
     [SerializeField] float fleeDistance;//This is how close the enemy needs to be to the train before it runs away
+    [SerializeField] float lockOnDistance;
 
     Rigidbody rb;
     bool avoidanceDirection;
@@ -47,13 +48,13 @@ public class AnimalAI : MonoBehaviour
     }
     
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         switch (other.tag)
         {
             case "Player":
-                chaseTarget = other.gameObject.transform;
-                destinationPoint = chaseTarget.position;
+                chaseTarget = other.gameObject;
+                destinationPoint = chaseTarget.transform.position;
                 break;
             case "Train":
                 
@@ -90,12 +91,13 @@ public class AnimalAI : MonoBehaviour
     private void Update()
     {
         runFromTrain = trainScript.trainOn; //This is so the ai knows if the train is active and if it is can run away from it
+        
         if (destinationPoint != Vector3.zero)
         {
-            if (chaseTarget != null && Vector3.Distance(transform.position, chaseTarget.position) < losingSightDistance)
+            if (chaseTarget != null && Vector3.Distance(transform.position, chaseTarget.transform.position) < losingSightDistance)
             {
                 movementType = MovementType.Attacking;
-                destinationPoint = chaseTarget.position;
+                destinationPoint = chaseTarget.transform.position;
             }
             if (runFromTrain && Vector3.Distance(transform.position, trainScript.gameObject.transform.position) <= fleeDistance)//This checks to see if the train is on and if the enemy is in range of it, if it is th eenemy runs away
             {
@@ -104,7 +106,7 @@ public class AnimalAI : MonoBehaviour
             else
             {
                 movementType = MovementType.Roaming;
-                chaseTarget = null;
+                //chaseTarget = null;
             }
             rb.AddForce(transform.forward * currentSpeed);
             rb.drag = Mathf.Abs(rb.velocity.z * dragMultiplier);
@@ -159,10 +161,11 @@ public class AnimalAI : MonoBehaviour
             }
             else
             {
-                if (chaseTarget != null && Vector3.Distance(transform.position, chaseTarget.position) <= destinationStoppingThreshold)
+                if (chaseTarget != null && Vector3.Distance(transform.position, chaseTarget.transform.position) <= destinationStoppingThreshold)
                 {
                     // attack
-                    attackTime -= Time.deltaTime;
+                    Debug.Log("Attacking");
+                    attackTime -= 1 * Time.deltaTime;
                     if (attackTime <= 0)
                     {
                         attackTime = attackDelay;
