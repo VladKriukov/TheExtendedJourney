@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] Image hungerDisplay;
     [SerializeField] Animator canvasAnimator;
     [SerializeField] PlayerHealthVisuals healthVisuals;
+    [SerializeField] CinemachineFreeLook trainCam;
     float playerHealth;
     float playerHunger;
     float timer;
@@ -55,6 +57,15 @@ public class Player : MonoBehaviour
         {
             Game.stats.furthestDistanceTravelled = transform.position.z;
         }
+
+        if (Input.GetKeyDown(KeyCode.V) && Train.trainOn == true)
+        {
+            trainCam.gameObject.SetActive(!trainCam.isActiveAndEnabled);
+        }
+        else if(Train.trainOn == false)
+        {
+            trainCam.gameObject.SetActive(false);
+        }
     }
 
     public void AddFood(float amount)
@@ -89,6 +100,11 @@ public class Player : MonoBehaviour
             Game.inGame = false;
             Invoke(nameof(GameOver), 3.5f);
         }
+    }
+
+    public void ChangeFOV(float value)
+    {
+        trainCam.m_Lens.FieldOfView = value;
     }
 
     void GameOver()

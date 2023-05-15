@@ -90,7 +90,7 @@ public class AnimalAI : MonoBehaviour
 
     private void Update()
     {
-        runFromTrain = trainScript.trainOn; //This is so the ai knows if the train is active and if it is can run away from it
+        runFromTrain = Train.trainOn; //This is so the ai knows if the train is active and if it is can run away from it
         
         if (destinationPoint != Vector3.zero)
         {
