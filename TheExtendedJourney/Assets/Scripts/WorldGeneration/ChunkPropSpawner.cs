@@ -66,22 +66,22 @@ public class ChunkPropSpawner : MonoBehaviour
             case ChunkSpawner.CurrentBiome.Grass:
                 currentItemVariants = itemVariants.itemVariants_Normal;
                 spawnedItems = spawnedGrassItems;
-                Debug.LogWarning("Grass");
+                //Debug.LogWarning("Grass");
                 break;
             case ChunkSpawner.CurrentBiome.Snow:
                 currentItemVariants = itemVariants.itemVariants_Snow;
                 spawnedItems = spawnedSnowItems;
-                Debug.LogWarning("Snow");
+                //Debug.LogWarning("Snow");
                 break;
             case ChunkSpawner.CurrentBiome.Sand:
                 currentItemVariants = itemVariants.itemVariants_Sand;
                 spawnedItems = spawnedSandItems;
-                Debug.LogWarning("Sand");
+                //Debug.LogWarning("Sand");
                 break;
             case ChunkSpawner.CurrentBiome.Fall:
                 currentItemVariants = itemVariants.itemVariants_Fall;
                 spawnedItems = spawnedFallItems;
-                Debug.LogWarning("Fall");
+                //Debug.LogWarning("Fall");
                 break;
             default:
                 break;

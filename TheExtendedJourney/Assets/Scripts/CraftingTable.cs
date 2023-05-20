@@ -99,7 +99,7 @@ public class CraftingTable : MonoBehaviour
 
         if (CheckForItemAvailability() == false) return;
 
-        Instantiate(craftingBook.craftingRecipes.recipes[recipeID].output, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), Quaternion.identity);
+        Instantiate(craftingBook.craftingRecipes.recipes[recipeID].output, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity);
         ConsumeResources();
     }
 
