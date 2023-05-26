@@ -7,7 +7,7 @@ public class TempTrailerCam : MonoBehaviour
 
     private void Update()
     {
-        /*
+        
         if (Input.GetKeyDown(KeyCode.G))
         {
             transform.GetChild(0).gameObject.SetActive(true);
@@ -17,6 +17,6 @@ public class TempTrailerCam : MonoBehaviour
                 obj.SetActive(false);
             }
         }
-        */
+        
     }
 }
