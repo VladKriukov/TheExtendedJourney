@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 206392395}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13934,14 +13934,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690223141}
-  m_LocalRotation: {x: -0.0068438654, y: -0.9819017, z: 0.042958833, w: -0.18432799}
+  m_LocalRotation: {x: 0.009429201, y: 0.9689456, z: -0.04246212, w: 0.24341823}
   m_LocalPosition: {x: -6.969869, y: 3.008279, z: -16.57578}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 961428823}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 4.984, y: 151.79, z: -0.138}
 --- !u!81 &690223145
 AudioListener:
   m_ObjectHideFlags: 0
@@ -33990,7 +33990,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1712109606
 Transform:
   m_ObjectHideFlags: 0
@@ -34014,7 +34014,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1712109605}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f290f3494e861c45b4165991e242f4d, type: 3}
   m_Name: 
@@ -37088,7 +37088,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1934932522
 Transform:
   m_ObjectHideFlags: 0
@@ -58323,17 +58323,17 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   colorGradientTexture: {fileID: 0}
   shallowColor: {r: 0, g: 0.7725491, b: 0.62352943, a: 0.5019608}
-  deepColor: {r: 0.01176471, g: 0.28588524, b: 0.50980073, a: 1}
+  deepColor: {r: 0.01176471, g: 0.2858845, b: 0.50980073, a: 1}
   colorDepth: 1.06
-  horizonColor: {r: 0, g: 0.22706175, b: 0.8, a: 1}
+  horizonColor: {r: 0, g: 0.227061, b: 0.8, a: 1}
   horizonDistance: 4.7
   shoreFade: 1
-  shoreColor: {r: 0, g: 0.98039216, b: 0.30157155, a: 0}
+  shoreColor: {r: 0, g: 0.98039216, b: 0.3015708, a: 0}
   shoreStrength: 0
   shoreBlend: 1
   shoreDepth: 0.77
   waveColor: {r: 0, g: 0, b: 0, a: 0}
-  underwaterColor: {r: 0.20355263, g: 0.30941465, b: 0.517647, a: 0.78}
+  underwaterColor: {r: 0.20355192, g: 0.3094139, b: 0.517647, a: 0.78}
   underwaterColorStrength: 0.78
   underwaterRefractionStrength: 0.099
   surfaceFoamTexture: {fileID: 2800000, guid: d3b0d77dfe711a04c8ff18ecc260aa66, type: 3}
