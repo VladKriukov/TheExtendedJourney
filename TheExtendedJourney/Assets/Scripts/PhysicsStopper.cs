@@ -33,7 +33,7 @@ public class PhysicsStopper : MonoBehaviour
         {
             while (item != null)
             { 
-                if (item.GetComponent<Rigidbody>().velocity.magnitude > 0.25f)
+                if (item.GetComponent<Rigidbody>().linearVelocity.magnitude > 0.25f)
                 {
                     yield return new WaitForSeconds(0.5f);
                     

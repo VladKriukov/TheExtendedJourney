@@ -27,7 +27,7 @@ public class TrainArea : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            player.trainZVelocity = transform.parent.GetComponent<Rigidbody>().velocity.z;
+            player.trainZVelocity = transform.parent.GetComponent<Rigidbody>().linearVelocity.z;
         }
     }
 }

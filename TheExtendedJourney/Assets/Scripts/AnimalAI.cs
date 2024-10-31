@@ -109,7 +109,7 @@ public class AnimalAI : MonoBehaviour
                 //chaseTarget = null;
             }
             rb.AddForce(transform.forward * currentSpeed);
-            rb.drag = Mathf.Abs(rb.velocity.z * dragMultiplier);
+            rb.linearDamping = Mathf.Abs(rb.linearVelocity.z * dragMultiplier);
             //rb.velocity = transform.forward * currentSpeed + Vector3.down;
             //rb.velocity += Vector3.down * 2f;
 
@@ -184,7 +184,7 @@ public class AnimalAI : MonoBehaviour
         }
         else if (movementType == MovementType.Idle)
         {
-            rb.drag = 20;
+            rb.linearDamping = 20;
             idleTime -= Time.deltaTime;
             if (idleTime <= 0)
             {

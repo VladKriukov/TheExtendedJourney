@@ -404,10 +404,10 @@ public class FirstPersonController : MonoBehaviour
 
             if (trainZVelocity != 0)
             {
-                rb.velocity = transform.TransformDirection(targetVelocity) * ((enableSprint && Input.GetKey(sprintKey) && sprintRemaining > 0f && !isSprintCooldown) ? sprintSpeed : walkSpeed) + new Vector3(0, rb.velocity.y, trainZVelocity);
+                rb.linearVelocity = transform.TransformDirection(targetVelocity) * ((enableSprint && Input.GetKey(sprintKey) && sprintRemaining > 0f && !isSprintCooldown) ? sprintSpeed : walkSpeed) + new Vector3(0, rb.linearVelocity.y, trainZVelocity);
                 if (enableSprint && Input.GetKey(sprintKey) && sprintRemaining > 0f && !isSprintCooldown)
                 {
-                    Vector3 velocity = rb.velocity;
+                    Vector3 velocity = rb.linearVelocity;
                     Vector3 velocityChange = (targetVelocity - velocity);
                     if (velocityChange.x != 0 || velocityChange.z != 0) isSprinting = true;
                 }
@@ -424,7 +424,7 @@ public class FirstPersonController : MonoBehaviour
                 targetVelocity = transform.TransformDirection(targetVelocity) * sprintSpeed;
 
                 // Apply a force that attempts to reach our target velocity
-                Vector3 velocity = rb.velocity;
+                Vector3 velocity = rb.linearVelocity;
                 Vector3 velocityChange = (targetVelocity - velocity);
                 velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
                 velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
@@ -462,7 +462,7 @@ public class FirstPersonController : MonoBehaviour
                 targetVelocity = transform.TransformDirection(targetVelocity) * walkSpeed;
 
                 // Apply a force that attempts to reach our target velocity
-                Vector3 velocity = rb.velocity;
+                Vector3 velocity = rb.linearVelocity;
                 Vector3 velocityChange = (targetVelocity - velocity);
                 velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
                 velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);

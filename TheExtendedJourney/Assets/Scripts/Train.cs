@@ -69,7 +69,7 @@ public class Train : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W))
             {
-                if (rb.velocity.z > -0.1f)
+                if (rb.linearVelocity.z > -0.1f)
                 {
                     movingForward = true;
                     currentThrottle = Mathf.Clamp(currentThrottle + throttleSpeed * Time.deltaTime, 0, 1);
@@ -92,7 +92,7 @@ public class Train : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.S))
             {
-                if (rb.velocity.z < 0.1f)
+                if (rb.linearVelocity.z < 0.1f)
                 {
                     movingForward = false;
                     currentThrottle = Mathf.Clamp(currentThrottle + throttleSpeed * Time.deltaTime, 0, 1);
@@ -136,7 +136,7 @@ public class Train : MonoBehaviour
             rb.AddForce(new Vector3(0, 0, currentForce * rb.mass * Time.deltaTime * Mathf.Abs(currentThrottle)));
             fuelTank.fuel -= fuelUsage * Time.deltaTime * currentThrottle;
             fuelTank.fuel -= idleFuelUsage * Time.deltaTime;
-            rb.drag = Mathf.Abs(rb.velocity.z * dragMultiplier);
+            rb.linearDamping = Mathf.Abs(rb.linearVelocity.z * dragMultiplier);
             if (fuelTank.fuel <= 0)
             {
                 StopEngine();
@@ -172,7 +172,7 @@ public class Train : MonoBehaviour
         if(other.tag == "Enemy")
         {
             Debug.Log("Collision");
-            float damage = rb.velocity.z;
+            float damage = rb.linearVelocity.z;
             if(damage < 0) { damage *= -1; }
             if(damage > 0)
             {
